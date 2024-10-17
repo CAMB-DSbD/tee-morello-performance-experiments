@@ -1,3 +1,19 @@
+""""
+Program               : memory_scanner.py
+                      : tries to scann memory regions to verify how a Morello Board protect
+                      : different memory regions.
+                      : Current memory content includes memory used by compartments created with
+                      : the library-based compartmentatlisation tool. 
+                      : memory_scanner.py can be run with and without root privileges.
+                      :
+Programmer            : Regis
+Date                  : 15 Sep 2024
+                      :
+Versions              : Carlos.Molina@cl.cam.ac.uk documented the code.
+"""                      
+
+
+
 import os
 import subprocess
 
@@ -39,8 +55,9 @@ def scrape_memory(pid, rw_regions):
                 print(f"Data read from memory (from 0x{start:x} to 0x{end:x}):")
                 print(buffer.decode(errors='replace'))  
     except OSError as e:
-        print(f"Error accessing process memory: {e}")
-
+        #print(f"Error accessing process memory: {e}")
+        print(f"Error: no privileges to access memory region : {e}")
+        
 if __name__ == "__main__":    
     process_name = "executable-program"
     
