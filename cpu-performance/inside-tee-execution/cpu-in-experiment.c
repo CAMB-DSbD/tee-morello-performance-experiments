@@ -31,9 +31,9 @@
  *              :   - Releases the allocated memory. 
  *              :
  * Compile      :
- * Capabilities : clang-morello -march=morello+c64 -mabi=purecap -g -o cpu-in-experiment cpu-in-experiment.c -L. -Wl,-dynamic-linker,/libexec/ld-elf-c18n.so.1 -lm
+ * Capabilities : clang-morello -march=morello+c64 -mabi=purecap -g -o cpu-in-experiment cpu-in-experiment.c -L. -lm
  *              :
- * run          : env LD_C18N_LIBRARY_PATH=. ./cpu-in-experiment	 
+ * run          : proccontrol -m cheric18n -s enable ./cpu-in-experiment	 
  * 
  * 
 */
@@ -43,7 +43,7 @@
 #include <time.h>
 #include <math.h>
 
-#define NUM_TESTS 100
+#define NUM_TESTS 30
 #define WORKLOAD_SIZE 100000000 
 
 void perform_math_test(FILE *log_file, long *total_time) {
@@ -156,4 +156,3 @@ int main() {
 
     return 0;
 }
-

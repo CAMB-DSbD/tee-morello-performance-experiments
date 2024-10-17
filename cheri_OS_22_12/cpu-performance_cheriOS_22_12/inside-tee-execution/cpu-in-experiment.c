@@ -4,7 +4,7 @@
  *              : Applied Computing Research Group, Unijui University, Brazil
  *              : regis.schuch@unijui.edu.br
  *              :
- * Title        : cpu-out-experiment.c 
+ * Title        : cpu-in-experiment.c 
  *              :
  * Description  : The cpu-in-experiments.c programme carries out a series of CPU performance tests, measuring the time taken to perform
  *              : complex mathematical operations, integer arithmetic operations, floating point arithmetic operations and array 
@@ -31,9 +31,9 @@
  *              :   - Releases the allocated memory. 
  *              :
  * Compile      :
- * Capabilities : clang-morello -o cpu-out-experiment cpu-out-experiment.c -lm
+ * Capabilities : clang-morello -march=morello+c64 -mabi=purecap -g -o cpu-in-experiment cpu-in-experiment.c -L. -Wl,-dynamic-linker,/libexec/ld-elf-c18n.so.1 -lm
  *              :
- * run          : ./cpu-out-experiment	 
+ * run          : env LD_C18N_LIBRARY_PATH=. ./cpu-in-experiment	 
  * 
  * 
 */
@@ -43,7 +43,7 @@
 #include <time.h>
 #include <math.h>
 
-#define NUM_TESTS 30
+#define NUM_TESTS 100
 #define WORKLOAD_SIZE 100000000 
 
 void perform_math_test(FILE *log_file, long *total_time) {
@@ -134,7 +134,7 @@ void perform_array_test(FILE *log_file, long *total_time) {
 }
 
 int main() {
-    FILE *log_file = fopen("cpu-out-experiment-result.csv", "w");
+    FILE *log_file = fopen("cpu_in-experiment-result.csv", "w");
     if (log_file == NULL) {
         printf("Failed to open log file\n");
         return 1;
@@ -156,3 +156,4 @@ int main() {
 
     return 0;
 }
+

@@ -4,9 +4,9 @@
  *              : Applied Computing Research Group, Unijui University, Brazil
  *              : regis.schuch@unijui.edu.br
  *              :
- * Title        : memory-out-experiment.c 
+ * Title        : memory-in-experiment.c 
  *              :
- * Description  : The memory-out-experiment.c programme carries out memory performance tests, measuring the times required to allocate,
+ * Description  : The memory-in-experiment.c programme carries out memory performance tests, measuring the times required to allocate,
  *              : write, read and free memory blocks of varying sizes. The results are recorded in a CSV file.
  *              : Code description:
  *              : 1) Constants and Definitions
@@ -36,9 +36,9 @@
  *              :  d) The elapsed time is calculated and stored in free_time. 
  *              :
  * Compile      :
- * Capabilities : clang-morello -g -o memory-in-experiment memory-in-experiment.c -lm
+ * Capabilities : clang-morello -march=morello+c64 -mabi=purecap -g -o memory-in-experiment memory-in-experiment.c -L. -Wl,-dynamic-linker,/libexec/ld-elf-c18n.so.1 -lm
  *              :
- * run          : ./memory-in-experiment	 
+ * run          : env LD_C18N_LIBRARY_PATH=. ./memory-in-experiment	 
  * 
  * 
 */
@@ -47,11 +47,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define NUM_TESTS 30  // Updated to record 30 tests per block size
+#define NUM_TESTS 100
 #define MIN_BLOCK_SIZE (1024 * 1024 * 100) // 100 MB
 #define MAX_BLOCK_SIZE (1024 * 1024 * 1000) // 1 GB
-#define BLOCK_STEP (1024 * 1024 * 100) // 100 MB per step
-#define ITERATIONS 1000000  // Defining 1 million iterations for write/read
+#define BLOCK_STEP (1024 * 1024 * 100) // 100 MB by step
 
 void perform_test(size_t block_size, FILE *log_file) {
     for (int test = 0; test < NUM_TESTS; test++) {
@@ -71,9 +70,7 @@ void perform_test(size_t block_size, FILE *log_file) {
         // Write
         clock_gettime(CLOCK_MONOTONIC, &start);
         for (size_t i = 0; i < block_size; i++) {
-            for (int j = 0; j < ITERATIONS / block_size; j++) {
-                block[i] = (char)(i % 256);
-            }
+            block[i] = (char)(i % 256);
         }
         clock_gettime(CLOCK_MONOTONIC, &end);
         write_time = ((end.tv_sec - start.tv_sec) * 1000.0) + ((end.tv_nsec - start.tv_nsec) / 1e6);
@@ -82,9 +79,7 @@ void perform_test(size_t block_size, FILE *log_file) {
         clock_gettime(CLOCK_MONOTONIC, &start);
         volatile char temp;
         for (size_t i = 0; i < block_size; i++) {
-            for (int j = 0; j < ITERATIONS / block_size; j++) {
-                temp = block[i];
-            }
+            temp = block[i];
         }
         clock_gettime(CLOCK_MONOTONIC, &end);
         read_time = ((end.tv_sec - start.tv_sec) * 1000.0) + ((end.tv_nsec - start.tv_nsec) / 1e6);
@@ -105,7 +100,7 @@ int main() {
     struct timespec start_time, end_time;
     clock_gettime(CLOCK_MONOTONIC, &start_time); // Start time
 
-    FILE *log_file = fopen("memory-out-experiment-resuls.csv", "w");
+    FILE *log_file = fopen("memory-in-experiment-resuls.csv", "w");
     if (log_file == NULL) {
         printf("Failed to open log file\n");
         return 1;
@@ -126,7 +121,7 @@ int main() {
                                   ((end_time.tv_nsec - start_time.tv_nsec) / 1e6);
 
     // Log the total execution time to the file
-    log_file = fopen("memory-out-experiment-resuls.csv", "a");
+    log_file = fopen("memory-in-experiment-resuls.csv", "a");
     if (log_file != NULL) {
         fprintf(log_file, "\nTotal execution time: %.3f milliseconds\n", total_execution_time);
         fclose(log_file);
@@ -134,3 +129,4 @@ int main() {
 
     return 0;
 }
+

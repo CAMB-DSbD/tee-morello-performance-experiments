@@ -3,12 +3,6 @@
  * Institution: Computer Lab, University of Cambridge
  * 9 Sep 2024
  *
- * 
- * Alterations:
- * 15 Oct 2024: Regis (REGIS RODOLFO SCHUCH <regis.schuch@unijui.edu.br>)
- * improved the output format to collect read/write time of individual
- * operations.
- *
  * pipe.c 
  * communicates a parent and a child process through a pipe.
  * The parent: 
