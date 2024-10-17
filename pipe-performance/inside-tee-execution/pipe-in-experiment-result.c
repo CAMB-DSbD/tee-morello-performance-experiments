@@ -6,7 +6,7 @@
  * 
  * Alterations:
  * 15 Oct 2024: Regis (REGIS RODOLFO SCHUCH <regis.schuch@unijui.edu.br>)
- * improved the format of the output to meassure read/write time of individual
+ * improved the output format to collect read/write time of individual
  * operations.
  *
  * pipe.c 
