@@ -772,13 +772,25 @@ We managed to read this string directly from memory too. It is visible in the la
 
 
 ## Acknowledgements
+This work is part of the
+[CAMB project](https://www.cl.cam.ac.uk/research/srg/projects/camb/  "Web page") under
+the responsibility of the **Jon** ([jon.crowcroft@cl.cam.ac.uk](mailto:jon.crowcroft@cl.cam.ac.uk)) and **Carlos** ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from the [The Centre for ReDecentralisation (CRDC)]https://www.cl.cam.ac.uk/research/srg/projects/crdc/ "Web page") lead by
+**Rafael Zancan-Frantz** ([rzfrantz@unijui.edu.br](mailto:rzfrantz@unijui.edu.br)).
 
-To **Carlos Molina-Jimenez** ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from the Computer Lab, University of Cambridge, and **Rafael Zancan-Frantz** ([rzfrantz@unijui.edu.br](mailto:rzfrantz@unijui.edu.br)) from the Applied Computing Research Group, Unijuí University, Brazil, for their guidance in defining the types of experiments and in evaluating the results.
+The experiments and
+results reported in this web page are being conducted in collaboration with the 
+ [Applied Computing Research (GCA) Group, Unijui University, Brazil](http://gca.unijui.edu.br/member/  "Webpage")
+ as part of international collaboration and dissemination of the 
+[Digital Security by Design (DSbD) programme's]( https://www.dsbd.tech "Web page") activities.
+ 
+ 
+**Carlos Molina-Jimenez** ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from the Computer Lab, University of Cambridge, and **Rafael Zancan-Frantz** ([rzfrantz@unijui.edu.br](mailto:rzfrantz@unijui.edu.br)) from the Applied Computing Research Group, Unijuí University, Brazil, for their guidance in defining the types of experiments and in evaluating the results.
 
 
 ## Corresponding Author
 
 **Regis Rodolfo Schuch**  
-*Applied Computing Research (GCA) Group, Unijui University, Brazil*  
 [regis.schuch@unijui.edu.br](mailto:regis.schuch@unijui.edu.br)
+**Carlos Molina-Jimenez**
+[carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)
 
