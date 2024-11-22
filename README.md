@@ -2,6 +2,12 @@
 
 This repository evaluates compartments created using the library-based compartmentalisation tool available on Morello Boards running the cheriBSD 24.5 operating system. It  evaluates the performance costs incurred by the compartments and the strengths of the memory isolation that they provide. It provides links to the Git repositories that store the C and Python codes used in the evaluation and the metrics collected in CSV files. It also includes the plots of the results, a discussion of our interpretation and detailed instructions to encourage practitioners to repeat our experiments and compare their results against ours. 
 
+# 1. pdf version   
+    
+  [pdf version ](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/documents/library_based_compartment_evaluation.pdf) is
+also available. 
+
+
 
 # 1. Experiments set up
 
