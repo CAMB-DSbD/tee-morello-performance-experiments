@@ -787,8 +787,8 @@ conducted in collaboration with the
 
 ## Corresponding Authors
 
-**Regis Rodolfo Schuch**  
+Regis Rodolfo Schuch  
 [regis.schuch@unijui.edu.br](mailto:regis.schuch@unijui.edu.br)
 
-**Carlos Molina-Jimenez**    
+Carlos Molina-Jimenez    
 [carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)
