@@ -779,7 +779,7 @@ the responsibility of the **Jon** ([jon.crowcroft@cl.cam.ac.uk](mailto:jon.crowc
 
 The experiments and results reported in this web page are being 
 conducted in collaboration with the 
- [Applied Computing Research (GCA) Group, Unijui University, Brazil](http://gca.unijui.edu.br/member/  "Webpage")
+ [Applied Computing Research (GCA) Group, Unijui, Brazil](http://gca.unijui.edu.br/member/  "Webpage")
  as part of international collaboration and dissemination of the 
 [Digital Security by Design (DSbD) programme's]( https://www.dsbd.tech "Web page") activities.
 
