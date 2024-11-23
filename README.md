@@ -786,8 +786,8 @@ The experiments and results reported in this web page are being
 conducted in collaboration with the 
  [Applied Computing Research (GCA) Group, Unijui, Brazil](http://gca.unijui.edu.br/member/  "Webpage")
 led by Rafael Z. Frantz ([rzfrantz@unijui.edu.br](mailto:rzfrantz@unijui.edu.br)). 
-The join effort emerged from the long-term international collaboration 
-between the two research groups and reflects the interest of
+The join effort emerged from a long-term international collaboration 
+between the two research groups and reflects the interest 
 of the GCA in the  
 [Digital Security by Design (DSbD) programme]( https://www.dsbd.tech "Web page") 
 activities, in particular,  in cheri-caps and the Morello.
