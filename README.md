@@ -779,14 +779,18 @@ We managed to read this string directly from memory too. It is visible in the la
 ## Acknowledgements
 This work is part of the
 [CAMB project](https://www.cl.cam.ac.uk/research/srg/projects/camb/  "Web page") under
-the responsibility of the Jon ([jon.crowcroft@cl.cam.ac.uk](mailto:jon.crowcroft@cl.cam.ac.uk)) and Carlos ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from the [The Centre for ReDecentralisation (CRDC)](https://www.cl.cam.ac.uk/research/srg/projects/crdc/ "Web page") lead by
-**Rafael Z. Frantz** ([rzfrantz@unijui.edu.br](mailto:rzfrantz@unijui.edu.br)).
+the responsibility of the Jon ([jon.crowcroft@cl.cam.ac.uk](mailto:jon.crowcroft@cl.cam.ac.uk)) and Carlos ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from the [The Centre for ReDecentralisation (CRDC)](https://www.cl.cam.ac.uk/research/srg/projects/crdc/ "Web page") lead by Jon.
+
 
 The experiments and results reported in this web page are being 
 conducted in collaboration with the 
  [Applied Computing Research (GCA) Group, Unijui, Brazil](http://gca.unijui.edu.br/member/  "Webpage")
- as part of international collaboration and dissemination of the 
-[Digital Security by Design (DSbD) programme's]( https://www.dsbd.tech "Web page") activities.
+led by Rafael Z. Frantz ([rzfrantz@unijui.edu.br](mailto:rzfrantz@unijui.edu.br)). 
+The join effort emerged from the international collaboration 
+between the two research groups and flects the interest of
+of the GCA in the  
+[Digital Security by Design (DSbD) programme]( https://www.dsbd.tech "Web page") 
+activities, in particular,  in cheri-caps and the Morello.
 
  
 
