@@ -779,7 +779,7 @@ We managed to read this string directly from memory too. It is visible in the la
 ## Acknowledgements
 This work is part of the
 [CAMB project](https://www.cl.cam.ac.uk/research/srg/projects/camb/  "Web page") under
-the responsibility of the Jon ([jon.crowcroft@cl.cam.ac.uk](mailto:jon.crowcroft@cl.cam.ac.uk)) and Carlos ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from the [The Centre for ReDecentralisation (CRDC)](https://www.cl.cam.ac.uk/research/srg/projects/crdc/ "Web page") lead by Jon.
+the responsibility of the Jon ([jon.crowcroft@cl.cam.ac.uk](mailto:jon.crowcroft@cl.cam.ac.uk)) and Carlos ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from the [The Centre for ReDecentralisation (CRDC)](https://www.cl.cam.ac.uk/research/srg/projects/crdc/ "Web page") led by Jon.
 
 
 The experiments and results reported in this web page are being 
