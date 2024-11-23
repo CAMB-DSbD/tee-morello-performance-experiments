@@ -776,8 +776,7 @@ ________________________________________________________________________________
 # Python scripts that can help to summarise and visualise results
 
 If needed, these Python scripts can be used to summarise the 
-raw collected metrics and present results graphically.  
-They produce aggregated CSV files and comparative graphs.
+raw collected metrics and present results graphically. They produce aggregated CSV files and comparative plots.
 
 ## Scripst for summary views  
 
