@@ -799,7 +799,8 @@ ________________________________________________________________________________
 
 # PDF Version
 
-A PDF version of this document is available for download. Please note that the PDF might be slightly behind this page in terms of updates. If it fails to open, download it first and then open it.
+A PDF version of this document is available for download. Please note that the PDF might be slightly behind this page in terms of updates. If it fails to open 
+(_Error rendering embedded code_), download it first and then open it.
 
 [📄 Download PDF Version](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/documents/Library_based_compartments_evaluation.pdf)
 
