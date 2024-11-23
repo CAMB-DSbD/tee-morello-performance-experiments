@@ -767,36 +767,40 @@ The execution results are available from [execution-result.txt](https://github.c
 
 For example, line 205 (``msg received from child process TKYftt85v0l3d05SosZY1 ... iAbqS7D3VokIx'') shows the child process reading one of the strings with random characters sent by the parent process.
 
-We managed to read this string directly from memory too. It is visible in the last lines of the raw version of the [memory-reading-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt) file.
+We managed to read this string directly from memory too. 
+It is visible in the last lines of the raw version of 
+the [memory-reading-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt) file.
 
 _________________________________________________________________________________________________________________________________________________________________
 
-# Codes for Summarising and Visualising Results
+# Python scripts that can help to summarise and visualise results
 
-The repository includes scripts to summarise the raw experimental results and generate visualisations for interpreting the data. These scripts automate the analyses and produce outputs such as aggregated CSV files and comparative graphs.
+If needed, these Python scripts can be used to summarise the 
+raw collected metrics and present results graphically.  
+They produce aggregated CSV files and comparative graphs.
 
-## Summarisation Scripts
+## Scripst for summary views  
 
-- [Summarise CPU Results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/summarise-results)
-- [Summarise Memory Results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/summarise-results)
+- [Summarise CPU performance results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/summarise-results)
+- [Summarise memory performance results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/summarise-results)
 
 
-## Visualisation Scripts
+## Script for visual views
 
-- [Maximum Number of Compartments Graph](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cheri-caps-executable-performance/plot-graph)
+- [Maximum number of compartments plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cheri-caps-executable-performance/plot-graph)
    
-- [Memory Performance Graphs](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/plot-graph)
+- [Memory performance plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/plot-graph)
 
-- [CPU Performance Graphs](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/plot-graph)   
+- [CPU performance plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/plot-graph)   
 
-- [Pipe Performance Graphs](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/pipe-performance/plot-graph) 
+- [Pipe communications performance plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/pipe-performance/plot-graph) 
  
 
 _________________________________________________________________________________________________________________________________________________________________
 
 # PDF Version
 
-A PDF version of this document is available for download. Please note that the PDF might be slightly behind this page in terms of updates.
+A PDF version of this document is available for download. Please note that the PDF might be slightly behind this page in terms of updates. If it fails to open, download it first and then open it.
 
 [📄 Download PDF Version](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/documents/Library_based_compartments_evaluation.pdf)
 
