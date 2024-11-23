@@ -50,7 +50,7 @@ It is worth explaining that, as shown in the CSV files available in this reposit
 The inclusion or exclusion of library-based compartments is determined at compilation and execution time, as documented in the manuals:
 - [Gao, 2024](https://man.cheribsd.org/cgi-bin/man.cgi/c18n)
 - [Cheri Team, 2022](https://github.com/CTSRD-CHERI/cheripedia/wiki/Library-based-%20Compartmentalisation)
-- [Watson, 2019b](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-compartmentalization.html)
+- [Watson, 2019](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-compartmentalization.html)
 
 
 
@@ -159,7 +159,7 @@ We initially expected memory consumption to increase steadily from 1,628.3 MB, c
 
 However, the results revealed unexpected behaviour: memory consumption increased consistently only until approximately 3,800 attestable replicas consumed 14,582.5 MB. After this point, memory consumption began to decrease as the number of attestable replicas continued to rise. The final data point shows that 8,991 attestable replicas consumed 13,066.4 MB, or roughly 76% of the total memory.
 
-We did not expect the behaviours exhibited by the blue line of Figure 3. We have no sound explanation for it. These preliminary results highlight an area for further exploration. Additionally, the analysis of the time required to wipe the memory of the attestable replicas remains pending.
+We did not expect the behaviours exhibited by the blue line of Fig. 3. We have no sound explanation for it. These preliminary results highlight an area for further exploration. Additionally, the analysis of the time required to wipe the memory of the attestable replicas remains pending.
 
 
 
@@ -735,7 +735,7 @@ We have performed the following steps to examine memory:
    ```
 
 3. **Reading process:**  
-   We executed the `memory_reader.py` script. It iterates through each RW memory region associated with the PIDs of the parent and child processes, trying to read the data from each region defined by start and end addresses. We displayed the results on the screen (see Fig. 13).
+   We executed the `memory_reader.py` script. It iterates through each RW memory region associated with the PIDs of the parent and child processes, trying to read the data from each region defined by start and end addresses. We displayed the results on the screen (see Fig. 15).
 
 
 
@@ -774,9 +774,42 @@ For example, line 205 (``msg received from child process TKYftt85v0l3d05SosZY1 .
 
 We managed to read this string directly from memory too. It is visible in the last lines of the raw version of the [memory-reading-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt) file.
 
+_________________________________________________________________________________________________________________________________________________________________
+
+# Codes for Summarising and Visualising Results
+
+The repository includes scripts to summarise the raw experimental results and generate visualisations for interpreting the data. These scripts automate the analyses and produce outputs such as aggregated CSV files and comparative graphs.
+
+## Summarisation Scripts
+
+- [Summarise CPU Results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/summarise-results)
+- [Summarise Memory Results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/summarise-results)
+
+
+## Visualisation Scripts
+
+- [Maximum Number of Compartments Graph](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cheri-caps-executable-performance/plot-graph)
+   
+- [Memory Performance Graphs](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/plot-graph)
+
+- [CPU Performance Graphs](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/plot-graph)   
+
+- [Pipe Performance Graphs](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/pipe-performance/plot-graph) 
+ 
+
+_________________________________________________________________________________________________________________________________________________________________
+
+# PDF Version
+
+A PDF version of this document is available for download. Please note that the PDF might be slightly behind this page in terms of updates.
+
+[📄 Download PDF Version](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/documents/Library_based_compartments_evaluation.pdf)
+
+_________________________________________________________________________________________________________________________________________________________________
 
 
 ## Acknowledgements
+<<<<<<< HEAD
 This work is part of the
 [CAMB project](https://www.cl.cam.ac.uk/research/srg/projects/camb/  "Web page") under
 the responsibility of the Jon ([jon.crowcroft@cl.cam.ac.uk](mailto:jon.crowcroft@cl.cam.ac.uk)) and Carlos ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from the [The Centre for ReDecentralisation (CRDC)](https://www.cl.cam.ac.uk/research/srg/projects/crdc/ "Web page") led by Jon.
@@ -791,6 +824,15 @@ between the two research groups and reflects the interest
 of the GCA in the  
 [Digital Security by Design (DSbD) programme]( https://www.dsbd.tech "Web page") 
 activities, in particular,  in cheri-caps and the Morello.
+=======
+
+This work is part of the CAMB project under the responsibility of Jon ([jon.crowcroft@cl.cam.ac.uk](mailto:jon.crowcroft@cl.cam.ac.uk)) and Carlos ([carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)) from [The Centre for ReDecentralisation (CRDC)](https://www.cl.cam.ac.uk/research/srg/projects/crdc/) led by Jon.
+
+The experiments and results reported on this web page are being conducted in collaboration with the [Applied Computing Research (GCA) Group](http://gca.unijui.edu.br/member/), Unijuí, Brazil, led by Rafael Z. Frantz ([rzfrantz@unijui.edu.br](mailto:rzfrantz@unijui.edu.br)). The joint effort emerged from a long-term international collaboration between the two research groups and reflects the interest of the GCA in the [Digital Security by Design (DSbD)](https://www.dsbd.tech/) programme activities, particularly in CHERI capabilities and the Morello platform.
+
+
+## Corresponding Authors
+>>>>>>> upstream/main
 
  
 
@@ -799,5 +841,13 @@ activities, in particular,  in cheri-caps and the Morello.
 Regis Rodolfo Schuch  
 [regis.schuch@unijui.edu.br](mailto:regis.schuch@unijui.edu.br)
 
+<<<<<<< HEAD
 Carlos Molina-Jimenez    
 [carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)
+=======
+**Carlos Molina-Jimenez**  
+*Computer Lab, University of Cambridge*  
+[carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)
+
+
+>>>>>>> upstream/main
