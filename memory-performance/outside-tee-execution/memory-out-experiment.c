@@ -4,34 +4,37 @@
  *              : Applied Computing Research Group, Unijui University, Brazil
  *              : regis.schuch@unijui.edu.br
  *              :
- *              : Carlos Molina Jimenez 
+ *              : Carlos Molina Jimenez
  * Date         : 12 Aug 2024
- *              : Carlos Molina Jimenez 
+ *              : Carlos Molina Jimenez
  * Date         : 7 Dec 2024
  *
- * Title        : memory-out-experiment.c 
+ * Title        : memory-out-experiment.c
  *              :
- * Description  : The memory-out-experiment.c programme carries out 
- *              : memory performance tests to measure the times required 
+ * Description  : The memory-out-experiment.c programme carries out
+ *              : memory performance tests to measure the times required
  *              : to execute typical memory operations: allocate,
  *              : write, read and free memory blocks of different sizes.
  *              : To compute average time, each operation is executed
  *              : a number of time selected by he user either at compilation
- *              : or run time, for example, 30, 60, 100, etc.  
+ *              : or run time, for example, 30, 60, 100, etc.
+ *              : The code is set to be compiles with num_of_trials= 100
  *              : The results are stored a CSV file.
  *              : Code description:
  *              : 1) Constants and Definitions
- *              :  a) NUM_TESTS is the number of tests to be performed for each block size.
+ *              :  a) NUM_TESTS (number of trials) is the number of times that the
+ *              :     operation under measurement is repeatedly executed against 
+ *              :  each block size.
  *              :  b) MIN_BLOCK_SIZE is the minimum block size to be tested (100 MB).
  *              :  c) MAX_BLOCK_SIZE is the maximum block size to be tested (1 GB).
  *              :  d) BLOCK_STEP is the block size increment at each step (100 MB).
- *              : 2) Allocation: measures the time to allocate a memory block of the 
+ *              : 2) Allocation: measures the time to allocate a memory block of the
  *              :    specified size using malloc.
  *              :  a) clock_gettime(CLOCK_MONOTONIC, &start) records the start time.
  *              :  b) malloc(block_size) allocates the memory.
  *              :  c) clock_gettime(CLOCK_MONOTONIC, &end) records the end time.
- *              :  d) The elapsed time is calculated and stored in allocation_time.
- *              : 3) Write: Measures the time it takes to write to the entire memory 
+*              :  d) The elapsed time is calculated and stored in allocation_time.
+ *              : 3) Write: Measures the time it takes to write to the entire memory
  *              :    block.
  *              :  a) clock_gettime(CLOCK_MONOTONIC, &start) records the start time.
  *              :  b) A loop writes values to each byte of the memory block.
@@ -46,15 +49,16 @@
  *              :  a) clock_gettime(CLOCK_MONOTONIC, &start) records the start time.
  *              :  b) free(block) frees the memory.
  *              :  c) clock_gettime(CLOCK_MONOTONIC, &end) records the end time.
- *              :  d) The elapsed time is calculated and stored in free_time. 
+ *              :  d) The elapsed time is calculated and stored in free_time.
  *              :
  * Compile      :
  * Capabilities : clang-morello -g -o memory-out-experiment memory-out-experiment.c -lm
  *              :
- * run          : ./memory-out-experiment	 
- * 
- * 
-*/
+ * run          : ./memory-out-experiment
+ *
+ *
+ */
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -69,7 +73,7 @@
 
 void perform_test(int num_of_trials, size_t block_size, FILE *log_file) {
     /* for (int test = 0; test < NUM_TESTS; test++) { */
-    for (int test = 0; test < num_of_trials; test++) {
+    for (int trial = 0; trial < num_of_trials; trial++) {
         struct timespec start, end;
         double allocation_time, write_time, read_time, free_time;
 
@@ -78,7 +82,7 @@ void perform_test(int num_of_trials, size_t block_size, FILE *log_file) {
         char *block = (char *)malloc(block_size);
         clock_gettime(CLOCK_MONOTONIC, &end);
         if (block == NULL) {
-            fprintf(log_file, "%zu,%d,Allocation failed,,,,\n", block_size / (1024 * 1024), test + 1);
+            fprintf(log_file, "%zu,%d,Allocation failed,,,,\n", block_size / (1024 * 1024), trial + 1);
             return;
         }
         allocation_time = ((end.tv_sec - start.tv_sec) * 1000.0) + ((end.tv_nsec - start.tv_nsec) / 1e6);
@@ -112,11 +116,9 @@ void perform_test(int num_of_trials, size_t block_size, FILE *log_file) {
 
         // Log the times in CSV format
         fprintf(log_file, "%zu,%d,%.3f,%.3f,%.3f,%.3f\n",
-                block_size / (1024 * 1024), test + 1, allocation_time, write_time, read_time, free_time);
+                block_size / (1024 * 1024), trial + 1, allocation_time, write_time, read_time, free_time);
     }
 }
-
-
 
 int main() {
   
@@ -129,10 +131,12 @@ int main() {
     clock_gettime(CLOCK_MONOTONIC, &start_time); // Start time
 
     /* 
+     * Activate these two lines to determine the number
+     * of trials at run time.
       printf("\nType the number of trials e.g., 50 : ");
       scanf("%d", &num_of_trials);
      */
-    num_of_trials=60;
+    num_of_trials=100;
     printf("Each operation will be executed %d times \n", num_of_trials);
 
 
@@ -147,7 +151,7 @@ int main() {
 
 
     // Write CSV header
-    fprintf(log_file, "Block Size (MB),Test Number,Allocation Time (ms),Write Time (ms),Read Time (ms),Free Time (ms)\n");
+    fprintf(log_file, "Block Size (MB),Trial Num,Allocation Time (ms),Write Time (ms),Read Time (ms),Free Time (ms)\n");
 
     printf("\nThis program has been launched at (date and time): %s", ctime(&t));
     printf(" \nmemory allocate, write, read, free in execution now (no cheri compartments) ...\n");
