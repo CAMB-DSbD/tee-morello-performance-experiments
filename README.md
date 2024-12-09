@@ -16,7 +16,7 @@ building of the Computer Laboratory.
 To access the remote Morello Board we use a laptop connected 
 to the network of the [Applied Computing Research Group (GCA)](http://gca.unijui.edu.br/) at Unijuí, Brazil. 
 
-The Fig. 1 illustrates the Morello Board's physical location and the network connection used to access it through SSH.
+The Fig. 1 illustrates the Morello Board's physical location and the network connection used to access it through ssh.
 
 <p align="center">
   <img src="figs/experimentsetup_morelloboard.png" alt="Morello Board location" width="700"/>
