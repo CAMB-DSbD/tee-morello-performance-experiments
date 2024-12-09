@@ -55,7 +55,21 @@ We specify the hardware and software configurations of the Morello Board used in
 </div>
 
 
-It is worth explaining that, as shown in the CSV files available in this repository, we repeated the execution of each operation 30 times during our experiments, collected the measurements, and averaged the results. The choice of 30 repetitions was based on the Central Limit Theorem, which suggests that a sample size of 30 is often adequate to yield a statistically meaningful average [Statistics How To 2023](https://www.statisticshowto.com/probability-and-statistics/normal-distributions/central-limit-theorem-definition-examples/).
+As shown in the CSV files available in this repository,
+we computed our statistical estimations (means, media, etc.)  
+and ploted results from metrics produced from 100
+trails (we repeted the execution of each operation 
+(for example, malloc) 100 times.
+The choice of 100 repetitions was based in on own
+experience in performance analysis.
+
+<!-- on the Central Limit Theorem, which suggests          -->
+<!-- that a sample size of 30 is often adequate to yield   -->
+<!-- a statistically meaningful average                    -->
+<!-- [Statistics How To 2023](https://www.statisticshowto. -->
+<!-- com/probability-and-statistics/normal-distributions/  -->
+<!-- central-limit-theorem-definition-examples/).          -->
+
 
 
 ## 1.1. Compilation and Execution
@@ -209,7 +223,7 @@ d) **free:** time taken to release the memory block back into the main memory.
 As shown in Fig. 4, we use blocks of `100, 200, 300,...,100 000 MB` as large blocks of memory. Blocks of these sizes are typical of applications that process images and access databases.
 
 <p align="center">
-  <img src="./figs/memory.png" alt="Performance of memory operations on memory blocks of different sizes" width="65%"/>
+  <img src="./figs/mem_blocks_num_trials.png" alt="Performance of memory operations on memory blocks of different sizes" width="65%"/>
 </p>
 <p align="center"><em>Figure 4: Performance of memory operations on memory blocks of different sizes.</em></p>
 

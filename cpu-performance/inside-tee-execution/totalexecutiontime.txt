@@ -1,0 +1,21 @@
+
+Mon Dec  9 02:42:38 UTC 2024
+
+cm770@morello-camb-3:$ ps
+  PID TT  STAT      TIME COMMAND
+31481  1  Ss     0:00.04 -sh (sh)
+31536  1  R    116:06.17 ./cpu-in-experiment
+31680  1  R+     0:00.00 ps
+cm770@morello-camb-3:$ 
+cm770@morello-camb-3:$ ps
+  PID TT  STAT      TIME COMMAND
+31481  1  Ss     0:00.04 -sh (sh)
+31536  1  R    119:33.54 ./cpu-in-experiment
+31683  1  R+     0:00.00 ps
+cm770@morello-camb-3:$ 
+cm770@morello-camb-3:$ 
+cm770@morello-camb-3:$ Total execution time: 7402052 milliseconds
+
+[1]   Done                    proccontrol -m cheric18n -s enable ./cpu-in-experiment
+cm770@morello-camb-3:$ pwd
+
