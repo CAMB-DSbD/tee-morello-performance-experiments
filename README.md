@@ -7,15 +7,28 @@ This repository contains code, metrics collected and results that evaluate compa
 
 We use local and remote Morello Boards:
 </br>
-The local Morello Boards are physically located in the William Gates
+*  The local Morello Boards are physically located in the William Gates
 building of the Computer Laboratory.
-</br>
-The remote Morello Boards are physically located in Toronto, within the premises of [TODAQ](https://engineering.todaq.net/), a non-funding partner of the [CAMB project](https://www.cl.cam.ac.uk/research/srg/projects/camb/). We use a laptop connected to the network of the [Applied Computing Research Group (GCA)](http://gca.unijui.edu.br/) at Unijuí, Brazil, to access the Morello Board via an SSH connection. Below is the main configuration of the Morello Board and additional parameters, including the CheriBSD online commands that can be used to output these configurations directly from the Morello Board. The Fig. 1 illustrates the Morello Board's physical location and the network connection used to access it.
+*  The remote Morello Boards are physically located in Toronto, within the premises of [TODAQ](https://engineering.todaq.net/), a non-funding partner of the [CAMB project](https://www.cl.cam.ac.uk/research/srg/projects/camb/). 
+
+
+
+To access the remote Morello Board we use a laptop connected 
+to the network of the [Applied Computing Research Group (GCA)](http://gca.unijui.edu.br/) at Unijuí, Brazil. 
+
+The Fig. 1 illustrates the Morello Board's physical location and the network connection used to access it through SSH.
 
 <p align="center">
-  <img src="figs/experimentsetup_morelloboard.png" alt="Morello Boards location" width="700"/>
+  <img src="figs/experimentsetup_morelloboard.png" alt="Morello Board location" width="700"/>
 </p>
-<p align="center"><em>Figure 1: Morello Boards location.</em></p>
+<p align="center"><em>Figure 1: Remote Morello Board location.</em></p>
+
+
+Below is the main configuration of the Morello Board 
+and additional parameters, including the CheriBSD online 
+commands that can be used to output these configurations 
+directly from the Morello Board. 
+
 
 
 We specify the hardware and software configurations of the Morello Board used in the experiments in Table 1.
