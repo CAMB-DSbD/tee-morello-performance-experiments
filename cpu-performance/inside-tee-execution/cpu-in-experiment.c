@@ -18,7 +18,7 @@
  *              : To compute average time, each operation is executed
  *              : a number of time selected by he user either at compilation
  *              : or run time, for example, 30, 60, 100, etc.
- *              : The code is set to be compiles with num_of_trials= 100
+ *              : The code is set to be compiles with num_of_trials= 60
  *              : The results are stored a CSV file.
  *              : 
  *              : Code breakdown:
@@ -177,7 +177,7 @@ int main() {
      scanf("%d", &my_num_of_trials);
     */
 
-    my_num_of_trials= 60; /* Im hard-fixing this number to tun on background */
+    my_num_of_trials= 100; /* Im hard-fixing this number to tun on background */
     printf("Each operation will be executed %d times \n", my_num_of_trials);
 
 
