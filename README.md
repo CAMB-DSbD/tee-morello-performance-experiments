@@ -254,7 +254,7 @@ At each iteration, the memory allocation time is measured with the time function
 
 ## 3.1. Results
 
-The metrics collected are stored in two separate CSV files: [cpu-in-experiment-result.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu_in-experiment-result.csv) for the run inside a compartment. The file [cpu-out-experiment-result.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-result.csv) collects metrics of the run without compartments. We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.).The results are summarised in Tables 3 and 4.
+The metrics collected are stored in two separate CSV files: [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu_in-experiment-results.csv) for the run inside a compartment. The file [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv) collects metrics of the run without compartments. We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.).The results are summarised in Tables 3 and 4.
 
 
 <div align="center">
@@ -316,7 +316,7 @@ The metrics collected are stored in two separate CSV files: [cpu-in-experiment-r
 
 - **Free time:** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 4 shows times that range from 3 to 9 ms in executions without compartments.
 
-Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records are available from [memory-in-experiment-result.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-resuls.csv) and [memory-out-experiment-result.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-resuls.csv).
+Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records are available from [memory-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-resuls.csv) and [memory-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-resuls.csv).
 
 
 <p align="center">
@@ -382,7 +382,7 @@ The execution begins with the perform\_tests function (line 1), which receives t
 
 ## 4.1. Results
 
-The results collected from the execution inside a compartment are available from [cpu-in-experiment-result.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu_in-experiment-result.csv). Similarly, the results collected from the execution without a compartment are available from [cpu-out-experiment-result.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-result.csv).
+The results collected from the execution inside a compartment are available from [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu_in-experiment-results.csv). Similarly, the results collected from the execution without a compartment are available from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
 
 Table 5 compares the average execution times of different operations in both executions.
 
@@ -479,7 +479,7 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 ## 5.1. Results
 
-We store the data collected from this experiment in two separate CSV files: [ppipe-in-experiment-result.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-result.csv) for operations executed inside the compartment and [pipe-out-experiment-result.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-result.csv) for operations executed without a compartment.
+We store the data collected from this experiment in two separate CSV files: [ppipe-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
 
 Table 6 and Table 7 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
