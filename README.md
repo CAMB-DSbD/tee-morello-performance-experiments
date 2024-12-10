@@ -383,7 +383,7 @@ The execution begins with the perform\_tests function (line 1), which receives t
 ## 4.1. Results
 
 The results collected from the execution inside a compartment are available from [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-results.csv). Similarly, the results collected from the execution without a compartment are available from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
-
+   
 Table 5 compares the average execution times of different operations in both executions.
 
 <div align="center">
