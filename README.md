@@ -260,18 +260,21 @@ The metrics collected are stored in two separate CSV files: [cpu-in-experiment-r
 <div align="center">
 <p><em>Table 3: Metrics of runs inside a compartment, including mean and standard deviation.</em></p>
 
+
 | **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
 |---------------------|--------------------------|---------------------|--------------------|--------------------|
-| 100                 | 106 ± 162.81            | 295,308 ± 134.61    | 282,576 ± 9.12     | 97 ± 190.67        |
-| 200                 | 138 ± 184.86            | 590,498 ± 258.80    | 565,152 ± 13.51    | 272 ± 453.06       |
-| 300                 | 138 ± 197.84            | 885,784 ± 352.15    | 847,719 ± 16.11    | 318 ± 553.84       |
-| 400                 | 141 ± 251.11            | 1,180,815 ± 488.16  | 1,130,297 ± 16.14  | 492 ± 837.55       |
-| 500                 | 131 ± 287.53            | 1,476,014 ± 534.18  | 1,412,881 ± 21.82  | 321 ± 649.56       |
-| 600                 | 168 ± 350.89            | 1,771,086 ± 665.76  | 1,695,456 ± 27.63  | 399 ± 800.15       |
-| 700                 | 251 ± 507.21            | 2,066,147 ± 670.82  | 1,978,022 ± 28.73  | 725 ± 1,312.96     |
-| 800                 | 235 ± 601.22            | 2,361,646 ± 980.32  | 2,260,586 ± 36.58  | 738 ± 1,365.85     |
-| 900                 | 312 ± 878.94            | 2,656,590 ± 881.36  | 2,543,166 ± 48.78  | 1,197 ± 1,903.50   |
-| 1000                | 265 ± 878.73            | 2,951,487 ± 1,017.72| 2,825,741 ± 45.21  | 405 ± 921.64       |
+| 100                 | 93 ± 171.27             | 283,239 ± 58.31     | 283,133 ± 28.83    | 89 ± 180.05        |
+| 200                 | 98 ± 221.17             | 566,458 ± 82.10     | 566,269 ± 65.02    | 214 ± 397.35       |
+| 300                 | 99 ± 295.44             | 849,705 ± 131.43    | 849,396 ± 87.16    | 222 ± 452.92       |
+| 400                 | 127 ± 430.92            | 1,132,983 ± 189.58  | 1,132,550 ± 106.44 | 430 ± 788.02       |
+| 500                 | 159 ± 599.09            | 1,416,190 ± 189.97  | 1,415,698 ± 123.68 | 217 ± 420.54       |
+| 600                 | 151 ± 648.00            | 1,699,454 ± 255.41  | 1,698,795 ± 174.82 | 439 ± 921.59       |
+| 700                 | 195 ± 880.05            | 1,982,654 ± 245.07  | 1,981,909 ± 122.70 | 453 ± 979.92       |
+| 800                 | 216 ± 1,084.49          | 2,265,901 ± 235.38  | 2,265,075 ± 139.94 | 818 ± 1,513.98     |
+| 900                 | 288 ± 1,536.92          | 2,549,115 ± 258.37  | 2,548,205 ± 196.83 | 816 ± 1,579.74     |
+| 1000                | 248 ± 1,543.50          | 2,832,372 ± 337.74  | 2,831,332 ± 167.56 | 444 ± 1,003.29     |
+
+</div>
 
 </div>
 
@@ -279,26 +282,30 @@ The metrics collected are stored in two separate CSV files: [cpu-in-experiment-r
 <div align="center">
 <p><em>Table 4: Metrics of runs outside a compartment, including mean and standard deviation.</em></p>
 
+
 | **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
 |---------------------|--------------------------|---------------------|--------------------|--------------------|
-| 100                 | 2.37 ± 9.60             | 282,573.6 ± 21.01   | 322,943.5 ± 23.47  | 3.3 ± 2.85         |
-| 200                 | 2.47 ± 6.40             | 565,140.4 ± 13.05   | 645,880.3 ± 10.00  | 4.47 ± 2.10        |
-| 300                 | 1.43 ± 1.92             | 847,708.1 ± 15.14   | 968,813.5 ± 15.52  | 4.63 ± 1.99        |
-| 400                 | 2.9 ± 5.79              | 1,130,294.0 ± 22.28 | 1,291,766.3 ± 22.70| 7.37 ± 3.22        |
-| 500                 | 2.63 ± 5.39             | 1,412,856.5 ± 20.91 | 1,614,707.9 ± 23.45| 6.47 ± 1.55        |
-| 600                 | 1.83 ± 2.38             | 1,695,426.4 ± 30.26 | 1,937,629.5 ± 29.14| 6.2 ± 1.86         |
-| 700                 | 1.97 ± 1.83             | 1,977,999.2 ± 34.40 | 2,260,573.3 ± 36.07| 7.67 ± 1.95        |
-| 800                 | 2.4 ± 2.99              | 2,260,592.6 ± 40.55 | 2,583,527.0 ± 30.94| 8.07 ± 1.31        |
-| 900                 | 2.1 ± 0.80              | 2,543,150.9 ± 43.68 | 2,906,485.3 ± 52.49| 8.2 ± 1.79         |
-| 1000                | 1.97 ± 0.96             | 2,825,742.3 ± 47.44 | 3,229,433.5 ± 44.77| 8.77 ± 2.56        |
+| 100                 | 2 ± 4.77                | 282,584 ± 13.86     | 282,581 ± 12.79    | 6 ± 4.52           |
+| 200                 | 4 ± 4.19                | 565,164 ± 17.12     | 565,163 ± 18.85    | 10 ± 4.03          |
+| 300                 | 4 ± 1.77                | 847,755 ± 21.18     | 847,752 ± 64.89    | 13 ± 3.66          |
+| 400                 | 5 ± 3.09                | 1,130,330 ± 21.00   | 1,130,328 ± 28.20  | 14 ± 2.27          |
+| 500                 | 5 ± 3.07                | 1,412,907 ± 31.49   | 1,412,903 ± 28.92  | 15 ± 2.37          |
+| 600                 | 5 ± 1.56                | 1,695,493 ± 32.97   | 1,695,493 ± 30.19  | 16 ± 1.28          |
+| 700                 | 5 ± 1.52                | 1,978,083 ± 52.24   | 1,978,098 ± 79.47  | 17 ± 0.86          |
+| 800                 | 5 ± 1.73                | 2,260,662 ± 41.09   | 2,260,660 ± 53.11  | 18 ± 0.62          |
+| 900                 | 5 ± 0.54                | 2,543,249 ± 47.19   | 2,543,234 ± 42.16  | 18 ± 0.97          |
+| 1000                | 5 ± 0.50                | 2,825,823 ± 47.72   | 2,825,818 ± 41.68  | 18 ± 0.64          |
+
+</div>
 
 </div>
 
 
 <p align="center">
-  <img src="./figs/performancememOperations.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
+  <img src="./figs/performance_of_memOperations.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
 </p>
 <p align="center"><em>Figure 5: Time to execute allocate, write, read and release memory operations.</em></p>
+
 
 
 - **Allocation time:** A comparison of Table 1 against Table 2 reveals that it takes longer to allocate memory blocks inside compartments. For example, the allocation of 100 MB takes 2 ms without a compartment, while it takes 106 ms inside a compartment. Allocation times vary from 1 to 3 ms without a compartment but from 106 to 265 ms inside a compartment. In contrast, the time to allocate memory within  a compartment varies significantly from 106 to 265 and depends on the size of the block. Times range from 106 ms for 100 MB blocks to 251 ms for 700 MB blocks. In contrast, the time to allocate memory without compartments is shorter, it ranges from 2 to 7 ms for all block sizes.
