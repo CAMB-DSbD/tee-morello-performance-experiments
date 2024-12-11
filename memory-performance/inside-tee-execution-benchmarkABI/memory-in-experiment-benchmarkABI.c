@@ -13,7 +13,7 @@
  *              : Carlos Molina Jimenez 
  * Date         : 10 Dec 2024
  *
- * Title        : memory-in-experiment.c 
+ * Title        : memory-in-experiment-benchmarkABI-benchmarkABI.c 
  *              :
  * Description  : The memory-out-experiment.c programme carries out memory performance tests, measuring the times required to allocate,
  *              : write, read and free memory blocks of varying sizes. The results are recorded in a CSV file.
@@ -53,21 +53,21 @@
  * Compile      :
                   cm770@morello-camb-3:$ cc -g -O2 -Wall 
                   -march=morello+c64 -mabi=purecap-benchmark -o 
-                  memory-in-experiment memory-in-experiment.c -L. -lm
+                  memory-in-experiment-benchmarkABI memory-in-experiment-benchmarkABI.c -L. -lm
  
                   clang-14: warning: Using c64 in the arch string is deprecated. 
                   The CPU mode should be inferred from the ABI. [-Wdeprecated]
-                  memory-in-experiment.c:97:23: warning: variable 'temp' 
+                  memory-in-experiment-benchmarkABI.c:97:23: warning: variable 'temp' 
                   set but not used [-Wunused-but-set-variable]
                   volatile char temp; 
 
-                root@morello-camb-3: # file memory-in-experiment
-                memory-in-experiment: ELF 64-bit LSB pie
+                root@morello-camb-3: # file memory-in-experiment-benchmarkABI
+                memory-in-experiment-benchmarkABI: ELF 64-bit LSB pie
                 executable, ARM aarch64, C64, CheriABI, version 1
                 ...
                 ... FreeBSD-style, pure-capability benchmark ABI,
  
- * run          : proccontrol -m cheric18n -s enable ./memory-in-experiment        
+ * run          : proccontrol -m cheric18n -s enable ./memory-in-experiment-benchmarkABI        
  * 
  * 
  */
@@ -151,7 +151,7 @@ int main() {
     printf("Each operation will be executed %d times \n", num_of_trials);
 
 
-    FILE *log_file = fopen("memory-in-experiment-results.csv", "w");
+    FILE *log_file = fopen("memory-in-experiment-benchmarkABI-results.csv", "w");
     if (log_file == NULL) {
         printf("Failed to open log file\n");
         return 1;
@@ -179,7 +179,7 @@ int main() {
                                   ((end_time.tv_nsec - start_time.tv_nsec) / 1e6);
 
     // Log the total execution time to the file
-    log_file = fopen("memory-in-experiment-results.csv", "a");
+    log_file = fopen("memory-in-experiment-benchmarkABI-results.csv", "a");
     if (log_file != NULL) {
         fprintf(log_file, "\nTotal execution time: %.3f milliseconds\n", total_execution_time);
         fclose(log_file);
