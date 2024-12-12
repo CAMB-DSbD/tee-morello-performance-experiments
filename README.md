@@ -103,7 +103,7 @@ experience in performance analysis.
 
 
 
-## 1.1. Compilation and Execution
+# 2 Compilation and Execution
 
 The inclusion of library-based compartments is determined 
 at compilation and execution time. It is documented in:
@@ -118,7 +118,7 @@ at compilation and execution time. It is documented in:
 
 
 
-### 1.1.1. Compilation and Execution Without Library-Based Compartments
+## 2.1 Compilation and Execution Without Library-Based Compartments
 
 The normal compilation (without the inclusion of library-based compartments) is demonstrated in the following example for a `helloworld.c` program:
 
@@ -132,7 +132,7 @@ To execute `helloworld`, the programmer can type:
 $ ./helloworld
 ```
 
-### 1.1.2. Compilation and Execution With Library-Based Compartments
+### 2.2 Compilation and Execution With Library-Based Compartments
 
 The following command demonstrates the compilation flags required to enable library-based compartments:
 
