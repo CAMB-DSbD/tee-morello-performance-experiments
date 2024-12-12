@@ -11,7 +11,7 @@ program is executed in a separate and independent trust
 domain. 
 
 
-The [Library-based Compartmentalisation on CHERI](https://pldi23.sigplan.org/home/plarch-2023)
+The [Library-based Compartmentalisation on CHERI](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/documents/LibraryBasedCompartmentalisationOnCHERI_Dapeng2023.pdf)
 workshop paper by Dapeng Gao and Robert Watson presented at Plarch2023
 discuss the architecture and basic ideas.
 As of this writing (Dec 2024) Library–based compartmentalisation
@@ -19,7 +19,6 @@ is an ongoing work on the Morello Board where they are being
 implemented on the basis of cheri-capabilities. Issues of
 concern are the performance cost that these compartments will 
 incur and their security strenghts.
-
 
  
 The documentation and results eported in this web page try 
