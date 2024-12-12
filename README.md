@@ -252,13 +252,13 @@ At each iteration, the memory allocation time is measured with the time function
 
 
 
-## 3.1. Results --compilation under ourecap ABI
+## 3.1. Results --compilation under purecap ABI
 
 The metrics collected are stored in two separate CSV files: [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-results.csv) for the run inside a compartment. The file [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv) collects metrics of the run without compartments. We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.).The results are summarised in Tables 3 and 4.
 
 
 <div align="center">
-<p><em>Table 3: Metrics of runs inside a compartment, including mean and standard deviation.</em></p>
+<p><em>Table 3: Metrics of runs inside a compartment, including mean and standard deviation (todo: allocation time col looks odd!).</em></p>
 
 
 | **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
@@ -330,7 +330,7 @@ Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records ar
 
 
 <div align="center">
-<p><em>Table 5: Metrics of runs inside a compartment, including mean and standard deviation.</em></p>
+<p><em>Table 5: Metrics of runs inside a compartment, including mean and standard deviation (todo: allocation time col looks odd!).</em></p>
 
 | **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
 |---------------------|--------------------------|---------------------|--------------------|--------------------|
