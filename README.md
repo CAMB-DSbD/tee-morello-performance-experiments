@@ -90,11 +90,14 @@ experience in performance analysis.
 ## 1.1. Compilation and Execution
 
 The inclusion of library-based compartments is determined 
-at compilation and execution time as documented in:
+at compilation and execution time. It is documented in:
 
-- [compartmentalization, c18n — library-based software compartmentalization](https://man.cheribsd.org/cgi-bin/man.cgi/c18n), Dapeng Gao 2024.
-- [Cheripedia wiki](https://github.com/CTSRD-CHERI/cheripedia/wiki/Library-based-%20Compartmentalisation), Cheri team, 2022.
 - [CHERI Software Compartmentalization](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-compartmentalization.html), Robert Watson, 2019.
+- [Cheripedia wiki](https://github.com/CTSRD-CHERI/cheripedia/wiki/Library-based-%20Compartmentalisation), Cheri team, 2022.
+- [compartmentalization, c18n — library-based software compartmentalization](https://man.cheribsd.org/cgi-bin/man.cgi/c18n), Dapeng Gao 2024.
+- [Library-based Compartmentalisation on CHERI](https://pldi23.sigplan.org/home/plarch-2023), Dapeng Gao Plarch2023.
+- Dapeng's [video-presentation](https://www.youtube.com/watch?v=0Zk0NzfiQJA) 
+  of 2023, provides a summary of the architecture.
 
 
 
