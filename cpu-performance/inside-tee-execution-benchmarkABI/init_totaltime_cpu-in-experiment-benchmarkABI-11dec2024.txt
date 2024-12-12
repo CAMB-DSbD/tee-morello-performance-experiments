@@ -1,0 +1,28 @@
+cm770@morello-camb-3:$ cc -g -O2 -Wall -march=morello+c64 -mabi=purecap-benchmark -o cpu-in-experiment cpu-in-experiment.c -L. -lm
+clang-14: warning: Using c64 in the arch string is deprecated. The CPU mode should be inferred from the ABI. [-Wdeprecated]
+cpu-in-experiment.c:85:29: warning: unused variable 'result' [-Wunused-variable]
+            volatile double result = sin(i) * cos(i) * tan(i) * sqrt(i) * log(i + 1);
+                            ^
+cpu-in-experiment.c:102:26: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+            volatile int result = i * i / (i + 1);
+                         ^
+cpu-in-experiment.c:123:28: warning: variable 'result' set but not used [-Wunused-but-set-variable]
+            volatile float result = (float)i / (i + 1) * (float)i;
+                           ^
+3 warnings generated.
+cm770@morello-camb-3:$ 
+cm770@morello-camb-3:$ 
+cm770@morello-camb-3:$ 
+cm770@morello-camb-3:$ 
+cm770@morello-camb-3:$ proccontrol -m cheric18n -s enable ./cpu-in-experiment &
+cm770@morello-camb-3:$ 
+This program has been launched at (date and time): Tue Dec 10 23:55:02 2024
+Each operation will be executed 100 times 
+Total execution time: 5429290 milliseconds
+
+[1]   Done                    proccontrol -m cheric18n -s enable ./cpu-in-experiment
+cm770@morello-camb-3:$ 
+cm770@morello-camb-3:$ date
+Wed Dec 11 01:30:37 UTC 2024
+cm770@morello-camb-3:$ 
+

@@ -252,7 +252,7 @@ At each iteration, the memory allocation time is measured with the time function
 
 
 
-## 3.1. Results
+## 3.1. Results --compilation under ourecap ABI
 
 The metrics collected are stored in two separate CSV files: [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-results.csv) for the run inside a compartment. The file [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv) collects metrics of the run without compartments. We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.).The results are summarised in Tables 3 and 4.
 
@@ -325,6 +325,52 @@ Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records ar
 <p align="center"><em>Figure 6: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
 
 
+## 3.2. Results - purecap benchmark ABI
+
+
+
+<div align="center">
+<p><em>Table 5: Metrics of runs inside a compartment, including mean and standard deviation.</em></p>
+
+| **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
+|---------------------|--------------------------|---------------------|--------------------|--------------------|
+| 100                 | 81 ± 158.99             | 40,369 ± 4.84       | 80,737 ± 7.56      | 86 ± 178.33        |
+| 200                 | 92 ± 219.79             | 80,737 ± 6.36       | 161,472 ± 10.22    | 210 ± 395.51       |
+| 300                 | 94 ± 295.34             | 121,105 ± 7.88      | 242,209 ± 12.70    | 219 ± 452.59       |
+| 400                 | 122 ± 430.07            | 161,472 ± 8.04      | 322,946 ± 17.29    | 425 ± 783.85       |
+| 500                 | 153 ± 596.27            | 201,842 ± 11.20     | 403,681 ± 14.85    | 215 ± 417.51       |
+| 600                 | 146 ± 646.07            | 242,210 ± 12.87     | 484,417 ± 17.45    | 436 ± 917.23       |
+| 700                 | 191 ± 879.02            | 282,579 ± 13.21     | 565,154 ± 18.71    | 453 ± 987.35       |
+| 800                 | 213 ± 1,088.59          | 322,947 ± 14.35     | 645,893 ± 17.43    | 822 ± 1,529.08     |
+| 900                 | 283 ± 1,535.56          | 363,315 ± 14.68     | 726,626 ± 17.13    | 818 ± 1,587.88     |
+| 1000                | 246 ± 1,538.68          | 403,685 ± 15.61     | 807,368 ± 18.86    | 443 ± 1,004.74     |
+
+</div>
+
+
+
+<p align="center">
+  <img src="./figs/performancememOperations_benchmarkABI.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
+</p>
+<p align="center"><em>Figure 7: Time to execute allocate, write, read and release memory operations.</em></p>
+
+
+## 3.3. Results - comparison between the three experiments
+
+<p align="center">
+  <img src="./figs/performancememOperations_benchmarkABI_comparasion.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
+</p>
+<p align="center"><em>Figure 7: Time to execute allocate, write, read and release memory operations.</em></p>
+
+
+
+<p align="center">
+  <img src="./figs/boxplot_allocate_rd_wr_free_mem_benchmarkABI_comparasion.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
+</p>
+<p align="center"><em>Figure 8: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
+
+
+
 
 # 4. CPU performance in the execution of demanding arithmetic operations
 
@@ -380,7 +426,7 @@ The execution begins with the perform\_tests function (line 1), which receives t
 
 
 
-## 4.1. Results
+## 4.1. Results --compilation under purecap ABI
 
 The results collected from the execution inside a compartment are available from [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-results.csv). Similarly, the results collected from the execution without a compartment are available from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
    
@@ -408,6 +454,55 @@ As visualised in Fig. 7, these results indicate that there is a noticeable perfo
 </p>
 <p align="center"><em>Figure 7: CPU performance in executions within and without compartments.</em></p>
 
+
+
+## 4.2. Results - compilation uder purecap benchmark ABI
+
+Table 6 compares the average execution times of different operations in both executions.
+
+<div align="center">
+<p><em>Table 6: Times to execute CPU operations inside and without a compartment.</em></p>
+
+| Trial Type                     | CPU Time (ms) - Normal | CPU Time (ms) - Secure - Benchmarck |
+|-------------------------------|------------------------|-------------------------|
+| Maths (trigon. and exp. func) | 46,759                | 52,901                 |
+| Int                           | 922                   | 670                    |
+| Float                         | 830                   | 621                    |
+| Array                         | 1,407                 | 101                    |
+
+</div>
+
+The results show that complex mathematical operations (trigonometric and exponential functions) executed within a compartment took 52,901 ms on average. In contrast, the execution of the same operations without a compartment took only 46,759 ms. This represents a performance cost of approximately 13.12%. However, the execution of arithmetic operations with integers without a compartment takes 922 ms, compared to 670 ms inside a compartment. The difference is a performance gain of 27.32%. Similarly, the execution of floating point operations inside a compartment took 621 ms, which is lower than the execution without a compartment, which took 830 ms. This represents a performance gain of 25.18%. Finally, the execution of array manipulation operations took 101 ms inside a compartment, which is significantly lower than the 1,407 ms that it takes to execute the same operation without a compartment, representing a performance gain of 92.82%.
+
+As visualized in Fig. 8, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
+
+As visualized in Fig. 8, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
+
+<p align="center">
+  <img src="./figs/CPUperformance_benchmarckABI.png" alt="CPU performance in executions within and without compartments" width="100%"/>
+</p>
+<p align="center"><em>Figure 8: CPU performance in executions within and without compartments.</em></p>
+
+
+## 4.3. Results - comparison between the three experiments
+
+<div align="center">
+<p><em>Table 7: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
+
+| Trial Type                     | CPU Time (ms) - Normal | CPU Time (ms) – Secure – Benchmark | CPU Time (ms) - Secure |
+|-------------------------------|------------------------|-------------------------------------|-------------------------|
+| Maths (trigon. and exp. func) | 46,759                | 52,901                              | 70,780                 |
+| Int                           | 922                   | 670                                 | 993                    |
+| Float                         | 830                   | 621                                 | 804                    |
+| Array                         | 1,407                 | 101                                 | 1,443                  |
+
+</div>
+
+
+<p align="center">
+  <img src="./figs/CPUperformance_comparasion_normal_secure_benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
+</p>
+<p align="center"><em>Figure 8: CPU performance in executions within and without compartments.</em></p>
 
 
 
