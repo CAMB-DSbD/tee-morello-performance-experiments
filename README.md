@@ -132,7 +132,7 @@ To execute `helloworld`, the programmer can type:
 $ ./helloworld
 ```
 
-### 2.2 Compilation and Execution With Library-Based Compartments
+## 2.2 Compilation and Execution With Library-Based Compartments
 
 The following command demonstrates the compilation flags required to enable library-based compartments:
 
@@ -155,7 +155,7 @@ We use the example shown above in subsequent sections to compile and execute the
 
 
 
-# 2. Evaluation of the Maximum Number of Library-Based Compartments
+# 3. Evaluation of the Maximum Number of Library-Based Compartments
 
 The main aim of this experiment is to measure and analyse how the memory of a Morello Board is consumed by instances (also called replicas) of attestables. To this end, we create and attestable and load it with a C program compiled with the library compartmentalisation tool. We use the enterprise application integration (see yellow box) use case implemented in - [tee-compartimentalisation-study-case](https://github.com/gca-research-group/tee-compartimentalisation-study-case) repository.
 
@@ -178,7 +178,7 @@ Imagine that user Alice is conducting the experiment. To create the attestables 
 
 
 
-## 2.1. Results
+## 3.1. Results
 
 The results are logged in the CSV file [cheri-cap-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cheri-caps-executable-performance/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
@@ -228,7 +228,7 @@ We did not expect the behaviours exhibited by the blue line of Fig. 3. We have n
 
 
 
-# 3. Memory performance in the execution of allocate, release, read and write operations
+# 4. Memory performance in the execution of allocate, release, read and write operations
 
 To collect metrics we execute a C program compiled and executed without compartments and with compartments:
 
@@ -289,7 +289,7 @@ At each iteration, the memory allocation time is measured with the time function
 
 
 
-## 3.1. Results --compilation under purecap ABI
+## 4.1. Results --compilation under purecap ABI
 
 The metrics collected are stored in two separate CSV files: [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-results.csv) for the run inside a compartment. The file [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv) collects metrics of the run without compartments. We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.).The results are summarised in Tables 3 and 4.
 
@@ -362,7 +362,7 @@ Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records ar
 <p align="center"><em>Figure 6: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
 
 
-## 3.2. Results - purecap benchmark ABI
+## 4.2. Results - purecap benchmark ABI
 
 
 
@@ -392,7 +392,7 @@ Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records ar
 <p align="center"><em>Figure 7: Time to execute allocate, write, read and release memory operations.</em></p>
 
 
-## 3.3. Results - comparison between the three experiments
+## 4.3. Results - comparison between the three experiments
 
 <p align="center">
   <img src="./figs/performancememOperations_benchmarkABI_comparasion.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
@@ -409,7 +409,7 @@ Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records ar
 
 
 
-# 4. CPU performance in the execution of demanding arithmetic operations
+# 5. CPU performance in the execution of demanding arithmetic operations
 
 We have carried out this experiment to determine if library--based compartments affect the performance of the CPU. Precisely, we have executed a program with functions that involve the execution of CPU--demanding arithmetic operations and collected metrics about execution time. The program that we have implemented for this purpose includes operations with integers (int), floating point (float), arrays, and complex mathematical functions (such as trigonometric and exponential functions) that are known to be CPU--demanding.
 
@@ -463,7 +463,7 @@ The execution begins with the perform\_tests function (line 1), which receives t
 
 
 
-## 4.1. Results --compilation under purecap ABI
+## 5.1. Results --compilation under purecap ABI
 
 The results collected from the execution inside a compartment are available from [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-results.csv). Similarly, the results collected from the execution without a compartment are available from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
    
@@ -493,7 +493,7 @@ As visualised in Fig. 7, these results indicate that there is a noticeable perfo
 
 
 
-## 4.2. Results - compilation uder purecap benchmark ABI
+## 5.2. Results - compilation uder purecap benchmark ABI
 
 Table 6 compares the average execution times of different operations in both executions.
 
@@ -521,7 +521,7 @@ As visualized in Fig. 8, these results indicate that there is a noticeable perfo
 <p align="center"><em>Figure 8: CPU performance in executions within and without compartments.</em></p>
 
 
-## 4.3. Results - comparison between the three experiments
+## 5.3. Results - comparison between the three experiments
 
 <div align="center">
 <p><em>Table 7: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
@@ -543,7 +543,7 @@ As visualized in Fig. 8, these results indicate that there is a noticeable perfo
 
 
 
-# 5. Communication performance over pipes
+# 6. Communication performance over pipes
 
 This experiment was conducted to evaluate how the use of compartments affects the performance of communication over Unix pipes. To collect metrics, we have implemented a C program that communicates a parent with a child process over a pipe and collects metrics about writing to and reading from a pipe that interconnected them. As shown in Fig. 8, the parent process writes a message to the pipe and the child process reads it.
 
@@ -609,7 +609,7 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 
 
-## 5.1. Results
+## 6.1. Results
 
 We store the data collected from this experiment in two separate CSV files: [ppipe-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
 
@@ -663,7 +663,7 @@ The results suggest the compartments provide significant benefits in terms of se
 
 
 
-# 6. Evaluation of Trust Models in Single-Compartment Environments
+# 7. Evaluation of Trust Models in Single-Compartment Environments
 We have conducted this experiment to examine the trust model that the Morello Board implements. It is documented that the current release of the Morello Board implements an asymmetric trust model where the Trusted Computing Based (TCB) is trusted by the applications but the TCB does not trust the applications. It is worth mentioning that the current Morello Board does not support the mutual distrust model where the privileged software and the applications distrust each other.
 
 To the TCB of the current Morello Board belong the firmware and privileged software that includes the bootloader, hypervisor and operating system. The library-based compartments that we examine in this report, consider that the linker belongs to the TCB too [Gao and Watson 202](https://pldi23.sigplan.org/home/plarch-2023).
@@ -727,7 +727,7 @@ Fig. 10 shows the steps executed by the `memory_reader.py` script:
 
 
 
-## 6.1. Results
+## 7.1. Results
 
 Table 8 summarises the results. The columns have the following meaning:
 
@@ -813,7 +813,7 @@ We observed some unexpected behaviours and crashes of the cheriBSD that demanded
 
 
 
-# 7. Examination of memory isolation in executions with shared libraries
+# 8. Examination of memory isolation in executions with shared libraries
 
 To explore memory isolation further, we executed a C program that communicates a parent and a child process over a pipe after compiling them using dynamic libraries. In this experiment we have the following C codes:
 
@@ -886,7 +886,7 @@ The compilation process is divided into two steps: Firstly, each individual modu
      $ proccontrol -m cheric18n -s enable ./pipe_trampoline
      ```
 
-## 7.1. Examination of memory isolation
+## 8.1. Examination of memory isolation
 
 We have performed the following steps to examine memory:
 
@@ -905,7 +905,7 @@ We have performed the following steps to examine memory:
 
 
 
-## 7.2. Results
+## 8.2. Results
 
 We have divided the results into three sections.
 
@@ -922,7 +922,7 @@ We have stored some examples of data read in [memory-reading-result.txt](https:/
 It is sensible to think that cheriBSD blocked access to the region marked with `rw---` permission. However, the crash of cheriBSD, as a reaction, is intriguing. Further investigation is needed to fully understand the interaction between these permissions and the security policies applied to react to attempts to bypass the permissions.
 
 
-### 7.2.2. Memory regions:
+### 8.2.2. Memory regions:
 The memory regions are available from [memory-regions-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-regions-result.txt) and show different memory regions marked with different access permissions.
 
 Memory regions with `rw-RW` permissions allow read access without crashing the cheriBSD OS; in contrast, regions marked with `rw---` grant read access only to the owner process. Attempts to access these regions from a different process result in crashes; Fig. 15 shows an example. The screenshot shows the content of the memory at crash time.
@@ -933,7 +933,7 @@ Memory regions with `rw-RW` permissions allow read access without crashing the c
 <p align="center"><em>Figure 15: Memory read error: attempt to read region protected by compartments.</em></p>
 
 
-### 7.2.3. Execution results:
+### 8.2.3. Execution results:
 The execution results are available from [execution-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/execution-result.txt) and show records of parent-child communication over a pipe.
 
 For example, line 205 (``msg received from child process TKYftt85v0l3d05SosZY1 ... iAbqS7D3VokIx'') shows the child process reading one of the strings with random characters sent by the parent process.
