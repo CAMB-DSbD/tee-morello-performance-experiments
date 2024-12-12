@@ -138,8 +138,8 @@ targeted by the compiler.
 Programs to be run in library-based compartments can
 be compiled either with -mabi=purecap or -mabi=purecap-benchmark.
 However, for performance evaluation,
-the latter alternative is recommended. See  
-[compartmentalization, c18n — library-based software compartmentalization](https://man.cheribsd.org/cgi-bin/man.cgi/c18n), Dapeng Gao 2024.  
+the latter alternative is recommended.  
+See [compartmentalization, c18n — library-based software compartmentalization](https://man.cheribsd.org/cgi-bin/man.cgi/c18n), Dapeng Gao 2024.  
 In our experiments, we have collected metrics
 from both alternatives for comparison.
 
@@ -163,6 +163,8 @@ $ ./helloworld
 
 ## 2.2 Compilation and Execution With Library-Based Compartments
 
+### 2.2.1  Compilation for purecap ABI
+
 The following command demonstrates the compilation flags 
 required to enable library-based compartments:
 
@@ -184,6 +186,19 @@ $ proccontrol -m cheric18n -s enable helloworld
 The binary is executed with library compartmentalisation enabled using `proccontrol`.
 
 We use the example shown above in subsequent sections to compile and execute the programs used in the evaluation.
+
+
+### 2.2.1  Compilation for purecap purecap-benchmark ABI
+
+```bash
+$ clang-morello -march=morello+c64 -mabi=purecap-benchmark -o helloworld helloworld.c
+```
+
+```bash
+$ proccontrol -m cheric18n -s enable helloworld
+```
+
+
 
 
 
