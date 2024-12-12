@@ -188,7 +188,7 @@ The binary is executed with library compartmentalisation enabled using `proccont
 We use the example shown above in subsequent sections to compile and execute the programs used in the evaluation.
 
 
-### 2.2.1  Compilation for purecap purecap-benchmark ABI
+### 2.2.2  Compilation for purecap purecap-benchmark ABI
 
 ```bash
 $ clang-morello -march=morello+c64 -mabi=purecap-benchmark -o helloworld helloworld.c
