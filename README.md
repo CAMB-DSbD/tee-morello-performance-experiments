@@ -105,11 +105,14 @@ experience in performance analysis.
 
 # 2 Compilation and Execution
 
+
+
 The inclusion of library-based compartments is determined 
 at compilation and execution time. It is documented in:
 
 - [CHERI Software Compartmentalization](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-compartmentalization.html), Robert Watson, 2019.
 - [Cheripedia wiki](https://github.com/CTSRD-CHERI/cheripedia/wiki/Library-based-%20Compartmentalisation), Cheri team, 2022.
+- [Userlevel software compartmentalization (experimental)](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/c18n.html), Cheri team, 2024.
 - [compartmentalization, c18n — library-based software compartmentalization](https://man.cheribsd.org/cgi-bin/man.cgi/c18n), Dapeng Gao 2024.
 - [Library-based Compartmentalisation on CHERI](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/documents/LibraryBasedCompartmentalisationOnCHERI_Dapeng2023.pdf), 
   Dapeng Gao and Robert Watson, Plarch2023.
@@ -117,10 +120,36 @@ at compilation and execution time. It is documented in:
   of 2023, provides a summary of the architecture.
 
 
+As explained in [Userlevel process environments](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/processes.html), in CheriBSD 24.05, a user  can compile his
+program to run in three different different userspace execution 
+environments: 
+
+
+-  hybrid process: ?? 
+-  CheriABI processes: use -mabi=purecap 
+-  Benchmark ABI processes: use -mabi=purecap-benchmark
+
+
+The [helloworld.c compilation example](https://ctsrd-cheri.github.io/cheribsd-getting-started/helloworld/index.html) might be helpful.
+The *root# file* command can be used to verify the ABI
+targeted by the compiler.
+
+
+Programs to be run in library-based compartments can
+be compiled either with -mabi=purecap or -mabi=purecap-benchmark.
+However, for performance evaluation,
+the latter alternative is recommended. See  
+[compartmentalization, c18n — library-based software compartmentalization](https://man.cheribsd.org/cgi-bin/man.cgi/c18n), Dapeng Gao 2024.  
+In our experiments, we have collected metrics
+from both alternatives for comparison.
+
+
+
 
 ## 2.1 Compilation and Execution Without Library-Based Compartments
 
-The normal compilation (without the inclusion of library-based compartments) is demonstrated in the following example for a `helloworld.c` program:
+The normal compilation (without the inclusion of library-based compartments) 
+is demonstrated in the following example for a `helloworld.c` program:
 
 ```bash
 $ clang-morello -o hello hello.c
@@ -134,14 +163,17 @@ $ ./helloworld
 
 ## 2.2 Compilation and Execution With Library-Based Compartments
 
-The following command demonstrates the compilation flags required to enable library-based compartments:
+The following command demonstrates the compilation flags 
+required to enable library-based compartments:
 
 ```bash
 $ clang-morello -march=morello+c64 -mabi=purecap -o helloworld helloworld.c
 ```
 
 - The `-march=morello+c64` parameter defines the 64-bit Morello architecture.
-- The `-mabi=purecap` flag sets the Application Binary Interface (ABI) for the secure environment, representing all memory references and pointers as capabilities.
+- The `-mabi=purecap` flag sets the Application Binary Interface (ABI) 
+for the secure environment, representing all memory references and 
+pointers as capabilities.
 
 To execute the `helloworld` program in a library-based compartment, the programmer can type:
 
@@ -949,13 +981,13 @@ ________________________________________________________________________________
 If needed, these Python scripts can be used to summarise the 
 raw collected metrics and present results graphically. They produce aggregated CSV files and comparative plots.
 
-## Scripst for summary views  
+## 9.1 Python scripst for summary views  
 
 - [Summarise CPU performance results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/summarise-results)
 - [Summarise memory performance results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/summarise-results)
 
 
-## 9.1  Script for visual views
+## 9.2  Python script for plotting
 
 - [Maximum number of compartments plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cheri-caps-executable-performance/plot-graph)
    
@@ -968,7 +1000,7 @@ raw collected metrics and present results graphically. They produce aggregated C
 
 _________________________________________________________________________________________________________________________________________________________________
 
-# 10. PDF Version
+# 10. PDF version of this report
 
 A PDF version of this document is available for download. Please note that the PDF might be slightly behind this page in terms of updates. If it fails to open 
 (Safari ver 16.6.1 produces _Error rendering embedded code_), download 
