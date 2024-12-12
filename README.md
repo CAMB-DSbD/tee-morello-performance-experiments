@@ -89,10 +89,12 @@ experience in performance analysis.
 
 ## 1.1. Compilation and Execution
 
-The inclusion or exclusion of library-based compartments is determined at compilation and execution time, as documented in the manuals:
-- [Gao, 2024](https://man.cheribsd.org/cgi-bin/man.cgi/c18n)
-- [Cheri Team, 2022](https://github.com/CTSRD-CHERI/cheripedia/wiki/Library-based-%20Compartmentalisation)
-- [Watson, 2019](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-compartmentalization.html)
+The inclusion of library-based compartments is determined 
+at compilation and execution time as documented in:
+
+- [compartmentalization, c18n — library-based software compartmentalization](https://man.cheribsd.org/cgi-bin/man.cgi/c18n), Dapeng Gao 2024.
+- [Cheripedia wiki](https://github.com/CTSRD-CHERI/cheripedia/wiki/Library-based-%20Compartmentalisation), Cheri team, 2022.
+- [CHERI Software Compartmentalization](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-compartmentalization.html), Robert Watson, 2019.
 
 
 
