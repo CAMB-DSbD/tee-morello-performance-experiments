@@ -5,16 +5,15 @@ results that evaluate compartments created using the
 [library-based compartmentalisation tool](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/c18n.html) available on Morello Boards running the 
 [cheriBSD 24.5 operating system](https://ctsrd-cheri.github.io/cheribsd-getting-started/print.html).
 
-## Library–based compartmentalisation 
-is a programming model 
+**Library–based compartmentalisation:** is a programming model 
 where each module (for example a dynamic library) of a given
 program is executed in a separate and independent trust
 domain. 
+
+
 The [Library-based Compartmentalisation on CHERI](https://pldi23.sigplan.org/home/plarch-2023)
 workshop paper by Dapeng Gao and Robert Watson presented at Plarch2023
 discuss the architecture and basic ideas.
-
-
 As of this writing (Dec 2024) Library–based compartmentalisation
 is an ongoing work on the Morello Board where they are being 
 implemented on the basis of cheri-capabilities. Issues of
