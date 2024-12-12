@@ -5,11 +5,29 @@ results that evaluate compartments created using the
 [library-based compartmentalisation tool](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/c18n.html) available on Morello Boards running the 
 [cheriBSD 24.5 operating system](https://ctsrd-cheri.github.io/cheribsd-getting-started/print.html).
 
+## Library–based compartmentalisation 
+is a programming model 
+where each module (for example a dynamic library) of a given
+program is executed in a separate and independent trust
+domain. 
+The [Library-based Compartmentalisation on CHERI](https://pldi23.sigplan.org/home/plarch-2023)
+workshop paper by Dapeng Gao and Robert Watson presented at Plarch2023
+discuss the architecture and basic ideas.
+
+
+As of this writing (Dec 2024) Library–based compartmentalisation
+is an ongoing work on the Morello Board where they are being 
+implemented on the basis of cheri-capabilities. Issues of
+concern are the performance cost that these compartments will 
+incur and their security strenghts.
+
+
  
-It  evaluates the performance costs incurred by the 
-compartments and the strengths of the memory isolation 
-that they provide. It provides links to the Git 
-repositories that store the C and Python codes used 
+The documentation and results eported in this web page try 
+to shed some light on these issues. It  evaluates the performance 
+costs incurred by the compartments and the strengths of 
+the memory isolation that they provide. It provides links 
+to the Git repositories that store the C and Python codes used 
 in the evaluation and the metrics collected in CSV 
 files. 
 It also includes the plots of the results, a discussion 
@@ -95,7 +113,8 @@ at compilation and execution time. It is documented in:
 - [CHERI Software Compartmentalization](https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-compartmentalization.html), Robert Watson, 2019.
 - [Cheripedia wiki](https://github.com/CTSRD-CHERI/cheripedia/wiki/Library-based-%20Compartmentalisation), Cheri team, 2022.
 - [compartmentalization, c18n — library-based software compartmentalization](https://man.cheribsd.org/cgi-bin/man.cgi/c18n), Dapeng Gao 2024.
-- [Library-based Compartmentalisation on CHERI](https://pldi23.sigplan.org/home/plarch-2023), Dapeng Gao Plarch2023.
+- [Library-based Compartmentalisation on CHERI](https://pldi23.sigplan.org/home/plarch-2023), 
+  Dapeng Gao and Robert Watson, Plarch2023.
 - Dapeng's [video-presentation](https://www.youtube.com/watch?v=0Zk0NzfiQJA) 
   of 2023, provides a summary of the architecture.
 
