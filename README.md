@@ -944,7 +944,7 @@ the [memory-reading-result.txt](https://github.com/gca-research-group/tee-morell
 
 _________________________________________________________________________________________________________________________________________________________________
 
-# Python scripts that can help to summarise and visualise results
+# 9. Python scripts that can help to summarise and visualise results
 
 If needed, these Python scripts can be used to summarise the 
 raw collected metrics and present results graphically. They produce aggregated CSV files and comparative plots.
@@ -955,7 +955,7 @@ raw collected metrics and present results graphically. They produce aggregated C
 - [Summarise memory performance results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/summarise-results)
 
 
-## Script for visual views
+## 9.1  Script for visual views
 
 - [Maximum number of compartments plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cheri-caps-executable-performance/plot-graph)
    
@@ -968,7 +968,7 @@ raw collected metrics and present results graphically. They produce aggregated C
 
 _________________________________________________________________________________________________________________________________________________________________
 
-# PDF Version
+# 10. PDF Version
 
 A PDF version of this document is available for download. Please note that the PDF might be slightly behind this page in terms of updates. If it fails to open 
 (Safari ver 16.6.1 produces _Error rendering embedded code_), download 
