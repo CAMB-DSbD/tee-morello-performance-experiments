@@ -1,6 +1,22 @@
 <h1 style="font-size: 2em;">Evaluation of performance and security strengths of library-based compartments created on Morello Boards</h1>
 
-This repository contains code, metrics collected and results that evaluate compartments created using the library-based compartmentalisation tool available on Morello Boards running the cheriBSD 24.5 operating system. It  evaluates the performance costs incurred by the compartments and the strengths of the memory isolation that they provide. It provides links to the Git repositories that store the C and Python codes used in the evaluation and the metrics collected in CSV files. It also includes the plots of the results, a discussion of our interpretation and detailed instructions to encourage practitioners to repeat our experiments and compare their results against ours. 
+This repository contains code, metrics collected and 
+results that evaluate compartments created using the 
+library-based compartmentalisation tool available on 
+Morello Boards running the 
+[cheriBSD 24.5 operating system](https://ctsrd-cheri.github.io/cheribsd-getting-started/print.html).
+
+ 
+It  evaluates the performance costs incurred by the 
+compartments and the strengths of the memory isolation 
+that they provide. It provides links to the Git 
+repositories that store the C and Python codes used 
+in the evaluation and the metrics collected in CSV 
+files. 
+It also includes the plots of the results, a discussion 
+of our interpretation and detailed instructions to 
+encourage practitioners to repeat our experiments 
+and compare their results against ours. 
 
 
 # 1. Experiments set up
@@ -21,7 +37,7 @@ The Fig. 1 illustrates the Morello Board's physical location and the network con
 <p align="center">
   <img src="figs/experimentsetup_morelloboard.png" alt="Morello Board location" width="700"/>
 </p>
-<p align="center"><em>Figure 1: Remote Morello Board location.</em></p>
+<p align="center"><em>Figure 1: Morello boards used in the experiments.</em></p>
 
 
 Below is the main configuration of the Morello Board 
