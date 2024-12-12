@@ -50,7 +50,7 @@ to the network of the [Applied Computing Research Group (GCA)](http://gca.unijui
 The Fig. 1 illustrates the Morello Board's physical location and the network connection used to access it through ssh.
 
 <p align="center">
-  <img src="figs/experimentsetup_morelloboard.png" alt="Morello Board location" width="700"/>
+  <img src="figs/experimentsetup_morelloboard.png" alt="Morello Board location" width="600"/>
 </p>
 <p align="center"><em>Figure 1: Morello boards used in the experiments.</em></p>
 
@@ -971,7 +971,8 @@ ________________________________________________________________________________
 # PDF Version
 
 A PDF version of this document is available for download. Please note that the PDF might be slightly behind this page in terms of updates. If it fails to open 
-(_Error rendering embedded code_), download it first and then open it.
+(Safari ver 16.6.1 produces _Error rendering embedded code_), download 
+it first and then open it.
 
 [📄 Download PDF Version](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/documents/library_based_compartments_evaluation.pdf)
 
