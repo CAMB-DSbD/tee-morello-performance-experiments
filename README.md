@@ -36,18 +36,20 @@ and compare their results against ours.
 
 # 1. Experiments set up
 
-We use local and remote Morello Boards:
-</br>
-*  The local Morello Boards are physically located in the William Gates
-building of the Computer Laboratory.
-*  The remote Morello Boards are physically located in Toronto, within the premises of [TODAQ](https://engineering.todaq.net/), a non-funding partner of the [CAMB project](https://www.cl.cam.ac.uk/research/srg/projects/camb/). 
+To run the experiments reported in this document, we use
+for Morello Boards connected as shown in Figure 1.
 
 
+*  Three local Morello Boards are physically located in 
+   the William Gates building of the Computer Laboratory.
+*  A remote Morello Board physically located in Toronto, 
+   within the premises of [TODAQ](https://engineering.todaq.net/), 
+   a non-funding partner of the [CAMB project](https://www.cl.cam.ac.uk/research/srg/projects/camb/). 
 
-To access the remote Morello Board we use a laptop connected 
+
+We connect to the remote Morello Board  through 
+ssh from  a laptop connected 
 to the network of the [Applied Computing Research Group (GCA)](http://gca.unijui.edu.br/) at Unijuí, Brazil. 
-
-The Fig. 1 illustrates the Morello Board's physical location and the network connection used to access it through ssh.
 
 <p align="center">
   <img src="figs/experimentsetup_morelloboard.png" alt="Morello Board location" width="600"/>
@@ -55,14 +57,15 @@ The Fig. 1 illustrates the Morello Board's physical location and the network con
 <p align="center"><em>Figure 1: Morello boards used in the experiments.</em></p>
 
 
-Below is the main configuration of the Morello Board 
+Below is the main configuration of the Morello Boards 
 and additional parameters, including the CheriBSD online 
 commands that can be used to output these configurations 
 directly from the Morello Board. 
 
 
 
-We specify the hardware and software configurations of the Morello Board used in the experiments in Table 1.
+We specify the hardware and software configurations of 
+the Morello Board used in the experiments in Table 1.
 
 <div align="center">
 <p><em>Table 1. Morello board configuration parameters used in the experiments and the online cheriBSD commands to output them.</em></p>
@@ -88,7 +91,7 @@ We specify the hardware and software configurations of the Morello Board used in
 
 As shown in the CSV files available in this repository,
 we computed our statistical estimations (means, media, etc.)  
-and ploted results from metrics produced from 100
+and plotted results from metrics produced from 100
 trails (we repeted the execution of each operation 
 (for example, malloc) 100 times.
 The choice of 100 repetitions was based in on own
@@ -106,7 +109,6 @@ experience in performance analysis.
 # 2 Compilation and Execution
 
 
-
 The inclusion of library-based compartments is determined 
 at compilation and execution time. It is documented in:
 
@@ -120,9 +122,8 @@ at compilation and execution time. It is documented in:
   of 2023, provides a summary of the architecture.
 
 
-As explained in [Userlevel process environments](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/processes.html), in CheriBSD 24.05, a user  can compile his
-program to run in three different different userspace execution 
-environments: 
+As explained in [Userlevel process environments](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/processes.html), in CheriBSD 24.05, a user  can compile his program to run in three 
+different userspace execution environments: 
 
 
 -  hybrid process: ?? 
@@ -130,7 +131,7 @@ environments:
 -  Benchmark ABI processes: use -mabi=purecap-benchmark
 
 
-The [helloworld.c compilation example](https://ctsrd-cheri.github.io/cheribsd-getting-started/helloworld/index.html) might be helpful.
+The example of the [compilation of helloworld.c](https://ctsrd-cheri.github.io/cheribsd-getting-started/helloworld/index.html) might be helpful.
 The *root# file* command can be used to verify the ABI
 targeted by the compiler.
 
@@ -146,10 +147,11 @@ from both alternatives for comparison.
 
 
 
-## 2.1 Compilation and Execution Without Library-Based Compartments
+## 2.1 Compilation and Execution Without Library-based Compartments
 
-The normal compilation (without the inclusion of library-based compartments) 
-is demonstrated in the following example for a `helloworld.c` program:
+The normal compilation (without the inclusion of 
+library-based compartments) is demonstrated in the 
+following example:
 
 ```bash
 $ clang-morello -o hello hello.c
@@ -161,7 +163,7 @@ To execute `helloworld`, the programmer can type:
 $ ./helloworld
 ```
 
-## 2.2 Compilation and Execution With Library-Based Compartments
+## 2.2 Compilation and Execution with Library-Based Compartments
 
 ### 2.2.1  Compilation for purecap ABI
 
@@ -172,23 +174,33 @@ required to enable library-based compartments:
 $ clang-morello -march=morello+c64 -mabi=purecap -o helloworld helloworld.c
 ```
 
-- The `-march=morello+c64` parameter defines the 64-bit Morello architecture.
-- The `-mabi=purecap` flag sets the Application Binary Interface (ABI) 
-for the secure environment, representing all memory references and 
-pointers as capabilities.
+- The `-march=morello+c64` parameter defines the 64-bit 
+  Morello architecture.
+- The `-mabi=purecap` flag targets the Application Binary 
+  Interface (ABI). With this ABI,  all memory references and 
+  pointers are implemented as capabilities.
 
-To execute the `helloworld` program in a library-based compartment, the programmer can type:
+To execute the `helloworld` program within a library-based 
+compartment, the programmer can type:
 
 ```bash
 $ proccontrol -m cheric18n -s enable helloworld
 ```
 
-The binary is executed with library compartmentalisation enabled using `proccontrol`.
+The binary is executed within a libraryi-based compartment
+that is enabled by the `proccontrol` command.
 
-We use the example shown above in subsequent sections to compile and execute the programs used in the evaluation.
+We follow example shown above in subsequent sections 
+in the compilation and execute=ing of the programs used 
+in the evaluation.
 
 
 ### 2.2.2  Compilation for purecap purecap-benchmark ABI
+
+The compilation and execution with purecap-benchamark ABI are
+similar to the compilation and execution with purecap ABI,
+execept for the use of the -mabi=puerecap-benchmark.
+
 
 ```bash
 $ clang-morello -march=morello+c64 -mabi=purecap-benchmark -o helloworld helloworld.c
@@ -233,7 +245,8 @@ The first few lines of the CSV file are shown in Table 2 to be read as follows:
 
 
 <div align="center">
-<p><em>Table 2: Metrics of memory consumed by different numbers of attestables and elapsed time.</em></p>
+<p><em>Table 2: Metrics of memory consumed by different numbers of 
+compartments and elapsed time.</em></p>
 
 | **Number of Compartments** | **Memory Used (MB)** | **Time Elapsed (ms)** |
 |-----------------------------|----------------------|-----------------------|
@@ -274,37 +287,21 @@ We did not expect the behaviours exhibited by the blue line of Fig. 3. We have n
 
 
 
+# 4. Memory performance in the execution of allocate, release, read and write Operations
 
-# 4. Memory performance in the execution of allocate, release, read and write operations
+In this experiment, we use the code shown in Algorithm 1. It 
+executes a list of operations on large blocks
+and measaures the time as indicated  on the
+right side. 
 
-To collect metrics we execute a C program compiled and executed without compartments and with compartments:
+a) **allocate:** time taken to allocate the block of memory.  
+b) **write:**    time taken to write data to fill the entire memory block.  
+c) **read:**     time taken to read the data from the entire memory block.  
+d) **free:**     time taken to release the memory block.
 
-- **Compilation and execution without compartments:**  
-  [memory-out-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment.c).
-
-  ```bash
-  $ clang-morello -o memory-in-experiment memory-in-experiment.c -lm
-  
-  $ ./memory-in-experiment
-  ```
-
-- **Compilation and execution with compartments:**  
-  [memory-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment.c).
-
-  ```bash
-  $ clang-morello -march=morello+c64 -mabi=purecap -o memory-in-experiment memory-in-experiment.c -lm
-  
-  $ proccontrol -m cheric18n -s enable memory-in-experiment
-  ```
-
-In this experiment, we use the code shown in Algorithm 1. It executes the following operations on large blocks of memory:
-
-a) **allocation:** time required to allocate a block of memory.  
-b) **write:** time required to write data to fill the entire memory block.  
-c) **read:** time taken to read the data from the entire memory block.  
-d) **free:** time taken to release the memory block back into the main memory.
-
-As shown in Fig. 4, we use blocks of `100, 200, 300,...,100 000 MB` as large blocks of memory. Blocks of these sizes are typical of applications that process images and access databases.
+As shown in Figure 4, we use blocks of `100, 200, 300,...,100 000 MB`. 
+Blocks of these sizes are typical of applications that process 
+images and access databases.
 
 <p align="center">
   <img src="./figs/mem_blocks_num_trials.png" alt="Performance of memory operations on memory blocks of different sizes" width="65%"/>
@@ -313,7 +310,7 @@ As shown in Fig. 4, we use blocks of `100, 200, 300,...,100 000 MB` as large blo
 
 
 <pre style="border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9; font-family: monospace;">
-Algorithm 1: Execution of memory operations and metric collections of their executions
+Algorithm 1: Execution of memory operations and metric collections from their executions.
 
 1. perform_tests(log_file, total_time)
 2. begin
@@ -330,41 +327,46 @@ Algorithm 1: Execution of memory operations and metric collections of their exec
 </pre>
 
 
-Execution begins with the `perform_tests` function (line 1), which receives a log file as an input parameter to store performance metrics, including the total time taken to run the tests. The for-loop (line 3) iterates over memory blocks of different sizes ranging from `MIN_BLOCK_SIZE` to `MAX_BLOCK_SIZE` with increments specified by `BLOCK_STEP`. The inner for-loop (line 4) repeats the test `NUM_TESTS` times for each block size. `NUM_TESTS` is defined by the programmer as a constant.
+The execution begins with the `perform_tests` function 
+(line 1), which ias input receives the name of an svc file to
+to store performance metrics, including the total time 
+taken to run the tests. The for-loop (line 3) iterates over 
+memory blocks of different sizes ranging from `MIN_BLOCK_SIZE` 
+to `MAX_BLOCK_SIZE` with increments specified by `BLOCK_STEP`. 
+The inner for-loop (line 4) repeats the test `NUM_TESTS` times 
+for each block size. `NUM_TESTS` is defined by the programmer 
+as a constant.
 
-At each iteration, the memory allocation time is measured with the time function (line 5);   the time to write to the block is measured in line 6, the time to read the block is measured in line and, finally, the time to free the memory is measured in line 8. The metric collected  are recorded in the log file along with the test number (line 9).
+At each iteration, the memory allocation time is measured 
+by the time function (line 5); the time to write to the block 
+is measured in line 6, the time to read the block is measured 
+in line and, finally, the time to free the memory is measured 
+in line 8. The metric collected  are recorded in the log 
+file along with the test number (line 9).
 
 
+To collect metrics, we use a C program compiled and 
+executed without compartments and within compartments:
 
-## 4.1. Results --compilation under purecap ABI
 
-The metrics collected are stored in two separate CSV files: [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-results.csv) for the run inside a compartment. The file [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv) collects metrics of the run without compartments. We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.).The results are summarised in Tables 3 and 4.
+## 4.1 Compilation and execution without compartments
+  
+
+  ```bash
+
+   $ clang-morello -o memory-out-experiment memory-out-experiment.c -lm
+
+   $ ./memory-out-experiment
+
+  ```
+
+We stored the metrics collected in the 
+[memory-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv) file.
+We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.). The results are summarised in Tables 3.
 
 
 <div align="center">
-<p><em>Table 3: Metrics of runs inside a compartment, including mean and standard deviation (todo: allocation time col looks odd!).</em></p>
-
-
-| **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
-|---------------------|--------------------------|---------------------|--------------------|--------------------|
-| 100                 | 93 ± 171.27             | 283,239 ± 58.31     | 283,133 ± 28.83    | 89 ± 180.05        |
-| 200                 | 98 ± 221.17             | 566,458 ± 82.10     | 566,269 ± 65.02    | 214 ± 397.35       |
-| 300                 | 99 ± 295.44             | 849,705 ± 131.43    | 849,396 ± 87.16    | 222 ± 452.92       |
-| 400                 | 127 ± 430.92            | 1,132,983 ± 189.58  | 1,132,550 ± 106.44 | 430 ± 788.02       |
-| 500                 | 159 ± 599.09            | 1,416,190 ± 189.97  | 1,415,698 ± 123.68 | 217 ± 420.54       |
-| 600                 | 151 ± 648.00            | 1,699,454 ± 255.41  | 1,698,795 ± 174.82 | 439 ± 921.59       |
-| 700                 | 195 ± 880.05            | 1,982,654 ± 245.07  | 1,981,909 ± 122.70 | 453 ± 979.92       |
-| 800                 | 216 ± 1,084.49          | 2,265,901 ± 235.38  | 2,265,075 ± 139.94 | 818 ± 1,513.98     |
-| 900                 | 288 ± 1,536.92          | 2,549,115 ± 258.37  | 2,548,205 ± 196.83 | 816 ± 1,579.74     |
-| 1000                | 248 ± 1,543.50          | 2,832,372 ± 337.74  | 2,831,332 ± 167.56 | 444 ± 1,003.29     |
-
-</div>
-
-</div>
-
-
-<div align="center">
-<p><em>Table 4: Metrics of runs outside a compartment, including mean and standard deviation.</em></p>
+<p><em>Table 3: Metrics of runs outside a compartment, including mean and standard deviation.</em></p>
 
 
 | **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
@@ -385,36 +387,69 @@ The metrics collected are stored in two separate CSV files: [cpu-in-experiment-r
 </div>
 
 
-<p align="center">
-  <img src="./figs/performance_of_memOperations.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
-</p>
-<p align="center"><em>Figure 5: Time to execute allocate, write, read and release memory operations.</em></p>
 
 
 
-- **Allocation time:** A comparison of Table 1 against Table 2 reveals that it takes longer to allocate memory blocks inside compartments. For example, the allocation of 100 MB takes 2 ms without a compartment, while it takes 106 ms inside a compartment. Allocation times vary from 1 to 3 ms without a compartment but from 106 to 265 ms inside a compartment. In contrast, the time to allocate memory within  a compartment varies significantly from 106 to 265 and depends on the size of the block. Times range from 106 ms for 100 MB blocks to 251 ms for 700 MB blocks. In contrast, the time to allocate memory without compartments is shorter, it ranges from 2 to 7 ms for all block sizes.
+## Compilation and execution withing compartments created to run in purecap ABI
 
-- **Write time:** Both tables show a linear increase in write time as the block size increases. However, execution inside a compartment takes longer. The difference becomes more evident when the sizes of the blocks increases.
+  ```bash
+  $ clang-morello -march=morello+c64 -mabi=purecap -o memory-in-experiment memory-in-experiment.c -lm
+  
+  $ proccontrol -m cheric18n -s enable memory-in-experiment
+  ```
 
-- **Read time:** The time to execute read operations increases linearly in both executions. However, execution within a compartment takes longer than execution without compartments.
-
-- **Free time:** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 4 shows times that range from 3 to 9 ms in executions without compartments.
-
-Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records are available from [memory-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-resuls.csv) and [memory-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-resuls.csv).
-
-
-<p align="center">
-  <img src="./figs/boxplot_allocate_rd_wr_free_mem.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
-</p>
-<p align="center"><em>Figure 6: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
+The metrics collected are stored in two separate CSV files: [memory-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/cpu-in-experiment-results.csv) for the run inside a compartment. 
+We calculate the average time that it takes to allocate, write, 
+read and free for  each block size of 100 MB, 200 MB, 300 MB, 
+etc.). The results are summarised in Tables 4.
 
 
-## 4.2. Results - purecap benchmark ABI
-
-
-
+  
 <div align="center">
-<p><em>Table 5: Metrics of runs inside a compartment, including mean and standard deviation (todo: allocation time col looks odd!).</em></p>
+<p><em>Table 4: Metrics of runs inside compartment created for the
+purecap ABI, including mean and standard deviation (todo: allocation 
+time col looks odd!).</em></p>
+
+
+| **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
+|---------------------|--------------------------|---------------------|--------------------|--------------------|
+| 100                 | 93 ± 171.27             | 283,239 ± 58.31     | 283,133 ± 28.83    | 89 ± 180.05        |
+| 200                 | 98 ± 221.17             | 566,458 ± 82.10     | 566,269 ± 65.02    | 214 ± 397.35       |
+| 300                 | 99 ± 295.44             | 849,705 ± 131.43    | 849,396 ± 87.16    | 222 ± 452.92       |
+| 400                 | 127 ± 430.92            | 1,132,983 ± 189.58  | 1,132,550 ± 106.44 | 430 ± 788.02       |
+| 500                 | 159 ± 599.09            | 1,416,190 ± 189.97  | 1,415,698 ± 123.68 | 217 ± 420.54       |
+| 600                 | 151 ± 648.00            | 1,699,454 ± 255.41  | 1,698,795 ± 174.82 | 439 ± 921.59       |
+| 700                 | 195 ± 880.05            | 1,982,654 ± 245.07  | 1,981,909 ± 122.70 | 453 ± 979.92       |
+| 800                 | 216 ± 1,084.49          | 2,265,901 ± 235.38  | 2,265,075 ± 139.94 | 818 ± 1,513.98     |
+| 900                 | 288 ± 1,536.92          | 2,549,115 ± 258.37  | 2,548,205 ± 196.83 | 816 ± 1,579.74     |
+| 1000                | 248 ± 1,543.50          | 2,832,372 ± 337.74  | 2,831,332 ± 167.56 | 444 ± 1,003.29     |
+
+</div>
+
+</div>
+
+
+
+
+## 4.3 Compilation and execution withing compartments created to run in benchmark ABI
+ 
+ 
+  ```bash
+  $ clang-morello -march=morello+c64 -mabi=benchmark -o memory-in-experiment-benchmarkABI memory-in-experiment-benchmarkABI.c -lm
+  
+  $ proccontrol -m cheric18n -s enable memory-in-experiment-benchmarkABI
+  ```
+
+The metrics collected are stored in two separate CSV files: [memory-in-experiment-benchmarkABI-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-benchmarkABI.csv) for the run inside a compartment. 
+We calculate the average time that it takes to allocate, write, 
+read and free for  each block size of 100 MB, 200 MB, 300 MB, 
+etc.). The results are summarised in Tables 5.
+
+  
+<div align="center">
+<p><em>Table 5: Metrics of runs inside a compartment compiled for the
+bechmark ABI, including mean and standard deviation (todo: allocation 
+time col looks odd!).</em></p>
 
 | **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
 |---------------------|--------------------------|---------------------|--------------------|--------------------|
@@ -433,25 +468,65 @@ Plots of the results from Tables 3 and 4 shown in Figs. 5 and 6. Full records ar
 
 
 
-<p align="center">
-  <img src="./figs/performancememOperations_benchmarkABI.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
-</p>
-<p align="center"><em>Figure 7: Time to execute allocate, write, read and release memory operations.</em></p>
 
 
-## 4.3. Results - comparison between the three experiments
+
+## 4.1. Comparion of results
+
 
 <p align="center">
-  <img src="./figs/performancememOperations_benchmarkABI_comparasion.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
+  <img src="./figs/performance_of_memOperations.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
 </p>
-<p align="center"><em>Figure 7: Time to execute allocate, write, read and release memory operations.</em></p>
+<p align="center"><em>Figure 5: Time to execute allocate, write, read and release memory operations.</em></p>
+
+
+
+- **Allocation time:** A comparison of Table 1 against Table 2 reveals that it takes longer to allocate memory blocks inside compartments. For example, the allocation of 100 MB takes 2 ms without a compartment, while it takes 106 ms inside a compartment. Allocation times vary from 1 to 3 ms without a compartment but from 106 to 265 ms inside a compartment. In contrast, the time to allocate memory within  a compartment varies significantly from 106 to 265 and depends on the size of the block. Times range from 106 ms for 100 MB blocks to 251 ms for 700 MB blocks. In contrast, the time to allocate memory without compartments is shorter, it ranges from 2 to 7 ms for all block sizes.
+
+- **Write time:** Both tables show a linear increase in write time as the block size increases. However, execution inside a compartment takes longer. The difference becomes more evident when the sizes of the blocks increases.
+
+- **Read time:** The time to execute read operations increases linearly in both executions. However, execution within a compartment takes longer than execution without compartments.
+
+- **Free time:** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 4 shows times that range from 3 to 9 ms in executions without compartments.
+
+
+Plots of the results from Tables 3 and 4 are shown in Figs. 5 and 6. 
+Full records are available 
+from [memory-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-results.csv) and [memory-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv).
+
+
+<p align="center">
+  <img src="./figs/boxplot_allocate_rd_wr_free_mem.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
+</p>
+<p align="center"><em>Figure 6: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
 
 
 
 <p align="center">
   <img src="./figs/boxplot_allocate_rd_wr_free_mem_benchmarkABI_comparasion.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
 </p>
-<p align="center"><em>Figure 8: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
+<p align="center"><em>Figure 7: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
+
+
+
+
+<p align="center">
+  <img src="./figs/performancememOperations_benchmarkABI.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
+</p>
+<p align="center"><em>Figure 7: Time to execute allocate, write, read and release memory operations(mistake?).</em></p>
+
+
+
+<p align="center">
+  <img src="./figs/performancememOperations_benchmarkABI_comparasion.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
+</p>
+<p align="center"><em>Figure 9: Time to execute allocate, write, read and release memory operations.</em></p>
+
+
+
+
+
+
 
 
 
