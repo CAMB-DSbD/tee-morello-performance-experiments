@@ -493,6 +493,7 @@ Plots of the results from Tables 3, 4 and 5 are shown in Figure and 9.
 - **Free time (to update):** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 4 shows times that range from 3 to 9 ms in executions without compartments.
 
 
+A boxplot is shown in Figure 10.
 
 <p align="center">
   <img src="./figs/boxplot_allocate_rd_wr_free_mem_benchmarkABI_comparasion.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
@@ -502,7 +503,6 @@ Plots of the results from Tables 3, 4 and 5 are shown in Figure and 9.
    and benchmark ABI.</em></p>
 
 
-A boxplot is shown in Figure 10.
 
 Full records are available 
 from [memory-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-results.csv) and [memory-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv).
@@ -523,38 +523,12 @@ from [memory-in-experiment-results.csv](https://github.com/gca-research-group/te
 
 
 
-
-
-
 # 5. CPU performance in the execution of demanding arithmetic operations
 
 We have carried out this experiment to determine if library--based compartments affect the performance of the CPU. Precisely, we have executed a program with functions that involve the execution of CPU--demanding arithmetic operations and collected metrics about execution time. The program that we have implemented for this purpose includes operations with integers (int), floating point (float), arrays, and complex mathematical functions (such as trigonometric and exponential functions) that are known to be CPU--demanding.
 
 We use a C program that compile and run inside a library-based compartment and without compartments.
 
-- **Compilation and execution inside a compartment**
-
-  The program that we use is available from Git:  
-  [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment.c)
-
-  We compile and run it as follows:
-  ```bash
-  $ clang-morello -march=morello+c64 -mabi=purecap -o cpu-in-experiment cpu-in-experiment.c -lm
-  
-  $ proccontrol -m cheric18n -s enable cpu-in-experiment
-  ```
-
-- **Compilation and execution without a compartment**
-
-  The program that we use is available from Git:  
-  [cpu-out-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment.c)
-
-  We compile and run it as follows:
-  ```bash
-  $ clang-morello -o cpu-out-experiment cpu-out-experiment.c -lm
-  
-  $ ./cpu-out-experiment
-  ```
 
 The choice of these operations is based on the variety of typical workloads in computer applications, covering operations that vary in CPU resource usage. Time collection was carried out in both environments, allowing a detailed comparison between performance in the compartmentalised environment and the Morello Board's normal operating environment.
 
@@ -580,65 +554,60 @@ The execution begins with the perform\_tests function (line 1), which receives t
 
 
 
-## 5.1. Results --compilation under purecap ABI
-
-The results collected from the execution inside a compartment are available from [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-results.csv). Similarly, the results collected from the execution without a compartment are available from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
-   
-Table 5 compares the average execution times of different operations in both executions.
-
-<div align="center">
-<p><em>Table 5: Times to execute CPU operations inside and without a compartment.</em></p>
-
-| Test Type                     | CPU Time (ms) - Normal | CPU Time (ms) - Secure |
-|-------------------------------|------------------------|-------------------------|
-| Maths (trigon. and exp. func) | 46,696                | 69,998                 |
-| Int                           | 923                   | 993                    |
-| Float                         | 816                   | 785                    |
-| Array                         | 1,419                 | 1,460                  |
-
-</div>
 
 
-The results show that complex mathematical operations (trigonometric and exponential functions) executed within a compartment took 69,998 ms on average. In contrast, the execution of the same operations without a compartment took only 46,696 ms. This represents a performance cost of approximately 49.74%. However, the execution of arithmetic operations with integers without a compartment takes 923 ms. This figure is similar to the 993 ms that it takes to execute the same operation inside a compartment. The difference is only 7.58%. Unexpectedly, the execution of floating point operations inside a compartment took 785 ms, which is slightly lower than the execution without a compartment, which took 816 ms. The difference is 3.80%. Finally, the execution of array manipulation operations took 1,460 ms inside a compartment. This is not very different from the 1,419 ms that it takes to execute the same operation without a compartment; precisely, the difference is only 2.89%.
+## 5.1 Compilation and execution without a compartment
 
-As visualised in Fig. 7, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float and array operations, the performance is similar with and without compartments; strikingly, the float is is slightly better in the run inside a compartment.
+  We compile and run it as follows:
+  ```bash
+  $ clang-morello -o cpu-out-experiment cpu-out-experiment.c -lm
+  
+  $ ./cpu-out-experiment
+  ```
+ The source of the C program in available from    
+  [cpu-out-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment.c)
 
-<p align="center">
-  <img src="./figs/CPUperformance.png" alt="CPU performance in executions within and without compartments" width="100%"/>
-</p>
-<p align="center"><em>Figure 7: CPU performance in executions within and without compartments.</em></p>
-
-
-
-## 5.2. Results - compilation uder purecap benchmark ABI
-
-Table 6 compares the average execution times of different operations in both executions.
-
-<div align="center">
-<p><em>Table 6: Times to execute CPU operations inside and without a compartment.</em></p>
-
-| Trial Type                     | CPU Time (ms) - Normal | CPU Time (ms) - Secure - Benchmarck |
-|-------------------------------|------------------------|-------------------------|
-| Maths (trigon. and exp. func) | 46,759                | 52,901                 |
-| Int                           | 922                   | 670                    |
-| Float                         | 830                   | 621                    |
-| Array                         | 1,407                 | 101                    |
-
-</div>
-
-The results show that complex mathematical operations (trigonometric and exponential functions) executed within a compartment took 52,901 ms on average. In contrast, the execution of the same operations without a compartment took only 46,759 ms. This represents a performance cost of approximately 13.12%. However, the execution of arithmetic operations with integers without a compartment takes 922 ms, compared to 670 ms inside a compartment. The difference is a performance gain of 27.32%. Similarly, the execution of floating point operations inside a compartment took 621 ms, which is lower than the execution without a compartment, which took 830 ms. This represents a performance gain of 25.18%. Finally, the execution of array manipulation operations took 101 ms inside a compartment, which is significantly lower than the 1,407 ms that it takes to execute the same operation without a compartment, representing a performance gain of 92.82%.
-
-As visualized in Fig. 8, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
-
-As visualized in Fig. 8, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
-
-<p align="center">
-  <img src="./figs/CPUperformance_benchmarckABI.png" alt="CPU performance in executions within and without compartments" width="100%"/>
-</p>
-<p align="center"><em>Figure 8: CPU performance in executions within and without compartments.</em></p>
+The results collected from the execution are available from 
+from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
 
 
-## 5.3. Results - comparison between the three experiments
+## 5.2  Compilation and execution inside a compartment created for the purecap ABI
+
+
+  We compile and run it as follows:
+  ```bash
+  $ clang-morello -march=morello+c64 -mabi=purecap -o cpu-in-experiment cpu-in-experiment.c -lm
+  
+  $ proccontrol -m cheric18n -s enable cpu-in-experiment
+  ```
+
+
+ The source of the C program in available from    
+  [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment.c)
+
+The results collected from the execution are available from 
+from [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection/cpu-in-experiment-results.csv).
+
+
+## 5.2  Compilation and execution inside a compartment created for the benchmark ABI
+
+
+  We compile and run it as follows:
+  ```bash
+  $ clang-morello -march=morello+c64 -mabi=purecap -o cpu-in-experiment-benchmarkABI cpu-in-experimenti-benchmarkABI.c -lm
+  
+  $ proccontrol -m cheric18n -s enable cpu-in-experiment-benchmarkABI
+  ```
+  The source of the C program in available from    
+  [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-benchmarkABI/cpu-in-experiment-benchmarkABI.c)
+  
+ The results collected from the execution are available from 
+from [cpu-in-experiment-benchmarkABI-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection-benchmarkABI/cpu-in-experiment-benchmarkABI-results.csv).
+
+
+
+
+## 5.3. Comparison between the three experiments
 
 <div align="center">
 <p><em>Table 7: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
@@ -653,10 +622,27 @@ As visualized in Fig. 8, these results indicate that there is a noticeable perfo
 </div>
 
 
+
+
 <p align="center">
   <img src="./figs/CPUperformance_comparasion_normal_secure_benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
 </p>
+<p align="center"><em>Figure 8: CPU performance in executions: no compartment, compartments
+  created for purecap and benchmarkABI.</em></p>
+
+<p align="center">
+  <img src="./figs/CPUperformance_benchmarckABI.png" alt="CPU performance in executions within and without compartments" width="100%"/>
+</p>
 <p align="center"><em>Figure 8: CPU performance in executions within and without compartments.</em></p>
+
+
+The results show that complex mathematical operations (trigonometric and exponential functions) executed within a compartment took 52,901 ms on average. In contrast, the execution of the same operations without a compartment took only 46,759 ms. This represents a performance cost of approximately 13.12%. However, the execution of arithmetic operations with integers without a compartment takes 922 ms, compared to 670 ms inside a compartment. The difference is a performance gain of 27.32%. Similarly, the execution of floating point operations inside a compartment took 621 ms, which is lower than the execution without a compartment, which took 830 ms. This represents a performance gain of 25.18%. Finally, the execution of array manipulation operations took 101 ms inside a compartment, which is significantly lower than the 1,407 ms that it takes to execute the same operation without a compartment, representing a performance gain of 92.82%.
+
+As visualized in Fig. 8, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
+
+As visualized in Fig. 8, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
+
+
 
 
 
