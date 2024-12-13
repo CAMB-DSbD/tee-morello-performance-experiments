@@ -577,7 +577,7 @@ from [cpu-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-p
 
   We compile and run it as follows:
   ```bash
-  $ clang-morello -march=morello+c64 -mabi=purecap -o cpu-in-experiment-purecap cpu-in-experimenti-purecap.c -lm
+  $ clang-morello -march=morello+c64 -mabi=purecap -o cpu-in-experiment-purecap cpu-in-experiment-purecap.c -lm
   
   $ proccontrol -m cheric18n -s enable cpu-in-experiment-purecap
   ```
@@ -587,7 +587,7 @@ from [cpu-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-p
   [cpu-in-experiment-purecap.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap/cpu-in-experiment-purecap.c)
 
 The results collected from the execution are available from 
-from [cpu-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection-purecap/cpu-in-experiment-purecap-results.csv). 
+from [cpu-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap/cpu-in-experiment-purecap-results.csv). 
 
 
 ## 5.2  Compilation and execution inside a compartment created for the purecap-benchmark ABI
