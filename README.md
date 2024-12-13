@@ -584,10 +584,10 @@ from [cpu-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-p
 
 
  The source of the C program in available from 
-  [cpu-in-experiment-purecap.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-purecap.c)
+  [cpu-in-experiment-purecap.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap/cpu-in-experiment-purecap.c)
 
 The results collected from the execution are available from 
-from [cpu-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection/cpu-in-experiment-purecap-results.csv). 
+from [cpu-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection-purecap/cpu-in-experiment-purecap-results.csv). 
 
 
 ## 5.2  Compilation and execution inside a compartment created for the purecap-benchmark ABI
