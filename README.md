@@ -623,7 +623,7 @@ from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/gca-re
 
 
 <p align="center">
-  <img src="./figs/CPUperformance_comparison_normal__purecap_purecap-benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
+  <img src="./figs/CPUperformance_comparison_normal_purecap_purecap-benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
 </p>
 <p align="center"><em>Figure 8: CPU performance in executions: no compartment, compartments
   created for purecap and purecap-benchmark.</em></p>
