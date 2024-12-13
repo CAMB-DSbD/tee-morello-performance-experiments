@@ -603,7 +603,7 @@ from [cpu-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-mo
   [cpu-in-experiment-purecap-benchmark.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap-benchmark/cpu-in-experiment-purecap-benchmark.c)
   
  The results collected from the execution are available from 
-from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection-purecap-benchmark/cpu-in-experiment-purecap-benchmark-results.csv).
+from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap-benchmark/cpu-in-experiment-purecap-benchmark-results.csv).
 
 
 
