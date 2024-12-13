@@ -231,15 +231,17 @@ Imagine that user Alice is conducting the experiment. To create the attestables 
 
 2. **Launch**: Alice executes `cheri-cap-experiment.py` to launch the attestable:
 
-   [% cheri-cap-experiment.py](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cheri-caps-executable-performance/cheri-cap-experiment.py)
+   [% cheri-cap-experiment.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cheri-caps-executable-performance/cheri-cap-experiment.py)
 
 3. `% python3 cheri-cap-experiment.py` runs incrementally, creating attestable replicas until it detects that the attestables have consumed 90% of the 17118.4 MB of the Morello Board's memory, that is, about 15406.5 MB.
 
 
+The [Library-based Compartmentalisation on CHERI](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/documents/LibraryBasedCompartmentalisationOnCHERI_Dapeng2023.pdf)
+
 
 ## 3.1. Results
 
-The results are logged in the CSV file [cheri-cap-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cheri-caps-executable-performance/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
+The results are logged in the CSV file [cheri-cap-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cheri-caps-executable-performance/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
 The first few lines of the CSV file are shown in Table 2 to be read as follows:
 
@@ -361,7 +363,7 @@ executed without compartments and within compartments:
   ```
 
 We stored the metrics collected in the 
-[memory-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv) file.
+[memory-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv) file.
 We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.). The results are summarised in Tables 3.
 
 
@@ -398,7 +400,7 @@ We calculate the average time that it takes to allocate, write, read and free fo
   $ proccontrol -m cheric18n -s enable memory-in-experiment
   ```
 
-The metrics collected are stored in two separate CSV files: [memory-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/cpu-in-experiment-results.csv) for the run inside a compartment. 
+The metrics collected are stored in two separate CSV files: [memory-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/cpu-in-experiment-results.csv) for the run inside a compartment. 
 We calculate the average time that it takes to allocate, write, 
 read and free for  each block size of 100 MB, 200 MB, 300 MB, 
 etc.). The results are summarised in Tables 4.
@@ -440,7 +442,7 @@ time col looks odd!).</em></p>
   $ proccontrol -m cheric18n -s enable memory-in-experiment-benchmarkABI
   ```
 
-The metrics collected are stored in two separate CSV files: [memory-in-experiment-benchmarkABI-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-benchmarkABI.csv) for the run inside a compartment. 
+The metrics collected are stored in two separate CSV files: [memory-in-experiment-benchmarkABI-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-benchmarkABI.csv) for the run inside a compartment. 
 We calculate the average time that it takes to allocate, write, 
 read and free for  each block size of 100 MB, 200 MB, 300 MB, 
 etc.). The results are summarised in Tables 5.
@@ -505,7 +507,7 @@ A boxplot is shown in Figure 10.
 
 
 Full records are available 
-from [memory-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-results.csv) and [memory-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv).
+from [memory-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-results.csv) and [memory-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv).
 
 
 <p align="center">
@@ -564,10 +566,10 @@ The execution begins with the perform\_tests function (line 1), which receives t
   
   $ ./cpu-out-experiment
   ```
- The source of the C program in available from [cpu-out-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment.c)
+ The source of the C program in available from [cpu-out-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment.c)
 
 The results collected from the execution are available from
-from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
+from [cpu-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
 
 
 ## 5.2  Compilation and execution inside a compartment created for the purecap ABI
@@ -582,10 +584,10 @@ from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-
 
 
  The source of the C program in available from 
-  [cpu-in-experiment-puerecap.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-purecap.c)
+  [cpu-in-experiment-purecap.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-purecap.c)
 
 The results collected from the execution are available from 
-from [cpu-in-experiment-purecap-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection/cpu-in-experiment-purecap-results.csv).
+from [cpu-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection/cpu-in-experiment-purecap-results.csv).
 
 
 ## 5.2  Compilation and execution inside a compartment created for the purecap-benchmark ABI
@@ -598,10 +600,10 @@ from [cpu-in-experiment-purecap-results.csv](https://github.com/gca-research-gro
   $ proccontrol -m cheric18n -s enable cpu-in-experiment-purecap-benchmark
   ```
   The source of the C program in available from 
-  [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap-benchmark/cpu-in-experiment-purecap-benchmark.c)
+  [cpu-in-experiment-purecap-benchmark.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap-benchmark/cpu-in-experiment-purecap-benchmark.c)
   
  The results collected from the execution are available from 
-from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection-purecap-benchmark/cpu-in-experiment-purecap-benchmark-results.csv).
+from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection-purecap-benchmark/cpu-in-experiment-purecap-benchmark-results.csv).
 
 
 
@@ -649,7 +651,7 @@ This experiment was conducted to evaluate how the use of compartments affects th
 </p>
 <p align="center"><em>Figure 8: Parent--child communication over a pipe.</em></p>
 
-We run the C program within a compartment [pipe-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-result.c) and without compartments [pipe-out-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-result.c).
+We run the C program within a compartment [pipe-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-result.c) and without compartments [pipe-out-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-result.c).
 
 - **Compilation and execution inside a compartment**
 
@@ -708,7 +710,7 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 ## 6.1. Results
 
-We store the data collected from this experiment in two separate CSV files: [ppipe-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
+We store the data collected from this experiment in two separate CSV files: [ppipe-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
 
 Table 6 and Table 7 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
@@ -765,7 +767,7 @@ We have conducted this experiment to examine the trust model that the Morello Bo
 
 To the TCB of the current Morello Board belong the firmware and privileged software that includes the bootloader, hypervisor and operating system. The library-based compartments that we examine in this report, consider that the linker belongs to the TCB too [Gao and Watson 202](https://pldi23.sigplan.org/home/plarch-2023).
 
-In this experiment, we use an application written in C [tee-compartmentalisation-study-case](https://github.com/gca-research-group/tee-compartimentalisation-study-case) and run it within a compartment and without compartments to examine memory isolation. We followed the following steps:
+In this experiment, we use an application written in C [tee-compartmentalisation-study-case](https://github.com/CAMB-DSbD/tee-compartimentalisation-study-case) and run it within a compartment and without compartments to examine memory isolation. We followed the following steps:
 
 1. **Compilation and execution:**
 
@@ -774,7 +776,7 @@ In this experiment, we use an application written in C [tee-compartmentalisation
     - **Compilation and execution within a compartment:**
       
       The application integration is available from Git:  
-      [integration-process-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/inside-tee-execution/integration_process-in-experiment.c)
+      [integration-process-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/inside-tee-execution/integration_process-in-experiment.c)
 
       We compile and run it as follows:
       ```bash
@@ -786,7 +788,7 @@ In this experiment, we use an application written in C [tee-compartmentalisation
     - **Compilation and execution without a compartment:**
 
       The application integration is available from Git:  
-      [integration-process-out-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/outside-tee-execution/integration_process-out-experiment.c)
+      [integration-process-out-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/outside-tee-execution/integration_process-out-experiment.c)
 
       We compile and run it as follows:
       ```bash
@@ -801,7 +803,7 @@ In this experiment, we use an application written in C [tee-compartmentalisation
    $ python3 memory_reader.py
    ```
 
-   The [memory_reader.py](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) script cycles through the memory regions of interest reading the data between the start and end addresses of each region directly.
+   The [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) script cycles through the memory regions of interest reading the data between the start and end addresses of each region directly.
 
 Fig. 10 shows the steps executed by the `memory_reader.py` script:
 
@@ -903,7 +905,7 @@ We observed some unexpected behaviours and crashes of the cheriBSD that demanded
   $ mount -t procfs proc /proc
   ```
 
-  Once `proc` is mounted, the `memory_reader.py` script [memory_reader.py](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) script can be executed again.  
+  Once `proc` is mounted, the `memory_reader.py` script [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) script can be executed again.  
 
   We believe that this behaviour is related to the persistence of cheriBSD configurations after rebooting from crashes. It might be useful to examine how resources are locked and released by cheriBSD after crashes.
 
@@ -937,7 +939,7 @@ The compilation process is divided into two steps: Firstly, each individual modu
    ```
 
    The source C file is available from Git:  
-   [library_a.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/library_a.c).
+   [library_a.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/library_a.c).
 
 2. **Compilation of the child library:**
 
@@ -956,7 +958,7 @@ The compilation process is divided into two steps: Firstly, each individual modu
    ```
 
    The source file is available from Git:  
-   [library_b.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/library_b.c).
+   [library_b.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/library_b.c).
 
 3. **Compilation of the main program:**  
    The main program is compiled and linked with the dynamic libraries (`library_a.so` and `library_b.so`) created above. They are assumed to be located in the current directory specified as `-L.`.
@@ -966,7 +968,7 @@ The compilation process is divided into two steps: Firstly, each individual modu
    ```
 
    The source C file is available from Git:  
-   [pipe-trampoline-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/pipe-trampoline-in-experiment.c).
+   [pipe-trampoline-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/pipe-trampoline-in-experiment.c).
 
 4. **Execution of the main program:**  
    We executed the main program within a compartment.
@@ -991,7 +993,7 @@ We have performed the following steps to examine memory:
    We started the `pipe_trampoline` to initiate the parent and the child process. The parent writes a string to one end of the pipe, and the child process reads it from the other end.
 
 2. **Memory reading:**  
-   We executed the `memory_reader.py` script available from [memory_reader.py](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) to attempt direct memory reads:
+   We executed the `memory_reader.py` script available from [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) to attempt direct memory reads:
 
    ```bash
    $ python3 memory_reader.py
@@ -1008,19 +1010,19 @@ We have divided the results into three sections.
 
 ### 7.2.1. Data read from memory:
 
-The data read from memory is available from [memory-reading-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt) and shows data read from memory.
+The data read from memory is available from [memory-reading-result.txt](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt) and shows data read from memory.
 
 The results indicate that, even when running in a multi-compartment environment, a user with root privileges is able to access data from memory. We were able to extract data, including messages and data blocks.
 
 As a specific example, we can report that the cheriBSD crashed when we tried to access the region `0xfbfdbffff000` to `0xfbfdc0000000` which is marked with `rw---`, that is, it is a protected region.
 
-We have stored some examples of data read in [memory-reading-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt).
+We have stored some examples of data read in [memory-reading-result.txt](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt).
 
 It is sensible to think that cheriBSD blocked access to the region marked with `rw---` permission. However, the crash of cheriBSD, as a reaction, is intriguing. Further investigation is needed to fully understand the interaction between these permissions and the security policies applied to react to attempts to bypass the permissions.
 
 
 ### 8.2.2. Memory regions:
-The memory regions are available from [memory-regions-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-regions-result.txt) and show different memory regions marked with different access permissions.
+The memory regions are available from [memory-regions-result.txt](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-regions-result.txt) and show different memory regions marked with different access permissions.
 
 Memory regions with `rw-RW` permissions allow read access without crashing the cheriBSD OS; in contrast, regions marked with `rw---` grant read access only to the owner process. Attempts to access these regions from a different process result in crashes; Fig. 15 shows an example. The screenshot shows the content of the memory at crash time.
 
@@ -1031,13 +1033,13 @@ Memory regions with `rw-RW` permissions allow read access without crashing the c
 
 
 ### 8.2.3. Execution results:
-The execution results are available from [execution-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/execution-result.txt) and show records of parent-child communication over a pipe.
+The execution results are available from [execution-result.txt](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/execution-result.txt) and show records of parent-child communication over a pipe.
 
 For example, line 205 (``msg received from child process TKYftt85v0l3d05SosZY1 ... iAbqS7D3VokIx'') shows the child process reading one of the strings with random characters sent by the parent process.
 
 We managed to read this string directly from memory too. 
 It is visible in the last lines of the raw version of 
-the [memory-reading-result.txt](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt) file.
+the [memory-reading-result.txt](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-reading-result.txt) file.
 
 _________________________________________________________________________________________________________________________________________________________________
 
@@ -1048,19 +1050,19 @@ raw collected metrics and present results graphically. They produce aggregated C
 
 ## 9.1 Python scripst for summary views  
 
-- [Summarise CPU performance results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/summarise-results)
-- [Summarise memory performance results](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/summarise-results)
+- [Summarise CPU performance results](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/cpu-performance/summarise-results)
+- [Summarise memory performance results](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/memory-performance/summarise-results)
 
 
 ## 9.2  Python script for plotting
 
-- [Maximum number of compartments plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cheri-caps-executable-performance/plot-graph)
+- [Maximum number of compartments plots](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/cheri-caps-executable-performance/plot-graph)
    
-- [Memory performance plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/memory-performance/plot-graph)
+- [Memory performance plots](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/memory-performance/plot-graph)
 
-- [CPU performance plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/cpu-performance/plot-graph)   
+- [CPU performance plots](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/cpu-performance/plot-graph)   
 
-- [Pipe communications performance plots](https://github.com/gca-research-group/tee-morello-performance-experiments/tree/main/pipe-performance/plot-graph) 
+- [Pipe communications performance plots](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/pipe-performance/plot-graph) 
  
 
 _________________________________________________________________________________________________________________________________________________________________
