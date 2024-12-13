@@ -474,23 +474,36 @@ time col looks odd!).</em></p>
 ## 4.1. Comparion of results
 
 
+
+Plots of the results from Tables 3, 4 and 5 are shown in Figure and 9.  
+
 <p align="center">
-  <img src="./figs/performance_of_memOperations.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
+  <img src="./figs/performancememOperations_benchmarkABI_comparasion.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
 </p>
-<p align="center"><em>Figure 5: Time to execute allocate, write, read and release memory operations.</em></p>
+<p align="center"><em>Figure 9: Comparison of time to execute allocate, write, read 
+   and release memory operations: no copartment, compartment for purecap and benchmark ABI.</em></p>
+
+
+- **Allocation time (to update!):** A comparison of Table 1 against Table 2 reveals that it takes longer to allocate memory blocks inside compartments. For example, the allocation of 100 MB takes 2 ms without a compartment, while it takes 106 ms inside a compartment. Allocation times vary from 1 to 3 ms without a compartment but from 106 to 265 ms inside a compartment. In contrast, the time to allocate memory within  a compartment varies significantly from 106 to 265 and depends on the size of the block. Times range from 106 ms for 100 MB blocks to 251 ms for 700 MB blocks. In contrast, the time to allocate memory without compartments is shorter, it ranges from 2 to 7 ms for all block sizes.
+
+- **Write time (to update) :** Both tables show a linear increase in write time as the block size increases. However, execution inside a compartment takes longer. The difference becomes more evident when the sizes of the blocks increases.
+
+- **Read time (to update):** The time to execute read operations increases linearly in both executions. However, execution within a compartment takes longer than execution without compartments.
+
+- **Free time (to update):** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 4 shows times that range from 3 to 9 ms in executions without compartments.
 
 
 
-- **Allocation time:** A comparison of Table 1 against Table 2 reveals that it takes longer to allocate memory blocks inside compartments. For example, the allocation of 100 MB takes 2 ms without a compartment, while it takes 106 ms inside a compartment. Allocation times vary from 1 to 3 ms without a compartment but from 106 to 265 ms inside a compartment. In contrast, the time to allocate memory within  a compartment varies significantly from 106 to 265 and depends on the size of the block. Times range from 106 ms for 100 MB blocks to 251 ms for 700 MB blocks. In contrast, the time to allocate memory without compartments is shorter, it ranges from 2 to 7 ms for all block sizes.
+<p align="center">
+  <img src="./figs/boxplot_allocate_rd_wr_free_mem_benchmarkABI_comparasion.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
+</p>
+<p align="center"><em>Figure 7: Comparison of dispersion of the time to execute 
+   allocate, write, read, and free operations: no copartment, compartment for purecap 
+   and benchmark ABI.</em></p>
 
-- **Write time:** Both tables show a linear increase in write time as the block size increases. However, execution inside a compartment takes longer. The difference becomes more evident when the sizes of the blocks increases.
 
-- **Read time:** The time to execute read operations increases linearly in both executions. However, execution within a compartment takes longer than execution without compartments.
+A boxplot is shown in Figure 10.
 
-- **Free time:** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 4 shows times that range from 3 to 9 ms in executions without compartments.
-
-
-Plots of the results from Tables 3 and 4 are shown in Figs. 5 and 6. 
 Full records are available 
 from [memory-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-results.csv) and [memory-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv).
 
@@ -498,31 +511,13 @@ from [memory-in-experiment-results.csv](https://github.com/gca-research-group/te
 <p align="center">
   <img src="./figs/boxplot_allocate_rd_wr_free_mem.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
 </p>
-<p align="center"><em>Figure 6: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
-
-
-
-<p align="center">
-  <img src="./figs/boxplot_allocate_rd_wr_free_mem_benchmarkABI_comparasion.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
-</p>
-<p align="center"><em>Figure 7: Dispersion of the time to execute allocate, write, read, and free operations.</em></p>
-
-
-
+<p align="center"><em>Figure 6: Dispersion of the time to execute 
+   allocate, write, read, and free operations (mistake).</em></p>
 
 <p align="center">
   <img src="./figs/performancememOperations_benchmarkABI.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
 </p>
 <p align="center"><em>Figure 7: Time to execute allocate, write, read and release memory operations(mistake?).</em></p>
-
-
-
-<p align="center">
-  <img src="./figs/performancememOperations_benchmarkABI_comparasion.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
-</p>
-<p align="center"><em>Figure 9: Time to execute allocate, write, read and release memory operations.</em></p>
-
-
 
 
 
