@@ -581,7 +581,7 @@ from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-
   ```
 
 
- The source of the C program in available from    
+ The source of the C program in available from 
   [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment.c)
 
 The results collected from the execution are available from 
@@ -597,7 +597,7 @@ from [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-m
   
   $ proccontrol -m cheric18n -s enable cpu-in-experiment-benchmarkABI
   ```
-  The source of the C program in available from    
+  The source of the C program in available from 
   [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-benchmarkABI/cpu-in-experiment-benchmarkABI.c)
   
  The results collected from the execution are available from 
