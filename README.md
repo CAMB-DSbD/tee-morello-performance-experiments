@@ -564,10 +564,9 @@ The execution begins with the perform\_tests function (line 1), which receives t
   
   $ ./cpu-out-experiment
   ```
- The source of the C program in available from    
-  [cpu-out-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment.c)
+ The source of the C program in available from [cpu-out-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment.c)
 
-The results collected from the execution are available from 
+The results collected from the execution are available from
 from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/outside-tee-exection/cpu-out-experiment-results.csv).
 
 
