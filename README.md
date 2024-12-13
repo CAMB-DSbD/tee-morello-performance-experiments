@@ -575,33 +575,33 @@ from [cpu-out-experiment-results.csv](https://github.com/gca-research-group/tee-
 
   We compile and run it as follows:
   ```bash
-  $ clang-morello -march=morello+c64 -mabi=purecap -o cpu-in-experiment cpu-in-experiment.c -lm
+  $ clang-morello -march=morello+c64 -mabi=purecap -o cpu-in-experiment-purecap cpu-in-experimenti-purecap.c -lm
   
-  $ proccontrol -m cheric18n -s enable cpu-in-experiment
+  $ proccontrol -m cheric18n -s enable cpu-in-experiment-purecap
   ```
 
 
  The source of the C program in available from 
-  [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment.c)
+  [cpu-in-experiment-puerecap.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution/cpu-in-experiment-purecap.c)
 
 The results collected from the execution are available from 
-from [cpu-in-experiment-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection/cpu-in-experiment-results.csv).
+from [cpu-in-experiment-purecap-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection/cpu-in-experiment-purecap-results.csv).
 
 
-## 5.2  Compilation and execution inside a compartment created for the benchmark ABI
+## 5.2  Compilation and execution inside a compartment created for the purecap-benchmark ABI
 
 
   We compile and run it as follows:
   ```bash
-  $ clang-morello -march=morello+c64 -mabi=purecap -o cpu-in-experiment-benchmarkABI cpu-in-experimenti-benchmarkABI.c -lm
+  $ clang-morello -march=morello+c64 -mabi=purecap-benchmark -o cpu-in-experiment-purecap-benchmark cpu-in-experiment-purecap-benchmark.c -lm
   
-  $ proccontrol -m cheric18n -s enable cpu-in-experiment-benchmarkABI
+  $ proccontrol -m cheric18n -s enable cpu-in-experiment-purecap-benchmark
   ```
   The source of the C program in available from 
-  [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-benchmarkABI/cpu-in-experiment-benchmarkABI.c)
+  [cpu-in-experiment.c](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap-benchmark/cpu-in-experiment-purecap-benchmark.c)
   
  The results collected from the execution are available from 
-from [cpu-in-experiment-benchmarkABI-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection-benchmarkABI/cpu-in-experiment-benchmarkABI-results.csv).
+from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/gca-research-group/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-exection-purecap-benchmark/cpu-in-experiment-purecap-benchmark-results.csv).
 
 
 
@@ -611,7 +611,7 @@ from [cpu-in-experiment-benchmarkABI-results.csv](https://github.com/gca-researc
 <div align="center">
 <p><em>Table 7: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
 
-| Trial Type                     | CPU Time (ms) - Normal | CPU Time (ms) – Secure – Benchmark | CPU Time (ms) - Secure |
+| Trial Type                     | CPU Time (ms) - Normal | CPU Time (ms) –purecap-benchmark | CPU Time (ms) - purecap |
 |-------------------------------|------------------------|-------------------------------------|-------------------------|
 | Maths (trigon. and exp. func) | 46,759                | 52,901                              | 70,780                 |
 | Int                           | 922                   | 670                                 | 993                    |
@@ -623,10 +623,10 @@ from [cpu-in-experiment-benchmarkABI-results.csv](https://github.com/gca-researc
 
 
 <p align="center">
-  <img src="./figs/CPUperformance_comparison_normal_purecap_benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
+  <img src="./figs/CPUperformance_comparison_normal__purecap_purecap-benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
 </p>
 <p align="center"><em>Figure 8: CPU performance in executions: no compartment, compartments
-  created for purecap and benchmarkABI.</em></p>
+  created for purecap and purecap-benchmark.</em></p>
 
 
 
