@@ -689,7 +689,7 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 ## 6.1. Results
 
-We store the data collected from this experiment in two separate CSV files: [ppipe-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
+We store the data collected from this experiment in two separate CSV files: [pipe-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
 
 Table 6 and Table 7 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
