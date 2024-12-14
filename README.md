@@ -744,7 +744,8 @@ The results suggest the compartments provide significant benefits in terms of se
 # 7. Evaluation of Trust Models in Single-Compartment Environments
 We have conducted this experiment to examine the trust model that the Morello Board implements. It is documented that the current release of the Morello Board implements an asymmetric trust model where the Trusted Computing Based (TCB) is trusted by the applications but the TCB does not trust the applications. It is worth mentioning that the current Morello Board does not support the mutual distrust model where the privileged software and the applications distrust each other.
 
-To the TCB of the current Morello Board belong the firmware and privileged software that includes the bootloader, hypervisor and operating system. The library-based compartments that we examine in this report, consider that the linker belongs to the TCB too. See [Library-based Compartmentalisation on CHERI](https://pldi23.sigplan.org/home/plarch-2023) by Dapeng and Robert.
+To the TCB of the current Morello Board belong the firmware and privileged software that includes the bootloader, hypervisor and operating system. The library-based compartments that we examine in this report, consider that the linker belongs to the TCB too. See [Library-based Compartmentalisation on CHERI](https://pldi23.sigplan.org/home/plarch-2023) by 
+Dapeng and Robert.
 
 In this experiment, we use an application written in C [tee-compartmentalisation-study-case](https://github.com/CAMB-DSbD/tee-compartimentalisation-study-case) and run it within a compartment and without compartments to examine memory isolation. We followed the following steps:
 
