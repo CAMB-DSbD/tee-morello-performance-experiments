@@ -395,12 +395,12 @@ We calculate the average time that it takes to allocate, write, read and free fo
 ## Compilation and execution withing compartments created to run in purecap ABI
 
   ```bash
-  $ clang-morello -march=morello+c64 -mabi=purecap -o memory-in-experiment memory-in-experiment.c -lm
+  $ clang-morello -march=morello+c64 -mabi=purecap -o memory-in-experiment-purecap memory-in-experiment-purecap.c -lm
   
-  $ proccontrol -m cheric18n -s enable memory-in-experiment
+  $ proccontrol -m cheric18n -s enable memory-in-experiment-purecap
   ```
 
-The metrics collected are stored in two separate CSV files: [memory-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/cpu-in-experiment-results.csv) for the run inside a compartment. 
+The metrics collected are stored in two separate csv files: [memory-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution-purecap/cpu-in-experiment-purecap-results.csv) for the run inside a compartment. 
 We calculate the average time that it takes to allocate, write, 
 read and free for  each block size of 100 MB, 200 MB, 300 MB, 
 etc.). The results are summarised in Tables 4.
