@@ -504,26 +504,6 @@ A boxplot is shown in Figure 10.
    and benchmark ABI.</em></p>
 
 
-
-Full records are available 
-from [memory-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-results.csv) and [memory-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv).
-
-
-<p align="center">
-  <img src="./figs/boxplot_allocate_rd_wr_free_mem.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
-</p>
-<p align="center"><em>Figure 6: Dispersion of the time to execute 
-   allocate, write, read, and free operations (mistake).</em></p>
-
-<p align="center">
-  <img src="./figs/performancememOperations_benchmarkABI.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
-</p>
-<p align="center"><em>Figure 7: Time to execute allocate, write, read and release memory operations(mistake?).</em></p>
-
-
-
-
-
 # 5. CPU performance in the execution of demanding arithmetic operations
 
 We have carried out this experiment to determine if library--based compartments affect the performance of the CPU. Precisely, we have executed a program with functions that involve the execution of CPU--demanding arithmetic operations and collected metrics about execution time. The program that we have implemented for this purpose includes operations with integers (int), floating point (float), arrays, and complex mathematical functions (such as trigonometric and exponential functions) that are known to be CPU--demanding.
