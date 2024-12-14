@@ -504,7 +504,7 @@ A boxplot is shown in Figure 10.
    and benchmark ABI.</em></p>
 
 
-# 5. CPU performance in the execution of demanding arithmetic operations
+# 5. CPU performance in the execution of demanding arithmetic operations    
 
 We have carried out this experiment to determine if library--based compartments affect the performance of the CPU. Precisely, we have executed a program with functions that involve the execution of CPU--demanding arithmetic operations and collected metrics about execution time. The program that we have implemented for this purpose includes operations with integers (int), floating point (float), arrays, and complex mathematical functions (such as trigonometric and exponential functions) that are known to be CPU--demanding.
 
