@@ -363,7 +363,7 @@ executed without compartments and within compartments:
   ```
 
 We stored the metrics collected in the 
-[memory-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-exection/memory-out-experiment-results.csv) file.
+[memory-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-execution/memory-out-experiment-results.csv) file.
 We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.). The results are summarised in Tables 3.
 
 
@@ -433,16 +433,16 @@ time col looks odd!).</em></p>
 
 
 
-## 4.3 Compilation and execution withing compartments created to run in benchmark ABI
+## 4.3 Compilation and execution withing compartments created to run in purecap-benchmark ABI
  
  
   ```bash
-  $ clang-morello -march=morello+c64 -mabi=benchmark -o memory-in-experiment-benchmarkABI memory-in-experiment-benchmarkABI.c -lm
+  $ clang-morello -march=morello+c64 -mabi=benchmark -o memory-in-experiment-purecap-benchmark memory-in-experiment-purecap-benchmark.c -lm
   
-  $ proccontrol -m cheric18n -s enable memory-in-experiment-benchmarkABI
+  $ proccontrol -m cheric18n -s enable memory-in-experiment-purecap-benchmark
   ```
 
-The metrics collected are stored in two separate CSV files: [memory-in-experiment-benchmarkABI-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution/memory-in-experiment-benchmarkABI.csv) for the run inside a compartment. 
+The metrics collected are stored in two separate CSV files: [memory-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution-purecap-benchmark/memory-in-experiment-purecap-benchmark-results.csv) for the run inside a compartment. 
 We calculate the average time that it takes to allocate, write, 
 read and free for  each block size of 100 MB, 200 MB, 300 MB, 
 etc.). The results are summarised in Tables 5.
