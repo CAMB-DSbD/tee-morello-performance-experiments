@@ -20,16 +20,16 @@ implemented on the basis of cheri-capabilities. Issues of
 concern are the performance cost that these compartments will 
 incur and their security strenghts.
 
- 
-The documentation and results eported in this web page try 
+  
+The discussion and results reported in this web page try 
 to shed some light on these issues. It  evaluates the performance 
 costs incurred by the compartments and the strengths of 
-the memory isolation that they provide. It provides links 
-to the Git repositories that store the C and Python codes used 
-in the evaluation and the metrics collected in CSV 
-files. 
-It also includes the plots of the results, a discussion 
-of our interpretation and detailed instructions to 
+the memory isolation that they provide. The report provides links 
+to documents and to the Git repositories that store the C and 
+Python codes used in the evaluation and the metrics collected. 
+The latter are stored in collected in csv files. 
+It also includes tabless, plots of the results, a
+ discussion of our interpretation and detailed instructions to 
 encourage practitioners to repeat our experiments 
 and compare their results against ours. 
 
@@ -37,7 +37,7 @@ and compare their results against ours.
 # 1. Experiments set up
 
 To run the experiments reported in this document, we use
-for Morello Boards connected as shown in Figure 1.
+four Morello Boards connected as shown in Figure 1.
 
 
 *  Three local Morello Boards are physically located in 
@@ -89,12 +89,12 @@ the Morello Board used in the experiments in Table 1.
 </div>
 
 
-As shown in the CSV files available in this repository,
+As shown in the csv files available in this repository,
 we computed our statistical estimations (means, media, etc.)  
 and plotted results from metrics produced from 100
-trails (we repeted the execution of each operation 
-(for example, malloc) 100 times.
-The choice of 100 repetitions was based in on own
+trails; we repeted the execution of each operation, 
+such as malloc, 100 times.
+The choice of 100 repetitions is based in on own
 experience in performance analysis.
 
 <!-- on the Central Limit Theorem, which suggests          -->
@@ -122,7 +122,7 @@ at compilation and execution time. It is documented in:
   of 2023, provides a summary of the architecture.
 
 
-As explained in [Userlevel process environments](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/processes.html), in CheriBSD 24.05, a user  can compile his program to run in three 
+As explained in [User level process environments](https://ctsrd-cheri.github.io/cheribsd-getting-started/features/processes.html), in CheriBSD 24.05, a user  can compile his program to run in three 
 different userspace execution environments: 
 
 
@@ -132,6 +132,8 @@ different userspace execution environments:
 
 
 The example of the [compilation of helloworld.c](https://ctsrd-cheri.github.io/cheribsd-getting-started/helloworld/index.html) might be helpful.
+
+
 The *root# file* command can be used to verify the ABI
 targeted by the compiler.
 
@@ -295,7 +297,7 @@ executes a list of operations on large blocks
 and measaures the time as indicated  on the
 right side. 
 
-a) **allocate:** time taken to allocate the block of memory.  
+a) **malloc:**  time taken to allocate the block of memory.  
 b) **write:**    time taken to write data to fill the entire memory block.  
 c) **read:**     time taken to read the data from the entire memory block.  
 d) **free:**     time taken to release the memory block.
@@ -307,7 +309,8 @@ images and access databases.
 <p align="center">
   <img src="./figs/mem_blocks_num_trials.png" alt="Performance of memory operations on memory blocks of different sizes" width="65%"/>
 </p>
-<p align="center"><em>Figure 4: Performance of memory operations on memory blocks of different sizes.</em></p>
+<p align="center"><em>Figure 4: Number of repetitions of each memory
+operation of memory blocks of different sizes.</em></p>
 
 
 <pre style="border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9; font-family: monospace;">
@@ -363,7 +366,7 @@ executed without compartments and within compartments:
 
 We stored the metrics collected in the 
 [memory-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-execution/memory-out-experiment-results.csv) file.
-We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.). The results are summarised in Tables 3.
+We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.). The results are summarised in Table 3.
 
 
 <div align="center">
@@ -444,7 +447,7 @@ time col looks odd!).</em></p>
 The metrics collected are stored in two separate CSV files: [memory-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution-purecap-benchmark/memory-in-experiment-purecap-benchmark-results.csv) for the run inside a compartment. 
 We calculate the average time that it takes to allocate, write, 
 read and free for  each block size of 100 MB, 200 MB, 300 MB, 
-etc.). The results are summarised in Tables 5.
+etc.). The results are summarised in Table 5.
 
   
 <div align="center">
@@ -472,16 +475,16 @@ time col looks odd!).</em></p>
 
 
 
-## 4.1. Comparion of results
+## 4.4. Comparion of results
 
 
 
-Plots of the results from Tables 3, 4 and 5 are shown in Figure and 9.  
+Plots of the results from Tables 3, 4 and 5 are shown in Figure and 5.  
 
 <p align="center">
-  <img src="./figs/performancememOperations_benchmarkABI_comparasion.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
+  <img src="./figs/perfor_mem_oper_compare.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
 </p>
-<p align="center"><em>Figure 9: Comparison of time to execute allocate, write, read 
+<p align="center"><em>Figure 5: Comparison of time to execute allocate, write, read 
    and release memory operations: no copartment, compartment for purecap and benchmark ABI.</em></p>
 
 
@@ -491,29 +494,32 @@ Plots of the results from Tables 3, 4 and 5 are shown in Figure and 9.
 
 - **Read time (to update):** The time to execute read operations increases linearly in both executions. However, execution within a compartment takes longer than execution without compartments.
 
-- **Free time (to update):** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 4 shows times that range from 3 to 9 ms in executions without compartments.
+- **Free time (to update):** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 3 shows times that range from 3 to 9 ms in executions without compartments.
 
 
-A boxplot is shown in Figure 10.
+
+A boxplot is shown in Figure 6.
 
 <p align="center">
-  <img src="./figs/boxplot_allocate_rd_wr_free_mem_benchmarkABI_comparasion.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
+  <img src="./figs/boxplot_perfor_mem_oper_compare.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
 </p>
-<p align="center"><em>Figure 7: Comparison of dispersion of the time to execute 
+<p align="center"><em>Figure 6: Comparison of dispersion of the time to execute 
    allocate, write, read, and free operations: no copartment, compartment for purecap 
    and benchmark ABI.</em></p>
 
+ 
 
-# 5. CPU performance in the execution of demanding arithmetic operations    
+ 
+ 
+
+#  5.  CPU performance in the execution of demanding arithmetic operations
 
 We have carried out this experiment to determine if library--based compartments affect the performance of the CPU. Precisely, we have executed a program with functions that involve the execution of CPU--demanding arithmetic operations and collected metrics about execution time. The program that we have implemented for this purpose includes operations with integers (int), floating point (float), arrays, and complex mathematical functions (such as trigonometric and exponential functions) that are known to be CPU--demanding.
-
-We use a C program that compile and run inside a library-based compartment and without compartments.
 
 
 The choice of these operations is based on the variety of typical workloads in computer applications, covering operations that vary in CPU resource usage. Time collection was carried out in both environments, allowing a detailed comparison between performance in the compartmentalised environment and the Morello Board's normal operating environment.
 
-Algorithm 2 contains the code that we have run to produce metrics about the CPU performance and store them in a CSV files.
+Algorithm 2 contains the C code that we have run to produce metrics about the CPU performance and store them in a csv files.
 
 <pre style="border: 1px solid #ddd; padding: 10px; background-color: #f9f9f9; font-family: monospace;">
 Algorithm 2: CPUPerformance
@@ -589,6 +595,10 @@ from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-D
 
 ## 5.3. Comparison of results from the three experiments
 
+Table 7 shows a comparison of the three alternatives: no compartment,
+compartment running purecap code and compartment running
+purecap-benchmark code.
+
 <div align="center">
 <p><em>Table 7: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
 
@@ -604,26 +614,21 @@ from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-D
 
 
 <p align="center">
-  <img src="./figs/CPUperformance_comparison_normal_purecap_purecap-benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
+  <img src="./figs/CPUperfor_compare_normal_purecap_purecap-benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
 </p>
-<p align="center"><em>Figure 8: CPU performance in executions: no compartment, compartments
+<p align="center"><em>Figure 7: CPU performance in executions: no compartment, compartments
   created for purecap and purecap-benchmark.</em></p>
 
 
 
 The results show that complex mathematical operations (trigonometric and exponential functions) executed within a compartment took 52,901 ms on average. In contrast, the execution of the same operations without a compartment took only 46,759 ms. This represents a performance cost of approximately 13.12%. However, the execution of arithmetic operations with integers without a compartment takes 922 ms, compared to 670 ms inside a compartment. The difference is a performance gain of 27.32%. Similarly, the execution of floating point operations inside a compartment took 621 ms, which is lower than the execution without a compartment, which took 830 ms. This represents a performance gain of 25.18%. Finally, the execution of array manipulation operations took 101 ms inside a compartment, which is significantly lower than the 1,407 ms that it takes to execute the same operation without a compartment, representing a performance gain of 92.82%.
 
-As visualized in Fig. 8, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
-
-As visualized in Fig. 8, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
-
-
-
+As visualized in Figure 7, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
 
 
 # 6. Communication performance over pipes
 
-This experiment was conducted to evaluate how the use of compartments affects the performance of communication over Unix pipes. To collect metrics, we have implemented a C program that communicates a parent with a child process over a pipe and collects metrics about writing to and reading from a pipe that interconnected them. As shown in Fig. 8, the parent process writes a message to the pipe and the child process reads it.
+This experiment was conducted to evaluate how the use of compartments affects the performance of communication over Unix pipes. To collect metrics, we have implemented a C program that communicates a parent with a child process over a pipe and collects metrics about writing to and reading from a pipe that interconnected them. As shown in Figure 8, the parent process writes a message to the pipe and the child process reads it.
 
 <p align="center">
   <img src="./figs/parent-child-pipe.png" alt="Parent-child communication over a pipe"/>
@@ -691,10 +696,10 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 We store the data collected from this experiment in two separate CSV files: [pipe-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
 
-Table 6 and Table 7 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
+Table 8 and Table 9 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
 <div align="center">
-<p><em>Table 6: Time to execute write and read from a pipe inside a compartment.</em></p>
+<p><em>Table 8: Time to execute write and read from a pipe inside a compartment.</em></p>
 
 | Test | Message Size (Bytes) | Write Time (ms) | Read Time (ms) | Total Time (ms) |
 |------|-----------------------|-----------------|----------------|-----------------|
@@ -708,7 +713,7 @@ Table 6 and Table 7 contain the results of each iteration, including message siz
 </div>
 
 <div align="center">
-<p><em>Table 7: Time to execute write and read from a pipe without a compartment.</em></p>
+<p><em>Table 9: Time to execute write and read from a pipe without a compartment.</em></p>
 
 | Test | Message Size (Bytes) | Write Time (ms) | Read Time (ms) | Total Time (ms) |
 |------|-----------------------|-----------------|----------------|-----------------|
@@ -724,12 +729,12 @@ Table 6 and Table 7 contain the results of each iteration, including message siz
 
 The data shows the differences in the performance of inter--process communication (through pipes) inside a compartment and without compartments.
 
-A graphical view of the results is shown in Fig. 9.
+A graphical view of the results is shown in Figure 8.
 
 <p align="center">
   <img src="./figs/pipePerformance.png" alt="Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments" width="100%"/>
 </p>
-<p align="center"><em>Figure 9: Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments.</em></p>
+<p align="center"><em>Figure 8: Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments.</em></p>
 
 The figure reveals that compartments affect performance. The write operation executed inside compartments consistently shows a higher latency that ranges from 0.016 ms to 0.003 ms. In contrast, the write time outside compartments is notably shorter, closer to 0.001 ms. This discrepancy highlights the additional computational cost introduced by the compartment.
 
@@ -785,7 +790,7 @@ In this experiment, we use an application written in C [tee-compartmentalisation
 
    The [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) script cycles through the memory regions of interest reading the data between the start and end addresses of each region directly.
 
-Fig. 10 shows the steps executed by the `memory_reader.py` script:
+Figure 10 shows the steps executed by the `memory_reader.py` script:
 
 1. The Memory Reader requests the Cheri OS for the PID of the target process by its name, using the method `getPID(processName)`.
 2. Cheri OS returns the corresponding PID.
@@ -808,10 +813,10 @@ Fig. 10 shows the steps executed by the `memory_reader.py` script:
 
 ## 7.1. Results
 
-Table 8 summarises the results. The columns have the following meaning:
+Table 10 summarises the results. The columns have the following meaning:
 
 <div align="center">
-<p><em>Table 8: Memory isolation in executions within and without compartments.</em></p>
+<p><em>Table 11: Memory isolation in executions within and without compartments.</em></p>
 
 | Test num. | Execution env.   | User privileges | Access  | Sensitive Data Visible |
 |-----------|------------------|-----------------|---------|-------------------------|
@@ -829,7 +834,7 @@ Table 8 summarises the results. The columns have the following meaning:
 - **Access:** The response of cheriBSD to the `memory_reader.py` script's request to access the memory region.
 - **Sensitive Data Visible:** Visibility of the data retrieved from the memory region. Can the `memory_reader.py` script extract information from the data?
 
-The results shown in Table 8 indicate that a user with root privileges has permission to access any memory region, including memory regions allocated to compartments. However, ordinary users are unable to access memory regions allocated to processes, including processes not executed inside compartments.
+The results shown in Table 10 indicate that a user with root privileges has permission to access any memory region, including memory regions allocated to compartments. However, ordinary users are unable to access memory regions allocated to processes, including processes not executed inside compartments.
 
 These results indicate that the Morello Board implements the traditional asymmetric trust model where user applications trust privileged software. Some applications demand the symmetric trust model where privileged software and user applications distrust each other. Examples of technologies that implement mutual distrust are Intel SGX and AWS Nitro Enclaves.
 
@@ -840,7 +845,7 @@ These results indicate that the Morello Board implements the traditional asymmet
 We observed some unexpected behaviours and crashes of the cheriBSD that demanded reboot to recover. We have no sound explanations, we only suspect that these issues are related to the memory managements in the Morello Board.
 
 - **Process terminated by the OS:**  
-  We have observed that the application was terminated (i.e. killed) automatically by the cheriBSD OS, approximately, after 1 hour of execution. See Fig. 11. This behaviour seems to be related to the CheriBSD system’s resource management. It seems that the operating system terminates processes that are consuming excessive memory or CPU, possibly in response to an infinite loop or undesirable behaviour. Another speculation is that the CHERI security model abruptly terminates processes that systematically attempt to access protected memory regions, illegally.  
+  We have observed that the application was terminated (i.e. killed) automatically by the cheriBSD OS, approximately, after 1 hour of execution. See Figure 11. This behaviour seems to be related to the CheriBSD system’s resource management. It seems that the operating system terminates processes that are consuming excessive memory or CPU, possibly in response to an infinite loop or undesirable behaviour. Another speculation is that the CHERI security model abruptly terminates processes that systematically attempt to access protected memory regions, illegally.  
 
   <p align="center">
     <img src="./figs/abruptkillofproc.png" alt="Abruptly termination of process by the OS" width="75%"/>
@@ -848,12 +853,14 @@ We observed some unexpected behaviours and crashes of the cheriBSD that demanded
   <p align="center"><em>Figure 11: Abruptly termination of process by the OS.</em></p>
 
 - **Crash of cheriBSD OS:**  
-  We have observed systematic crashes of the cheriBSD OS when the `memory_reader.py` script attempted to read a specific range of memory addresses. As shown in Fig. 12, the OS crashed reporting a `Broken pipe` error and the disconnection of the remote SSH shell when the `memory_reader.py` attempted to read addresses in the `0x4a300000` --- `0x4bb00000` range. See Fig. 13.  
+  We have observed systematic crashes of the cheriBSD OS when the `memory_reader.py` script attempted to read a specific range of memory addresses. As shown in Figure 12, the OS crashed reporting a `Broken pipe` error and the disconnection of the remote SSH shell when the `memory_reader.py` attempted to read addresses in the `0x4a300000` --- `0x4bb00000` range. See Figure 13.  
+
 
   <p align="center">
     <img src="./figs/crashoutputbrokenpipe.png" alt="client_loop: send disconnect: Broken pipe" width="75%"/>
   </p>
   <p align="center"><em>Figure 12: client_loop: send disconnect: Broken pipe.</em></p>
+
 
   <p align="center">
     <img src="./figs/crashmemrange.png" alt="Crashing memory range" width="75%"/>
@@ -865,7 +872,7 @@ We observed some unexpected behaviours and crashes of the cheriBSD that demanded
   This crash raises concerns about a possible failure in memory isolation when accessed by processes, such as the `memory_reader.py` script. Another possibility is that the privileged software running in this memory range is particularly sensitive to illegal read attempts, causing cheriOS crashes. Further investigation is required to determine the exact causes.
 
 - **Error after rebooting the cheriBSD OS:**  
-  Attempt to read memory after rebooting to recover from a crash outputs `[Errno 2] No such file or directory: '/proc/PID/mem'` (see Fig. 14). The error indicates that file `/proc/{pid}/mem`, which is used by `memory_reader.py`, is unavailable.
+  Attempt to read memory after rebooting to recover from a crash outputs `[Errno 2] No such file or directory: '/proc/PID/mem'` (see Figure 14). The error indicates that file `/proc/{pid}/mem`, which is used by `memory_reader.py`, is unavailable.
 
   <p align="center">
     <img src="./figs/proc_pid_mem_error.png" alt="Error after recovering from a crash: [Errno 2] No such file or directory: '/proc/3587/mem'" width="75%"/>
@@ -980,7 +987,7 @@ We have performed the following steps to examine memory:
    ```
 
 3. **Reading process:**  
-   We executed the `memory_reader.py` script. It iterates through each RW memory region associated with the PIDs of the parent and child processes, trying to read the data from each region defined by start and end addresses. We displayed the results on the screen (see Fig. 15).
+   We executed the `memory_reader.py` script. It iterates through each RW memory region associated with the PIDs of the parent and child processes, trying to read the data from each region defined by start and end addresses. We displayed the results on the screen (see Figure 15).
 
 
 
