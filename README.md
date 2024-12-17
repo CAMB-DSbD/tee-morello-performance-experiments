@@ -575,7 +575,7 @@ The results collected from the execution are available from
 from [cpu-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cpu-performance/inside-tee-execution-purecap/cpu-in-experiment-purecap-results.csv). 
 
 
-## 5.2  Compilation and execution inside a compartment created for the purecap-benchmark ABI
+## 5.3  Compilation and execution inside a compartment created for the purecap-benchmark ABI
 
 
   We compile and run it as follows:
@@ -593,7 +593,7 @@ from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-D
 
 
 
-## 5.3. Comparison of results from the three experiments
+## 5.4. Comparison of results from the three experiments
 
 Table 7 shows a comparison of the three alternatives: no compartment,
 compartment running purecap code and compartment running
