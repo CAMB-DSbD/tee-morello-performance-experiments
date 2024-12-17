@@ -659,7 +659,17 @@ We collected metrics about the following operations:
 - **write:** Time taken by the parent process to write data to the pipe.
 - **read:** Time taken by the child process to read the data from the other end of the pipe.
 
-The code repeats each operation 100 times. This is in line with the principles of the Central Limit Theorem, which states that a larger sample size helps to detect finer fluctuations in latency patterns [Statistics How To 2023](https://www.statisticshowto.com/probability-and-statistics/normal-distributions/central-limit-theorem-definition-examples/).
+As with previous experiments, the code repeats each operation 100 
+times to help as estimate means and other statistic parameters.
+In our experience, 100 trials produce a realible sample space.
+
+
+<!--- This is in line with the principles of the Central Limit     -->
+<!--- Theorem, which states that a larger sample size helps to     -->
+<!--- detect finer fluctuations in latency patterns [Statistics    -->
+<!--- How To 2023](https://www.statisticshowto.com/probability-    -->
+<!--- and-statistics/normal-distributions/central-limit-theorem-   -->
+<!--- definition-examples/).                                       -->
 
 Algorithm 3 describes the execution of the operations and the settings of timers to collect the metrics.
 
