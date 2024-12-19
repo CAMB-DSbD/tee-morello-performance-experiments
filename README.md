@@ -233,23 +233,23 @@ Imagine that user Alice is conducting the experiment. To create the attestables 
 
 2. **Launch**: Alice executes `cheri-cap-experiment.py` to launch the attestable:
 
-   [% cheri-cap-experiment.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cheri-caps-executable-performance/cheri-cap-experiment.py)
+   [% cheri-cap-experiment.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/cheri-cap-experiment.py)
 
 3. `% python3 cheri-cap-experiment.py` runs incrementally, creating attestable replicas until it detects that the attestables have consumed 90% of the 17118.4 MB of the Morello Board's memory, that is, about 15406.5 MB.
 
 
 
 
-## 3.1. Results
+## 3.1. Compartments created for purecap ABI in cheriOS 22.14 
 
-The results are logged in the CSV file [cheri-cap-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/cheri-caps-executable-performance/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
+The results are logged in the CSV file [cheri-cap-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
 The first few lines of the CSV file are shown in Table 2 to be read as follows:
 
 
 <div align="center">
 <p><em>Table 2: Metrics of memory consumed by different numbers of 
-compartments and elapsed time.</em></p>
+compartments created for  purecap ABI cheroOS 22.14 and elapsed time.</em></p>
 
 | **Number of Compartments** | **Memory Used (MB)** | **Time Elapsed (ms)** |
 |-----------------------------|----------------------|-----------------------|
@@ -278,15 +278,37 @@ As a second example take the 5th row. It shows that after 10808.39 ms, `cheri-ca
 The blue line in the plot of Fig. 3 illustrates how memory is consumed as the number of compartments increases. The orange line illustrates the elapsed time as the number of compartments increases.
 
 <p align="center">
-  <img src="./figs/memconsumedbycompartreplicas.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
+  <img src="./figs/max_num_compart_purecap_cheri22.12.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
 </p>
-<p align="center"><em>Figure 3: Memory consumed by incremental replication of compartments and time to create compartments.</em></p>
+<p align="center"><em>Figure 3: Memory consumed by incremental replication of compartments and time to create compartments in cheriOS ver22.12.</em></p>
 
 We initially expected memory consumption to increase steadily from 1,628.3 MB, corresponding to a single attestable replica, to 15,406.5 MB (90% of total memory) consumed by N attestable replicas. The objective was to determine the exact value of N.
 
 However, the results revealed unexpected behaviour: memory consumption increased consistently only until approximately 3,800 attestable replicas consumed 14,582.5 MB. After this point, memory consumption began to decrease as the number of attestable replicas continued to rise. The final data point shows that 8,991 attestable replicas consumed 13,066.4 MB, or roughly 76% of the total memory.
 
 We did not expect the behaviours exhibited by the blue line of Fig. 3. We have no sound explanation for it. These preliminary results highlight an area for further exploration. Additionally, the analysis of the time required to wipe the memory of the attestable replicas remains pending.
+
+
+
+## 3.2. Compartments created for purecap ABI in cheriOS 24.05
+
+<p align="center">
+  <img src="./figs/max_num_compart_purecap.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
+</p>
+<p align="center"><em>Figure 4: Max number of compartments created for purecap ABI created in cheriOS ver 24.05 and memory consumed.</em></p>
+
+
+
+
+## 3.3. Compartments created for purecap-benchmark in cheriOS 24.05
+
+<p align="center">
+  <img src="./figs/max_num_compart_purecap-benchmark.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
+</p>
+<p align="center"><em>Figure 5: Max number of compartments created for purecap--benchmark ABI created in cheriOS ver 24.05 and memory consumed.</em></p>
+
+ 
+
 
 
 
@@ -302,14 +324,14 @@ b) **write:**    time taken to write data to fill the entire memory block.
 c) **read:**     time taken to read the data from the entire memory block.  
 d) **free:**     time taken to release the memory block.
 
-As shown in Figure 4, we use blocks of `100, 200, 300,...,100 000 MB`. 
+As shown in Figure 6, we use blocks of `100, 200, 300,...,100 000 MB`. 
 Blocks of these sizes are typical of applications that process 
 images and access databases.
 
 <p align="center">
   <img src="./figs/mem_blocks_num_trials.png" alt="Performance of memory operations on memory blocks of different sizes" width="65%"/>
 </p>
-<p align="center"><em>Figure 4: Number of repetitions of each memory
+<p align="center"><em>Figure 6: Number of repetitions of each memory
 operation of memory blocks of different sizes.</em></p>
 
 
@@ -479,12 +501,12 @@ time col looks odd!).</em></p>
 
 
 
-Plots of the results from Tables 3, 4 and 5 are shown in Figure and 5.  
+Plots of the results from Tables 3, 4 and 5 are shown in Figure and 7.  
 
 <p align="center">
   <img src="./figs/perfor_mem_oper_compare.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
 </p>
-<p align="center"><em>Figure 5: Comparison of time to execute allocate, write, read 
+<p align="center"><em>Figure 7: Comparison of time to execute allocate, write, read 
    and release memory operations: no copartment, compartment for purecap and benchmark ABI.</em></p>
 
 
@@ -498,12 +520,12 @@ Plots of the results from Tables 3, 4 and 5 are shown in Figure and 5.
 
 
 
-A boxplot is shown in Figure 6.
+A boxplot is shown in Figure 8.
 
 <p align="center">
   <img src="./figs/boxplot_perfor_mem_oper_compare.png" alt="Dispersion of the time to execute allocate, write, read, and free operations" width="100%"/>
 </p>
-<p align="center"><em>Figure 6: Comparison of dispersion of the time to execute 
+<p align="center"><em>Figure 8: Comparison of dispersion of the time to execute 
    allocate, write, read, and free operations: no copartment, compartment for purecap 
    and benchmark ABI.</em></p>
 
@@ -616,24 +638,24 @@ purecap-benchmark code.
 <p align="center">
   <img src="./figs/CPUperfor_compare_normal_purecap_purecap-benchmark.png" alt="CPU performance in executions within and without compartments" width="100%"/>
 </p>
-<p align="center"><em>Figure 7: CPU performance in executions: no compartment, compartments
+<p align="center"><em>Figure 9: CPU performance in executions: no compartment, compartments
   created for purecap and purecap-benchmark.</em></p>
 
 
 
 The results show that complex mathematical operations (trigonometric and exponential functions) executed within a compartment took 52,901 ms on average. In contrast, the execution of the same operations without a compartment took only 46,759 ms. This represents a performance cost of approximately 13.12%. However, the execution of arithmetic operations with integers without a compartment takes 922 ms, compared to 670 ms inside a compartment. The difference is a performance gain of 27.32%. Similarly, the execution of floating point operations inside a compartment took 621 ms, which is lower than the execution without a compartment, which took 830 ms. This represents a performance gain of 25.18%. Finally, the execution of array manipulation operations took 101 ms inside a compartment, which is significantly lower than the 1,407 ms that it takes to execute the same operation without a compartment, representing a performance gain of 92.82%.
 
-As visualized in Figure 7, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
+As visualized in Figure 9, these results indicate that there is a noticeable performance cost in the execution of complex math operations inside compartments. However, in the execution of int, float, and array operations, the performance is significantly better inside compartments; strikingly, the float operations and array manipulation show substantial performance gains when executed inside a compartment.
 
 
 # 6. Communication performance over pipes
 
-This experiment was conducted to evaluate how the use of compartments affects the performance of communication over Unix pipes. To collect metrics, we have implemented a C program that communicates a parent with a child process over a pipe and collects metrics about writing to and reading from a pipe that interconnected them. As shown in Figure 8, the parent process writes a message to the pipe and the child process reads it.
+This experiment was conducted to evaluate how the use of compartments affects the performance of communication over Unix pipes. To collect metrics, we have implemented a C program that communicates a parent with a child process over a pipe and collects metrics about writing to and reading from a pipe that interconnected them. As shown in Figure 10, the parent process writes a message to the pipe and the child process reads it.
 
 <p align="center">
   <img src="./figs/parent-child-pipe.png" alt="Parent-child communication over a pipe"/>
 </p>
-<p align="center"><em>Figure 8: Parent--child communication over a pipe.</em></p>
+<p align="center"><em>Figure 10: Parent--child communication over a pipe.</em></p>
 
 We run the C program within a compartment [pipe-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment.c) and without compartments [pipe-out-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment.c).
 
@@ -739,12 +761,12 @@ Table 8 and Table 9 contain the results of each iteration, including message siz
 
 The data shows the differences in the performance of inter--process communication (through pipes) inside a compartment and without compartments.
 
-A graphical view of the results is shown in Figure 8.
+A graphical view of the results is shown in Figure 10.
 
 <p align="center">
   <img src="./figs/pipePerformance.png" alt="Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments" width="100%"/>
 </p>
-<p align="center"><em>Figure 8: Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments.</em></p>
+<p align="center"><em>Figure 10: Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments.</em></p>
 
 The figure reveals that compartments affect performance. The write operation executed inside compartments consistently shows a higher latency that ranges from 0.016 ms to 0.003 ms. In contrast, the write time outside compartments is notably shorter, closer to 0.001 ms. This discrepancy highlights the additional computational cost introduced by the compartment.
 
@@ -800,7 +822,7 @@ In this experiment, we use an application written in C [tee-compartmentalisation
 
    The [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) script cycles through the memory regions of interest reading the data between the start and end addresses of each region directly.
 
-Figure 10 shows the steps executed by the `memory_reader.py` script:
+Figure 12 shows the steps executed by the `memory_reader.py` script:
 
 1. The Memory Reader requests the Cheri OS for the PID of the target process by its name, using the method `getPID(processName)`.
 2. Cheri OS returns the corresponding PID.
@@ -817,7 +839,7 @@ Figure 10 shows the steps executed by the `memory_reader.py` script:
 <p align="center">
   <img src="./figs/memory_scraping.png" alt="Procedure to scrap memory regions" width="65%"/>
 </p>
-<p align="center"><em>Figure 10: Procedure to scrap memory regions.</em></p>
+<p align="center"><em>Figure 12: Procedure to scrap memory regions.</em></p>
 
 
 
@@ -855,39 +877,39 @@ These results indicate that the Morello Board implements the traditional asymmet
 We observed some unexpected behaviours and crashes of the cheriBSD that demanded reboot to recover. We have no sound explanations, we only suspect that these issues are related to the memory managements in the Morello Board.
 
 - **Process terminated by the OS:**  
-  We have observed that the application was terminated (i.e. killed) automatically by the cheriBSD OS, approximately, after 1 hour of execution. See Figure 11. This behaviour seems to be related to the CheriBSD system’s resource management. It seems that the operating system terminates processes that are consuming excessive memory or CPU, possibly in response to an infinite loop or undesirable behaviour. Another speculation is that the CHERI security model abruptly terminates processes that systematically attempt to access protected memory regions, illegally.  
+  We have observed that the application was terminated (i.e. killed) automatically by the cheriBSD OS, approximately, after 1 hour of execution. See Figure 13. This behaviour seems to be related to the CheriBSD system’s resource management. It seems that the operating system terminates processes that are consuming excessive memory or CPU, possibly in response to an infinite loop or undesirable behaviour. Another speculation is that the CHERI security model abruptly terminates processes that systematically attempt to access protected memory regions, illegally.  
 
   <p align="center">
     <img src="./figs/abruptkillofproc.png" alt="Abruptly termination of process by the OS" width="75%"/>
   </p>
-  <p align="center"><em>Figure 11: Abruptly termination of process by the OS.</em></p>
+  <p align="center"><em>Figure 13: Abruptly termination of process by the OS.</em></p>
 
 - **Crash of cheriBSD OS:**  
-  We have observed systematic crashes of the cheriBSD OS when the `memory_reader.py` script attempted to read a specific range of memory addresses. As shown in Figure 12, the OS crashed reporting a `Broken pipe` error and the disconnection of the remote SSH shell when the `memory_reader.py` attempted to read addresses in the `0x4a300000` --- `0x4bb00000` range. See Figure 13.  
+  We have observed systematic crashes of the cheriBSD OS when the `memory_reader.py` script attempted to read a specific range of memory addresses. As shown in Figure 14, the OS crashed reporting a `Broken pipe` error and the disconnection of the remote SSH shell when the `memory_reader.py` attempted to read addresses in the `0x4a300000` --- `0x4bb00000` range. See Figure 15.  
 
 
   <p align="center">
     <img src="./figs/crashoutputbrokenpipe.png" alt="client_loop: send disconnect: Broken pipe" width="75%"/>
   </p>
-  <p align="center"><em>Figure 12: client_loop: send disconnect: Broken pipe.</em></p>
+  <p align="center"><em>Figure 14: client_loop: send disconnect: Broken pipe.</em></p>
 
 
   <p align="center">
     <img src="./figs/crashmemrange.png" alt="Crashing memory range" width="75%"/>
   </p>
-  <p align="center"><em>Figure 13: Crashing memory range.</em></p>
+  <p align="center"><em>Figure 15: Crashing memory range.</em></p>
 
   A possible explanation is that the crash is caused by illegal attempts to read memory addresses storing privileged software.  
 
   This crash raises concerns about a possible failure in memory isolation when accessed by processes, such as the `memory_reader.py` script. Another possibility is that the privileged software running in this memory range is particularly sensitive to illegal read attempts, causing cheriOS crashes. Further investigation is required to determine the exact causes.
 
 - **Error after rebooting the cheriBSD OS:**  
-  Attempt to read memory after rebooting to recover from a crash outputs `[Errno 2] No such file or directory: '/proc/PID/mem'` (see Figure 14). The error indicates that file `/proc/{pid}/mem`, which is used by `memory_reader.py`, is unavailable.
+  Attempt to read memory after rebooting to recover from a crash outputs `[Errno 2] No such file or directory: '/proc/PID/mem'` (see Figure 16). The error indicates that file `/proc/{pid}/mem`, which is used by `memory_reader.py`, is unavailable.
 
   <p align="center">
     <img src="./figs/proc_pid_mem_error.png" alt="Error after recovering from a crash: [Errno 2] No such file or directory: '/proc/3587/mem'" width="75%"/>
   </p>
-  <p align="center"><em>Figure 14: Error after recovering from a crash: [Errno 2] No such file or directory: '/proc/3587/mem'.</em></p>
+  <p align="center"><em>Figure 16: Error after recovering from a crash: [Errno 2] No such file or directory: '/proc/3587/mem'.</em></p>
 
 - **Procedure for running `memory_reader.py` after rebooting:**  
   After rebooting to recover from a crash, it is necessary to verify that the `/proc` file system is mounted correctly mounted, the `mount` command can be used.
@@ -997,7 +1019,7 @@ We have performed the following steps to examine memory:
    ```
 
 3. **Reading process:**  
-   We executed the `memory_reader.py` script. It iterates through each RW memory region associated with the PIDs of the parent and child processes, trying to read the data from each region defined by start and end addresses. We displayed the results on the screen (see Figure 15).
+   We executed the `memory_reader.py` script. It iterates through each RW memory region associated with the PIDs of the parent and child processes, trying to read the data from each region defined by start and end addresses. We displayed the results on the screen (see Figure 17).
 
 
 
@@ -1021,12 +1043,12 @@ It is sensible to think that cheriBSD blocked access to the region marked with `
 ### 8.2.2. Memory regions:
 The memory regions are available from [memory-regions-results.txt](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/memory-regions-results.txt) and show different memory regions marked with different access permissions.
 
-Memory regions with `rw-RW` permissions allow read access without crashing the cheriBSD OS; in contrast, regions marked with `rw---` grant read access only to the owner process. Attempts to access these regions from a different process result in crashes; Figure 15 shows an example. The screenshot shows the content of the memory at crash time.
+Memory regions with `rw-RW` permissions allow read access without crashing the cheriBSD OS; in contrast, regions marked with `rw---` grant read access only to the owner process. Attempts to access these regions from a different process result in crashes; Figure 17 shows an example. The screenshot shows the content of the memory at crash time.
 
 <p align="center">
   <img src="./figs/memerror_dynamiclibs.png" alt="Memory read error: attempt to read region protected by compartments" width="75%"/>
 </p>
-<p align="center"><em>Figure 15: Memory read error: attempt to read region protected by compartments.</em></p>
+<p align="center"><em>Figure 17: Memory read error: attempt to read region protected by compartments.</em></p>
 
 
 ### 8.2.3. Execution results:
@@ -1053,7 +1075,7 @@ raw collected metrics and present results graphically. They produce aggregated C
 
 ## 9.2  Python script for plotting
 
-- [Maximum number of compartments plots](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/cheri-caps-executable-performance/plot-graph)
+- [Maximum number of compartments plots](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/max_num_of_compartments_performance/plot-graph)
    
 - [Memory performance plots](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/tree/main/memory-performance/plot-graph)
 
