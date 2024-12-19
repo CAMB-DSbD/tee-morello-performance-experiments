@@ -278,7 +278,7 @@ As a second example take the 5th row. It shows that after 10808.39 ms, `cheri-ca
 The blue line in the plot of Fig. 3 illustrates how memory is consumed as the number of compartments increases. The orange line illustrates the elapsed time as the number of compartments increases.
 
 <p align="center">
-  <img src="./figs/max_num_compart_purecap_cheri22.12.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
+  <img src="./figs/max_num_compart_purecapABI_cheri22.12.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
 </p>
 <p align="center"><em>Figure 3: Memory consumed by incremental replication of compartments and time to create compartments in cheriOS ver22.12.</em></p>
 
@@ -293,7 +293,7 @@ We did not expect the behaviours exhibited by the blue line of Fig. 3. We have n
 ## 3.2. Compartments created for purecap ABI in cheriOS 24.05
 
 <p align="center">
-  <img src="./figs/max_num_compart_purecap.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
+  <img src="./figs/max_num_compart_purecapABI.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
 </p>
 <p align="center"><em>Figure 4: Max number of compartments created for purecap ABI created in cheriOS ver 24.05 and memory consumed.</em></p>
 
@@ -303,7 +303,7 @@ We did not expect the behaviours exhibited by the blue line of Fig. 3. We have n
 ## 3.3. Compartments created for purecap-benchmark in cheriOS 24.05
 
 <p align="center">
-  <img src="./figs/max_num_compart_purecap-benchmark.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
+  <img src="./figs/max_num_compart_purecap-benchmarkABI.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
 </p>
 <p align="center"><em>Figure 5: Max number of compartments created for purecap--benchmark ABI created in cheriOS ver 24.05 and memory consumed.</em></p>
 
