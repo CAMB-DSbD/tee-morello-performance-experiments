@@ -233,7 +233,7 @@ Imagine that user Alice is conducting the experiment. To create the attestables 
 
 2. **Launch**: Alice executes `cheri-cap-experiment.py` to launch the attestable:
 
-   [% cheri-cap-experiment.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/cheri-cap-experiment.py)
+   [% cheri-cap-experiment.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI_cheriOS_22.12/cheri-cap-experiment.py)
 
 3. `% python3 cheri-cap-experiment.py` runs incrementally, creating attestable replicas until it detects that the attestables have consumed 90% of the 17118.4 MB of the Morello Board's memory, that is, about 15406.5 MB.
 
@@ -242,7 +242,7 @@ Imagine that user Alice is conducting the experiment. To create the attestables 
 
 ## 3.1. Compartments created for purecap ABI in cheriOS 22.14 
 
-The results are logged in the CSV file [cheri-cap-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
+The results are logged in the CSV file [cheri-cap-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI_cheriOS_22.12/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
 The first few lines of the CSV file are shown in Table 2 to be read as follows:
 
@@ -280,7 +280,7 @@ The blue line in the plot of Fig. 3 illustrates how memory is consumed as the nu
 <p align="center">
   <img src="./figs/max_num_compart_purecapABI_cheri22.12.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
 </p>
-<p align="center"><em>Figure 3: Memory consumed by incremental replication of compartments and time to create compartments in cheriOS ver22.12.</em></p>
+<p align="center"><em>Figure 3: Memory consumed by incremental replication of compartments and time to create compartments in cheriOS ver 22.12.</em></p>
 
 We initially expected memory consumption to increase steadily from 1,628.3 MB, corresponding to a single attestable replica, to 15,406.5 MB (90% of total memory) consumed by N attestable replicas. The objective was to determine the exact value of N.
 
