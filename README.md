@@ -238,13 +238,31 @@ Imagine that user Alice is conducting the experiment. To create the attestables 
 3. `% python3 cheri-cap-experiment.py` runs incrementally, creating attestable replicas until it detects that the attestables have consumed 90% of the 17118.4 MB of the Morello Board's memory, that is, about 15406.5 MB.
 
 
+## 3.1. Results 
+
+We have stored the metrics collected in scv files. To help the reader, 
+the first lines of the csv files are shown in tables to be read as follows:
 
 
-## 3.1. Compartments created for purecap ABI in cheriOS 22.14 
+- **Number of Compartments:** The number of compartments created.
+- **Memory Used (MB):** The amount of memory consumed by the compartments.
+- **Time Elapsed:** The time elapsed from the start to completion 
+    of the experiment which is assumed to start at time zero. 
 
-The results are logged in the CSV file [cheri-cap-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI_cheriOS_22.12/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
-The first few lines of the CSV file are shown in Table 2 to be read as follows:
+We assume that the experiments start at time zero, with 0 number 
+of compartments which  have consumed zero MB of memory.
+
+
+
+
+
+
+### 3.1.1. Compartments created for purecap ABI in cheriOS 22.12 
+
+The results are logged in the csv file [cheri-cap-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI_cheriOS_22.12/cheri-cap-experiment-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
+
+The first few lines of the csv file are shown in Table 2 to be read as follows:
 
 
 <div align="center">
@@ -264,14 +282,6 @@ compartments created for  purecap ABI cheroOS 22.14 and elapsed time.</em></p>
 </div>
 
 
-The table contains the following measurements:
-
-- **Number of Compartments:** The number of compartments created.
-- **Memory Used (MB):** The amount of memory consumed by the given number of compartments.
-- **Time Elapsed:** The time elapsed since the beginning of the experiment that is assumed to start at time zero.
-
-Let us assume that the experiment stars at time zero, with 0 number of compartments which has consumed zero MB of memory.
-
 The first row shows that it took 514.00 ms to `cheri-cap-experiment.py` to create one compartment that consumes 1628.40 MB of memory.  
 As a second example take the 5th row. It shows that after 10808.39 ms, `cheri-cap-experiment.py` has created 5 compartments that have consumed 1640.39 MB.
 
@@ -290,7 +300,7 @@ We did not expect the behaviours exhibited by the blue line of Fig. 3. We have n
 
 
 
-## 3.2. Compartments created for purecap ABI in cheriOS 24.05
+### 3.1.2. Compartments created for purecap ABI in cheriOS 24.05
 
 <p align="center">
   <img src="./figs/max_num_compart_purecapABI.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
@@ -300,7 +310,7 @@ We did not expect the behaviours exhibited by the blue line of Fig. 3. We have n
 
 
 
-## 3.3. Compartments created for purecap-benchmark in cheriOS 24.05
+### 3.1.3. Compartments created for purecap-benchmark in cheriOS 24.05
 
 <p align="center">
   <img src="./figs/max_num_compart_purecap-benchmarkABI.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
