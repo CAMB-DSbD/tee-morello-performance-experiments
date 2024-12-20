@@ -260,7 +260,7 @@ of compartments which  have consumed zero MB of memory.
 
 ### 3.1.1. Compartments created for purecap ABI in cheriOS 22.12 
 
-The results are logged in the csv file [cheri-cap-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI_cheriOS_22.12/max_num_compart-experiment-cheriOS22.12-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
+The results are logged in the csv file [max_num_compart-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI_cheriOS_22.12/max_num_compart-experiment-cheriOS22.12-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
 The first few lines of the csv file are shown in Table 2 to be read as follows:
 
