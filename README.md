@@ -694,12 +694,12 @@ from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-D
 
 ## 5.4. Comparison of results from the three experiments
 
-Table 9 shows a comparison of the three alternatives: no compartment,
+Table 8 shows a comparison of the three alternatives: no compartment,
 compartment running purecap code and compartment running
 purecap-benchmark code.
 
 <div align="center">
-<p><em>Table 9: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
+<p><em>Table 8: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
 
 | Trial Type                     | CPU Time (ms) - Normal | CPU Time (ms) –purecap-benchmark | CPU Time (ms) - purecap |
 |-------------------------------|------------------------|-------------------------------------|-------------------------|
@@ -805,10 +805,10 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 We store the data collected from this experiment in two separate CSV files: [pipe-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
 
-Table 10 and Table 11 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
+Table 9 and Table 10 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
 <div align="center">
-<p><em>Table 10: Time to execute write and read from a pipe inside a compartment.</em></p>
+<p><em>Table 9: Time to execute write and read from a pipe inside a compartment.</em></p>
 
 | Test | Message Size (Bytes) | Write Time (ms) | Read Time (ms) | Total Time (ms) |
 |------|-----------------------|-----------------|----------------|-----------------|
@@ -823,7 +823,7 @@ Table 10 and Table 11 contain the results of each iteration, including message s
 
 
 <div align="center">
-<p><em>Table 11: Time to execute write and read from a pipe without a compartment.</em></p>
+<p><em>Table 10: Time to execute write and read from a pipe without a compartment.</em></p>
 
 | Test | Message Size (Bytes) | Write Time (ms) | Read Time (ms) | Total Time (ms) |
 |------|-----------------------|-----------------|----------------|-----------------|
@@ -923,10 +923,10 @@ Figure 12 shows the steps executed by the `memory_reader.py` script:
 
 ## 7.1. Results
 
-Table 13 summarises the results. The columns have the following meaning:
+Table 11 summarises the results. The columns have the following meaning:
 
 <div align="center">
-<p><em>Table 13: Memory isolation in executions within and without compartments.</em></p>
+<p><em>Table 11: Memory isolation in executions within and without compartments.</em></p>
 
 | Test num. | Execution env.   | User privileges | Access  | Sensitive Data Visible |
 |-----------|------------------|-----------------|---------|-------------------------|
