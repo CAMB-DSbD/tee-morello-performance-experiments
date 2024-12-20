@@ -842,7 +842,7 @@ The data shows the differences in the performance of inter--process communicatio
 A graphical view of the results is shown in Figure 10.
 
 <p align="center">
-  <img src="./figs/pipePerformance.png" alt="Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments" width="100%"/>
+  <img src="./figs/pipe_comm_perfor.png" alt="Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments" width="100%"/>
 </p>
 <p align="center"><em>Figure 10: Times to write and read a 1024 byte string from a pipe executed in compartments and without compartments.</em></p>
 
