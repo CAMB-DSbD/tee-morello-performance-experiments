@@ -315,6 +315,34 @@ remains pending.
 
 ### 3.1.2. Compartments created for purecap ABI in cheriOS 24.05
 
+The results are logged in the csv file [max_num_compart-experiment-purecapABI-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI/max_num_compart-experiment-purecapABI-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
+
+The first few lines of the csv file are shown 
+in Table XX:
+
+
+
+
+
+<div align="center">
+<p><em>Table XX : Metrics of memory consumed by different numbers of
+compartments created for  purecap ABI cheroOS 24.05 and elapsed time.</em></p>
+
+| **Number of Compartments** | **Memory Used (MB)** | **Time Elapsed (ms)** |
+|-----------------------------|---------------------|-----------------------|
+| 1                           | 1393.11             | 522.23               |
+| 2                           | 1399.96             | 1039.24              |
+| 3                           | 1404.45             | 1549.57              |
+| 4                           | 1411.93             | 2071.49              |
+| 5                           | 1421.18             | 2595.50              |
+| ...                         | ...                 | ...                  |
+| 586                         | 14728.59            | 300644.67            |
+
+</div>
+
+
+
+
 <p align="center">
   <img src="./figs/max_num_compart_purecapABI.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
 </p>
@@ -324,6 +352,30 @@ remains pending.
 
 
 ### 3.1.3. Compartments created for purecap-benchmark in cheriOS 24.05
+
+
+The results are logged in the csv file [max_num_compart-experiment-purecap-benchmarkABI-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecap-benchmarkABI/max_num_compart-experiment-purecap-benchmarkABI-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
+
+The first few lines of the csv file are shown 
+in Table XY:
+
+<div align="center">
+<p><em>Table XY : Metrics of memory consumed by different numbers of
+compartments created for  purecap-benchmark ABI cheriOS 24.05 and elapsed time.</em></p>
+
+| **Number of Compartments** | **Memory Used (MB)** | **Time Elapsed (ms)** |
+|-----------------------------|---------------------|-----------------------|
+| 1                           | 1353.46             | 505.44                |
+| 2                           | 1357.30             | 1011.36               |
+| 3                           | 1360.80             | 1517.21               |
+| 4                           | 1364.79             | 2023.95               |
+| 5                           | 1368.99             | 2560.19               |
+| ...                         | ...                 | ...                   |
+| 615                         | 14691.81            | 315171.82             |
+
+</div>
+
+
 
 <p align="center">
   <img src="./figs/max_num_compart_purecap-benchmarkABI.png" alt="Memory consumed by incremental replication of compartments and time to create compartments" width="100%"/>
