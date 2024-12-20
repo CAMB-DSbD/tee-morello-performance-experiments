@@ -262,12 +262,12 @@ of compartments which  have consumed zero MB of memory.
 
 The results are logged in the csv file [max_num_compart-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI_cheriOS_22.12/max_num_compart-experiment-cheriOS22.12-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
-The first few lines of the csv file are shown in Table 2 to be read as follows:
+The first few lines of the csv file are shown in Table 2.
 
 
 <div align="center">
 <p><em>Table 2: Metrics of memory consumed by different numbers of 
-compartments created for  purecap ABI cheroOS 22.14 and elapsed time.</em></p>
+compartments created for  purecap ABI cheriOS 22.14 and elapsed time.</em></p>
 
 | **Number of Compartments** | **Memory Used (MB)** | **Time Elapsed (ms)** |
 |-----------------------------|----------------------|-----------------------|
@@ -318,14 +318,14 @@ remains pending.
 The results are logged in the csv file [max_num_compart-experiment-purecapABI-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecapABI/max_num_compart-experiment-purecapABI-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
 The first few lines of the csv file are shown 
-in Table XX:
+in Table 3:
 
 
 
 
 
 <div align="center">
-<p><em>Table XX : Metrics of memory consumed by different numbers of
+<p><em>Table 3: Metrics of memory consumed by different numbers of
 compartments created for  purecap ABI cheroOS 24.05 and elapsed time.</em></p>
 
 | **Number of Compartments** | **Memory Used (MB)** | **Time Elapsed (ms)** |
@@ -357,10 +357,10 @@ compartments created for  purecap ABI cheroOS 24.05 and elapsed time.</em></p>
 The results are logged in the csv file [max_num_compart-experiment-purecap-benchmarkABI-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/max_num_of_compartments_performance/purecap-benchmarkABI/max_num_compart-experiment-purecap-benchmarkABI-results.csv), which contains detailed data on the number of compartments, memory usage, and elapsed time.
 
 The first few lines of the csv file are shown 
-in Table XY:
+in Table 4:
 
 <div align="center">
-<p><em>Table XY : Metrics of memory consumed by different numbers of
+<p><em>Table 4: Metrics of memory consumed by different numbers of
 compartments created for  purecap-benchmark ABI cheriOS 24.05 and elapsed time.</em></p>
 
 | **Number of Compartments** | **Memory Used (MB)** | **Time Elapsed (ms)** |
@@ -463,11 +463,12 @@ executed without compartments and within compartments:
 
 We stored the metrics collected in the 
 [memory-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/outside-tee-execution/memory-out-experiment-results.csv) file.
-We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.). The results are summarised in Table 3.
+We calculate the average time that it takes to allocate, write, read and free for  each block size of 100 MB, 200 MB, 300 MB, etc.). The 
+results are summarised in Table 5.
 
 
 <div align="center">
-<p><em>Table 3: Metrics of runs outside a compartment, including mean and standard deviation.</em></p>
+<p><em>Table 5: Metrics of runs outside a compartment, including mean and standard deviation.</em></p>
 
 
 | **Block Size (MB)** | **Allocation Time (ms)** | **Write Time (ms)** | **Read Time (ms)** | **Free Time (ms)** |
@@ -502,12 +503,12 @@ We calculate the average time that it takes to allocate, write, read and free fo
 The metrics collected are stored in two separate csv files: [memory-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution-purecap/memory-in-experiment-purecap-results.csv) for the run inside a compartment. 
 We calculate the average time that it takes to allocate, write, 
 read and free for  each block size of 100 MB, 200 MB, 300 MB, 
-etc.). The results are summarised in Tables 4.
+etc.). The results are summarised in Tables 6.
 
 
   
 <div align="center">
-<p><em>Table 4: Metrics of runs inside compartment created for the
+<p><em>Table 6: Metrics of runs inside compartment created for the
 purecap ABI, including mean and standard deviation (todo: allocation 
 time col looks odd!).</em></p>
 
@@ -527,8 +528,6 @@ time col looks odd!).</em></p>
 
 </div>
 
-</div>
-
 
 
 
@@ -544,11 +543,11 @@ time col looks odd!).</em></p>
 The metrics collected are stored in two separate CSV files: [memory-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/memory-performance/inside-tee-execution-purecap-benchmark/memory-in-experiment-purecap-benchmark-results.csv) for the run inside a compartment. 
 We calculate the average time that it takes to allocate, write, 
 read and free for  each block size of 100 MB, 200 MB, 300 MB, 
-etc.). The results are summarised in Table 5.
+etc.). The results are summarised in Table 7.
 
   
 <div align="center">
-<p><em>Table 5: Metrics of runs inside a compartment compiled for the
+<p><em>Table 7: Metrics of runs inside a compartment compiled for the
 bechmark ABI, including mean and standard deviation (todo: allocation 
 time col looks odd!).</em></p>
 
@@ -576,7 +575,7 @@ time col looks odd!).</em></p>
 
 
 
-Plots of the results from Tables 3, 4 and 5 are shown in Figure and 7.  
+Plots of the results from Tables 5, 6 and 7 are shown in Figure and 7.  
 
 <p align="center">
   <img src="./figs/perfor_mem_oper_compare.png" alt="Time to execute allocate, write, read and release memory operations" width="100%"/>
@@ -591,7 +590,10 @@ Plots of the results from Tables 3, 4 and 5 are shown in Figure and 7.
 
 - **Read time (to update):** The time to execute read operations increases linearly in both executions. However, execution within a compartment takes longer than execution without compartments.
 
-- **Free time (to update):** The metrics in the tables show contrasting performances. Table 3 shows that it takes significantly longer to free memory in executions inside a compartment. The times rages from 97 to 1 197 ms. In contrast, Table 3 shows times that range from 3 to 9 ms in executions without compartments.
+- **Free time (to update):** The metrics in the tables show contrasting performances. 
+    Table 5 shows that it takes significantly longer to free memory in executions 
+    inside a compartment. The times rages from 97 to 1 197 ms. In contrast, 
+    Table 5 shows times that range from 3 to 9 ms in executions without compartments.
 
 
 
@@ -692,12 +694,12 @@ from [cpu-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-D
 
 ## 5.4. Comparison of results from the three experiments
 
-Table 7 shows a comparison of the three alternatives: no compartment,
+Table 9 shows a comparison of the three alternatives: no compartment,
 compartment running purecap code and compartment running
 purecap-benchmark code.
 
 <div align="center">
-<p><em>Table 7: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
+<p><em>Table 9: Times to execute CPU operations inside and without a compartment, including benchmark results.</em></p>
 
 | Trial Type                     | CPU Time (ms) - Normal | CPU Time (ms) –purecap-benchmark | CPU Time (ms) - purecap |
 |-------------------------------|------------------------|-------------------------------------|-------------------------|
@@ -803,10 +805,10 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 We store the data collected from this experiment in two separate CSV files: [pipe-in-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
 
-Table 8 and Table 9 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
+Table 10 and Table 11 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
 <div align="center">
-<p><em>Table 8: Time to execute write and read from a pipe inside a compartment.</em></p>
+<p><em>Table 10: Time to execute write and read from a pipe inside a compartment.</em></p>
 
 | Test | Message Size (Bytes) | Write Time (ms) | Read Time (ms) | Total Time (ms) |
 |------|-----------------------|-----------------|----------------|-----------------|
@@ -819,8 +821,9 @@ Table 8 and Table 9 contain the results of each iteration, including message siz
 
 </div>
 
+
 <div align="center">
-<p><em>Table 9: Time to execute write and read from a pipe without a compartment.</em></p>
+<p><em>Table 11: Time to execute write and read from a pipe without a compartment.</em></p>
 
 | Test | Message Size (Bytes) | Write Time (ms) | Read Time (ms) | Total Time (ms) |
 |------|-----------------------|-----------------|----------------|-----------------|
@@ -920,10 +923,10 @@ Figure 12 shows the steps executed by the `memory_reader.py` script:
 
 ## 7.1. Results
 
-Table 10 summarises the results. The columns have the following meaning:
+Table 13 summarises the results. The columns have the following meaning:
 
 <div align="center">
-<p><em>Table 11: Memory isolation in executions within and without compartments.</em></p>
+<p><em>Table 13: Memory isolation in executions within and without compartments.</em></p>
 
 | Test num. | Execution env.   | User privileges | Access  | Sensitive Data Visible |
 |-----------|------------------|-----------------|---------|-------------------------|
