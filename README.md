@@ -736,14 +736,6 @@ This experiment was conducted to evaluate how the use of compartments affects th
 
 We run the C program within a compartment [pipe-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap/pipe-in-experiment.c) and without compartments [pipe-out-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution-purecap/pipe-out-experiment.c).
 
-- **Compilation and execution inside a compartment**
-
-  ```bash
-  $ clang-morello -march=morello+c64 -mabi=purecap -o pipe-in-experiment pipe-in-experiment.c
-  
-  $ proccontrol -m cheric18n -s enable pipe-in-experiment
-  ```
-
 - **Compilation and execution without a compartment**
 
   ```bash
@@ -751,6 +743,24 @@ We run the C program within a compartment [pipe-in-experiment.c](https://github.
   
   $ ./pipe-out-experiment
   ```
+
+- **Compilation and execution inside a compartment for purecap ABI**
+
+  ```bash
+  $ clang-morello -march=morello+c64 -mabi=purecap -o pipe-in-experiment pipe-in-experiment.c
+  
+  $ proccontrol -m cheric18n -s enable pipe-in-experiment
+  ```
+
+- **Compilation and execution inside a compartment for purecap-benchmark ABI**
+
+  ```bash
+  $ clang-morello -march=morello+c64 -mabi=purecap-benchmark -o pipe-in-experiment pipe-in-experiment.c
+  
+  $ proccontrol -m cheric18n -s enable pipe-in-experiment
+  ```
+
+
 
 To collect metrics, the parent process writes a random string of 1024 bytes — a typical size widely used in inter-process communication applications.
 
@@ -803,12 +813,17 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 ## 6.1. Results
 
-We store the data collected from this experiment in two separate CSV files: [pipe-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap/pipe-in-experiment-purecap-results.csv) for operations executed inside the compartment and [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) for operations executed without a compartment.
-
 Table 9 and Table 10 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
+
+We store the data collected from the experiment inside a compartment
+for the purecap ABI in the [pipe-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap/pipe-in-experiment-purecap-results.csv) file.
+
+
+
 <div align="center">
-<p><em>Table 9: Time to execute write and read from a pipe inside a compartment.</em></p>
+<p><em>Table 9: Time to execute write and read from a pipe inside a compartment for
+                purecap ABI.</em></p>
 
 | Test | Message Size (Bytes) | Write Time (ms) | Read Time (ms) | Total Time (ms) |
 |------|-----------------------|-----------------|----------------|-----------------|
@@ -821,6 +836,32 @@ Table 9 and Table 10 contain the results of each iteration, including message si
 
 </div>
 
+
+ 
+We store the data collected from the experiment inside a compartment
+for the purecap-benchmakr  ABI in the [pipe-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap-benchmaek/pipe-in-experiment-purecap-benchmark-results.csv) file.
+
+
+
+<div align="center">
+<p><em>Table 9.1: Time to execute write and read from a pipe inside a compartment for
+                purecap-benchmark ABI.</em></p>
+
+| Test | Message Size (Bytes) | Write Time (ms) | Read Time (ms) | Total Time (ms) |
+|------|-----------------------|----------------|----------------|-----------------|
+| 1    | 1024                 | 0.014           | 0.106          | 0.119           |
+| 2    | 1024                 | 0.001           | 0.001          | 0.003           |
+| 3    | 1024                 | 0.003           | 0.019          | 0.022           |
+| 4    | 1024                 | 0.003           | 0.024          | 0.027           |
+| ...  | ...                  | ...             | ...            | ...             |
+| 100  | 1024                 | 0.003           | 0.032          | 0.035           |
+
+</div>
+
+
+
+The file [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) 
+collects the results of the experiment without  the use of a compartment.
 
 <div align="center">
 <p><em>Table 10: Time to execute write and read from a pipe without a compartment.</em></p>
