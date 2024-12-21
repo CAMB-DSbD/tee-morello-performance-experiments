@@ -839,7 +839,7 @@ for the purecap ABI in the [pipe-in-experiment-purecap-results.csv](https://gith
 
  
 We store the data collected from the experiment inside a compartment
-for the purecap-benchmakr  ABI in the [pipe-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap-benchmaek/pipe-in-experiment-purecap-benchmark-results.csv) file.
+for the purecap-benchmark  ABI in the [pipe-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap-benchmark/pipe-in-experiment-purecap-benchmark-results.csv) file.
 
 
 
