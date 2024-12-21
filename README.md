@@ -734,7 +734,7 @@ This experiment was conducted to evaluate how the use of compartments affects th
 </p>
 <p align="center"><em>Figure 10: Parent--child communication over a pipe.</em></p>
 
-We run the C program within a compartment [pipe-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution/pipe-in-experiment.c) and without compartments [pipe-out-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment.c).
+We run the C program within a compartment [pipe-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap/pipe-in-experiment.c) and without compartments [pipe-out-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution-purecap/pipe-out-experiment.c).
 
 - **Compilation and execution inside a compartment**
 
