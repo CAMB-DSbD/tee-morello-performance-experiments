@@ -813,7 +813,7 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 
 ## 6.1. Results
 
-Table 9 and Table 10 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
+Table 9, Table 9.1 and Table 10 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
 
 We store the data collected from the experiment inside a compartment
