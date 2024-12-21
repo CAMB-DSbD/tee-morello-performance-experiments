@@ -3,7 +3,7 @@
  * Institution: Computer Lab, University of Cambridge
  * 9 Sep 2024
  *
- * pipe.c 
+ * pipe-in-experiment.c 
  * communicates a parent and a child process through a pipe.
  * The parent: 
  * 1) creates a pipe 
@@ -28,15 +28,12 @@
  *
  * II) Compile and run with library compartmentalisation:
  *
- * cm770@morello-camb-2: $ clang-morello -march=morello+c64 -mabi=purecap -g -o pipe pipe.c -L. -lm
- * clang-14: warning: Using c64 in the arch string is deprecated. The CPU mode should be inferred from the ABI. [-Wdeprecated]
+ * cm770@morello-camb-2: $ clang-morello -march=morello+c64 -mabi=purecap -g -o pipe-in-experiment pipe-in-experiment.c -L. -lm
+ * clang-14: warning: Using c64 in the arch string is deprecated. 
+ *  The CPU mode should be inferred from the ABI. [-Wdeprecated]
+ * 
+ * $ proccontrol  -m cheric18n -s enable ./pipe-in-experiment 
  *
- * cm770@morello-camb-2: $ proccontrol  -m cheric18n -s enable pipe
- * I'm the PARENT process!
- * I'm the CHILD process!
- * i= 0
- * !!!!!!!!msg recv from child proc EL24imDZwzUdbY 
- * ...
  */
 
 #include        <stdlib.h>
@@ -69,7 +66,7 @@ int main()
 {
     int pipechan[2], child;
 
-    FILE *log_file = fopen("pipe-in-experiment-result.csv", "w");
+    FILE *log_file = fopen("pipe-in-experiment-purecap-results.csv", "w");
     if (log_file == NULL) {
         printf("error: opening CSV file.\n");
         exit(1);
@@ -95,7 +92,7 @@ int main()
         char buf1[STRLEN];
         struct timespec start_read, end_read;
 
-        log_file = fopen("pipe-in-experiment-result.csv", "a");
+        log_file = fopen("pipe-in-experiment-purecap-results.csv", "a");
         if (log_file == NULL) {
             printf("error: opening CSV file.\n");
             exit(1);

@@ -3,7 +3,11 @@
  * Institution: Computer Lab, University of Cambridge
  * 9 Sep 2024
  *
- * pipe.c 
+ * Carlos Molina 
+ * 21 Dec 2024
+ *
+ * pipe-in-experiment.c
+ * 
  * communicates a parent and a child process through a pipe.
  * The parent: 
  * 1) creates a pipe 
@@ -16,9 +20,9 @@
  * 
  *
  * I) Compile and run without library compartmentalisation:
- * cm770@morello-camb-2: $ clang-morello -o pipe pipe.c
+ * cm770@morello-camb-2: $  
  *
- * cm770@morello-camb-2: $ ./pipe
+ * cm770@morello-camb-2: $ ./pipe-in-experiment
  * I'm the PARENT process!
  * I'm the CHILD process!
  * i= 0
@@ -27,16 +31,15 @@
  *
  *
  * II) Compile and run with library compartmentalisation:
+ * cm770@morello-camb-3:$ date
+ * Sat Dec 21 01:20:15 UTC 2024
  *
- * cm770@morello-camb-2: $ clang-morello -march=morello+c64 -mabi=purecap -g -o pipe pipe.c -L. -lm
- * clang-14: warning: Using c64 in the arch string is deprecated. The CPU mode should be inferred from the ABI. [-Wdeprecated]
+ * $ cc -g -O2 -Wall -march=morello+c64 -mabi=purecap-benchmark -o pipe-in-experiment pipe-in-experiment.c -L. -lm 
  *
- * cm770@morello-camb-2: $ proccontrol  -m cheric18n -s enable pipe
- * I'm the PARENT process!
- * I'm the CHILD process!
- * i= 0
- * !!!!!!!!msg recv from child proc EL24imDZwzUdbY 
- * ...
+ * clang-14: warning: Using c64 in the arch string is deprecated. 
+ * The CPU mode should be inferred from the ABI. [-Wdeprecated]
+ *
+ * $ proccontrol  -m cheric18n -s enable ./pipe-in-experiment 
  */
 
 #include        <stdlib.h>
@@ -69,7 +72,7 @@ int main()
 {
     int pipechan[2], child;
 
-    FILE *log_file = fopen("pipe-in-experiment-result.csv", "w");
+    FILE *log_file = fopen("pipe-in-experiment-purecap-benchmark-results.csv", "w");
     if (log_file == NULL) {
         printf("error: opening CSV file.\n");
         exit(1);
@@ -95,7 +98,7 @@ int main()
         char buf1[STRLEN];
         struct timespec start_read, end_read;
 
-        log_file = fopen("pipe-in-experiment-result.csv", "a");
+        log_file = fopen("pipe-in-experiment-purecap-benchmark-results.csv", "a");
         if (log_file == NULL) {
             printf("error: opening CSV file.\n");
             exit(1);
