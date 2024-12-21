@@ -816,9 +816,9 @@ In Algorithm 3, the `start_test` function (line 1) initiates a sequence of opera
 Table 9, Table 9.1 and Table 10 contain the results of each iteration, including message size, write time, read time, and total time taken for the operations.
 
 
-We store the data collected from the experiment inside a compartment
-for the purecap ABI in the [pipe-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap/pipe-in-experiment-purecap-results.csv) file.
-
+The metrics collected from the run of the experiment 
+inside a compartment for the purecap ABI are stored
+in the [pipe-in-experiment-purecap-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap/pipe-in-experiment-purecap-results.csv) file.
 
 
 <div align="center">
@@ -836,10 +836,11 @@ for the purecap ABI in the [pipe-in-experiment-purecap-results.csv](https://gith
 
 </div>
 
-
  
-We store the data collected from the experiment inside a compartment
-for the purecap-benchmark  ABI in the [pipe-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap-benchmark/pipe-in-experiment-purecap-benchmark-results.csv) file.
+The metrics collected from the execution of the
+experiment inside a compartment
+for the purecap-benchmark  ABI are stored in
+the [pipe-in-experiment-purecap-benchmark-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/inside-tee-execution-purecap-benchmark/pipe-in-experiment-purecap-benchmark-results.csv) file.
 
 
 
@@ -861,7 +862,8 @@ for the purecap-benchmark  ABI in the [pipe-in-experiment-purecap-benchmark-resu
 
 
 The file [pipe-out-experiment-results.csv](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-performance/outside-tee-execution/pipe-out-experiment-results.csv) 
-collects the results of the experiment without  the use of a compartment.
+stores the results of the experiment run
+without  the use of a compartment.
 
 <div align="center">
 <p><em>Table 10: Time to execute write and read from a pipe without a compartment.</em></p>
