@@ -1118,6 +1118,11 @@ The compilation process is divided into two steps: Firstly, each individual modu
      ```bash
      $ export LD_LIBRARY_PATH=.
      ```
+   - To verify the PATH.
+
+     ```bash
+     $ echo $LD_LIBRARY_PATH
+     ```
 
    - To run `pipe_trampoline` within compartments, we executed the following command:
 
