@@ -1062,7 +1062,7 @@ To explore memory isolation further, we executed a C program that communicates a
 
 The compilation process is divided into two steps: Firstly, each individual module is compiled separately to create a dynamic library. Secondly, the main executable is compiled taking the dynamic libraries as input to create the main executable. In this example, we used two modules and therefore, we produce two dynamic libraries.
 
-1. **Compilation of the parent library:**
+1. **Compilation of the parent library for the purecap ABI:**
 
    To create the object file `library_a.o` from the source file `library_a.c`, execute:
 
@@ -1081,7 +1081,7 @@ The compilation process is divided into two steps: Firstly, each individual modu
    The source C file is available from Git:  
    [library_a.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/library_a.c).
 
-2. **Compilation of the child library:**
+2. **Compilation of the child library for the purecap ABI:**
 
    The procedure to produce the library of the child process is similar.
 
@@ -1100,7 +1100,7 @@ The compilation process is divided into two steps: Firstly, each individual modu
    The source file is available from Git:  
    [library_b.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/library_b.c).
 
-3. **Compilation of the main program:**  
+3. **Compilation of the main program for the purecap ABI:**  
    The main program is compiled and linked with the dynamic libraries (`library_a.so` and `library_b.so`) created above. They are assumed to be located in the current directory specified as `-L.`.
 
    ```bash
@@ -1108,9 +1108,9 @@ The compilation process is divided into two steps: Firstly, each individual modu
    ```
 
    The source C file is available from Git:  
-   [pipe-trampoline-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-multi-compartment-performance/pipe-trampoline-in-experiment.c).
+   [pipe-trampoline-in-experiment.c](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/pipe-mem-secu-multicompart/purecap/pipe-trampoline-in-experiment.c).
 
-4. **Execution of the main program:**  
+4. **Execution of the main program in purecap ABI:**  
    We executed the main program within a compartment.
 
    - We set the `LD_LIBRARY_PATH` to enable the program to locate the shared libraries in the current directory.
@@ -1236,3 +1236,4 @@ The experiments and results reported on this web page are being conducted in col
 [carlos.molina@cl.cam.ac.uk](mailto:carlos.molina@cl.cam.ac.uk)
 
 
+memsecu-multicompart
