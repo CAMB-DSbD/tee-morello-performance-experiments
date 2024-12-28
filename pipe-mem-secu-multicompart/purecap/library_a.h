@@ -5,4 +5,3 @@
 void parent_process(int pipechan[]);
 
 #endif
-

@@ -8,7 +8,7 @@
 #include "library_a.h"
 #include "library_b.h"
 
-// Definindo STRLEN e NUM_OF_MSG no arquivo principal
+// STRLEN and NUM_OF_MSG idefined in the main file
 #define STRLEN     1024
 #define NUM_OF_MSG 100
 

@@ -44,7 +44,7 @@ void parent_process(int pipechan[]) {
     char buf1[STRLEN];
     struct timespec start_read, end_read;
 
-    FILE *log_file = fopen("pipe-in-experiment-result.csv", "a");
+    FILE *log_file = fopen("pipe-in-experiment-purecap-benchmark-results.csv", "a");
     if (log_file == NULL) {
         printf("error: opening CSV file.\n");
         exit(1);

@@ -1,4 +1,4 @@
-#define _POSIX_C_SOURCE 199309L // Definição para expor CLOCK_MONOTONIC
+#define _POSIX_C_SOURCE 199309L // Definition for expor CLOCK_MONOTONIC
 
 #include <stdlib.h>
 #include <unistd.h>
