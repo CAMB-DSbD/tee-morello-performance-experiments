@@ -1,0 +1,167 @@
+regis@GCA:~$ ssh -i ~/.ssh/id_rsa_regis regis@erik.unusualperson.com
+Last login: Sun Dec 29 22:17:01 2024 from 177.70.72.2
+FreeBSD 15.0-CURRENT (GENERIC-MORELLO-PURECAP) #0 releng/24.05-b2ad856aac65: Fri Jul 19 21:17:24 UTC 2024
+
+Welcome to CheriBSD!
+
+CheriBSD extends FreeBSD to implement memory protection and software
+compartmentalization features enabled by CHERI-extended CPUs.
+
+The CheriBSD front page:
+  https://www.cheribsd.org/
+
+We provide support via a mailing list:
+  https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-lists.html
+
+And also via the CHERI-CPU Slack:
+  https://www.cl.cam.ac.uk/research/security/ctsrd/cheri/cheri-slack.html
+
+CheriBSD source may be found at:
+  https://github.com/CTSRD-CHERI/cheribsd/
+
+Find out more about about CHERI at https://cheri-cpu.org/
+
+WARNING: INVARIANTS kernel option defined, expect reduced performance
+WARNING: WITNESS kernel option defined, expect reduced performance
+WARNING: capability revocation enabled by default, this may affect performance
+regis@tom:~ $ pgrep -f pipe_trampoline
+20472
+20473
+regis@tom:~ $ procstat -v 20472
+  PID              START                END PRT    RES PRES REF SHD FLAG   TP PATH
+20472           0x100000           0x101000 r--R-    1    4   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/pipe_trampoline
+20472           0x101000           0x110000 -----    0    0   0   0 ------ -- 
+20472           0x110000           0x111000 r-xR-    1    4   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/pipe_trampoline
+20472           0x111000           0x120000 -----    0    0   0   0 ------ -- 
+20472           0x120000           0x121000 r--R-    1    0   2   0 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/pipe_trampoline
+20472           0x121000           0x130000 -----    0    0   0   0 ------ -- 
+20472           0x130000           0x131000 rw-RW    1    0   2   0 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/pipe_trampoline
+20472           0x131000           0x132000 rw-RW    1    0   1   0 C----c sw 
+20472         0x40130000         0x4013a000 r--R-   10   48  18   8 CN---- vn /libexec/ld-elf64cb.so.1
+20472         0x4013a000         0x40149000 -----    0    0   0   0 ------ -- 
+20472         0x40149000         0x40169000 r-xR-   32   48  18   8 CN---- vn /libexec/ld-elf64cb.so.1
+20472         0x40169000         0x40178000 -----    0    0   0   0 ------ -- 
+20472         0x40178000         0x4017c000 rw-RW    4    0   2   0 CN---c vn /libexec/ld-elf64cb.so.1
+20472         0x4017c000         0x4018b000 -----    0    0   0   0 ------ -- 
+20472         0x4018b000         0x4018c000 rw-RW    1    0   2   0 CN---c vn /libexec/ld-elf64cb.so.1
+20472         0x4018c000         0x40190000 rw-RW    4    0   1   0 C----c sw 
+20472         0x40190000         0x40199000 rw-RW    8    0   1   0 C----c sw 
+20472         0x40199000         0x4019a000 rw-RW    1    0   1   0 C----c sw 
+20472         0x4019a000         0x4019b000 -----    0    0   0   0 ------ qu 
+20472         0x4019b000         0x4019c000 r--R-    1    3   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_a.so
+20472         0x4019c000         0x401ab000 -----    0    0   0   0 CN---- gd 
+20472         0x401ab000         0x401ac000 r-xR-    1    3   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_a.so
+20472         0x401ac000         0x401bb000 -----    0    0   0   0 CN---- gd 
+20472         0x401bb000         0x401bd000 r--R-    2    0   2   0 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_a.so
+20472         0x401bd000         0x401cc000 -----    0    0   0   0 CN---- gd 
+20472         0x401cc000         0x401cd000 rw-RW    1    0   1   0 C----c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_a.so
+20472         0x401cd000         0x401ce000 -----    0    0   0   0 ------ qu 
+20472         0x401ce000         0x401cf000 r--R-    1    3   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_b.so
+20472         0x401cf000         0x401de000 -----    0    0   0   0 CN---- gd 
+20472         0x401de000         0x401df000 r-xR-    1    3   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_b.so
+20472         0x401df000         0x401ee000 -----    0    0   0   0 CN---- gd 
+20472         0x401ee000         0x401f0000 r--R-    2    0   2   0 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_b.so
+20472         0x401f0000         0x401ff000 -----    0    0   0   0 CN---- gd 
+20472         0x401ff000         0x40200000 rw-RW    1    0   2   1 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_b.so
+20472         0x40200000         0x40208000 rw-RW    6    0   1   0 C----c sw 
+20472         0x40208000         0x40209000 -----    0    0   0   0 ------ -- 
+20472         0x40209000         0x4020a000 -----    0    0   0   0 ------ qu 
+20472         0x4020a000         0x4029d000 r--R-  147  504  18   8 CN---- vn /usr/lib64cb/c18n/libc.so.7
+20472         0x4029d000         0x402ac000 -----    0    0   0   0 CN---- gd 
+20472         0x402ac000         0x403e1000 r-xR-  309  504  18   8 CN---- vn /usr/lib64cb/c18n/libc.so.7
+20472         0x403e1000         0x403f0000 -----    0    0   0   0 CN---- gd 
+20472         0x403f0000         0x4040c000 r--R-   28    0   2   0 CN---c vn /usr/lib64cb/c18n/libc.so.7
+20472         0x4040c000         0x4041b000 -----    0    0   0   0 CN---- gd 
+20472         0x4041b000         0x40426000 rw-RW   11    0   1   0 C----c vn /usr/lib64cb/c18n/libc.so.7
+20472         0x40426000         0x40857000 rw-RW   22    0   1   0 C----c sw 
+20472         0x40857000         0x40858000 -----    0    0   0   0 G----- gd 
+20472         0x40858000         0x40877000 rw-RW    1    0   1   0 C--D-c sw 
+20472         0x40877000         0x40a77000 rwxRW    2    0   1   0 C----c sw 
+20472         0x40a77000         0x40a98000 rw-RW   25   25   2   0 CN---c sw 
+20472         0x40a98000         0x40a9f000 -----    0    0   0   0 ------ -- 
+20472         0x40a9f000         0x40aaf000 rw-RW    3    0   1   0 C----c sw 
+20472         0x40aaf000         0x40e8f000 -----    0    0   0   0 G----- gd 
+20472         0x40e8f000         0x40eaf000 rw-RW    3    0   1   0 C--D-c sw 
+20472         0x40eaf000         0x40efe000 rw-RW    1    0   1   0 C----c sw 
+20472         0x41000000         0x41200000 rw-RW   13    0   1   0 C----c sw 
+20472         0x41200000         0x41400000 rw-RW    5    0   1   0 C----c sw 
+20472         0x41400000         0x41a00000 rw-RW    3    0   1   0 C----c sw 
+20472         0x41a00000         0x41de0000 -----    0    0   0   0 G----- gd 
+20472         0x41de0000         0x41e00000 rw-RW    1    0   1   0 C--D-c sw 
+20472         0x41e00000         0x421e0000 -----    0    0   0   0 G----- gd 
+20472         0x421e0000         0x42200000 rw-RW    1    1   1   0 ---D-c sw 
+20472     0xfbfdbffff000     0xfbfdc0000000 rw---    1    1   2   0 CN---- sw 
+20472     0xfbfdc0000000     0xfe0000000000 rw---    1    0   1   0 C----- sw 
+20472     0xffffbfeff000     0xffffbff80000 rw-RW    1    1   2   0 CN---c sw 
+20472     0xffffbff80000     0xfffffff60000 -----    0    0   0   0 G----- gd 
+20472     0xfffffff60000     0xfffffff80000 rw-RW    3    0   1   0 C--D-c sw 
+20472     0xfffffffff000    0x1000000000000 r-x--    1    1  45   0 ------ ph 
+regis@tom:~ $ procstat -v 20473
+  PID              START                END PRT    RES PRES REF SHD FLAG   TP PATH
+20473           0x100000           0x101000 r--R-    1    4   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/pipe_trampoline
+20473           0x101000           0x110000 -----    0    0   0   0 ------ -- 
+20473           0x110000           0x111000 r-xR-    1    4   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/pipe_trampoline
+20473           0x111000           0x120000 -----    0    0   0   0 ------ -- 
+20473           0x120000           0x121000 r--R-    1    0   2   0 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/pipe_trampoline
+20473           0x121000           0x130000 -----    0    0   0   0 ------ -- 
+20473           0x130000           0x131000 rw-RW    1    0   2   0 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/pipe_trampoline
+20473           0x131000           0x132000 rw-RW    1    0   1   0 C----c sw 
+20473         0x40130000         0x4013a000 r--R-   10   48  18   8 CN---- vn /libexec/ld-elf64cb.so.1
+20473         0x4013a000         0x40149000 -----    0    0   0   0 ------ -- 
+20473         0x40149000         0x40169000 r-xR-   32   48  18   8 CN---- vn /libexec/ld-elf64cb.so.1
+20473         0x40169000         0x40178000 -----    0    0   0   0 ------ -- 
+20473         0x40178000         0x4017c000 rw-RW    4    0   2   0 CN---c vn /libexec/ld-elf64cb.so.1
+20473         0x4017c000         0x4018b000 -----    0    0   0   0 ------ -- 
+20473         0x4018b000         0x4018c000 rw-RW    1    0   2   0 CN---c vn /libexec/ld-elf64cb.so.1
+20473         0x4018c000         0x40190000 rw-RW    4    0   1   0 C----c sw 
+20473         0x40190000         0x40199000 rw-RW    8    0   1   0 C----c sw 
+20473         0x40199000         0x4019a000 rw-RW    1    0   1   0 C----c sw 
+20473         0x4019a000         0x4019b000 -----    0    0   0   0 ------ qu 
+20473         0x4019b000         0x4019c000 r--R-    1    3   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_a.so
+20473         0x4019c000         0x401ab000 -----    0    0   0   0 CN---- gd 
+20473         0x401ab000         0x401ac000 r-xR-    1    3   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_a.so
+20473         0x401ac000         0x401bb000 -----    0    0   0   0 CN---- gd 
+20473         0x401bb000         0x401bd000 r--R-    2    0   2   0 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_a.so
+20473         0x401bd000         0x401cc000 -----    0    0   0   0 CN---- gd 
+20473         0x401cc000         0x401cd000 rw-RW    1    0   2   1 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_a.so
+20473         0x401cd000         0x401ce000 -----    0    0   0   0 ------ qu 
+20473         0x401ce000         0x401cf000 r--R-    1    3   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_b.so
+20473         0x401cf000         0x401de000 -----    0    0   0   0 CN---- gd 
+20473         0x401de000         0x401df000 r-xR-    1    3   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_b.so
+20473         0x401df000         0x401ee000 -----    0    0   0   0 CN---- gd 
+20473         0x401ee000         0x401f0000 r--R-    2    0   2   0 CN---c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_b.so
+20473         0x401f0000         0x401ff000 -----    0    0   0   0 CN---- gd 
+20473         0x401ff000         0x40200000 rw-RW    1    0   1   0 C----c vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/liblibrary_b.so
+20473         0x40200000         0x40208000 rw-RW    6    0   1   0 C----c sw 
+20473         0x40208000         0x40209000 -----    0    0   0   0 ------ -- 
+20473         0x40209000         0x4020a000 -----    0    0   0   0 ------ qu 
+20473         0x4020a000         0x4029d000 r--R-  147  504  18   8 CN---- vn /usr/lib64cb/c18n/libc.so.7
+20473         0x4029d000         0x402ac000 -----    0    0   0   0 CN---- gd 
+20473         0x402ac000         0x403e1000 r-xR-  309  504  18   8 CN---- vn /usr/lib64cb/c18n/libc.so.7
+20473         0x403e1000         0x403f0000 -----    0    0   0   0 CN---- gd 
+20473         0x403f0000         0x4040c000 r--R-   28    0   2   0 CN---c vn /usr/lib64cb/c18n/libc.so.7
+20473         0x4040c000         0x4041b000 -----    0    0   0   0 CN---- gd 
+20473         0x4041b000         0x40426000 rw-RW   11    0   1   0 C----c vn /usr/lib64cb/c18n/libc.so.7
+20473         0x40426000         0x40857000 rw-RW   20    0   1   0 C----c sw 
+20473         0x40857000         0x40858000 -----    0    0   0   0 G----- gd 
+20473         0x40858000         0x40877000 rw-RW    1    0   1   0 C--D-c sw 
+20473         0x40877000         0x40a77000 rwxRW    2    0   1   0 C----c sw 
+20473         0x40a77000         0x40a98000 rw-RW   25   25   2   0 CN---c sw 
+20473         0x40a98000         0x40a9f000 -----    0    0   0   0 ------ -- 
+20473         0x40a9f000         0x40aaf000 rw-RW    3    0   1   0 C----c sw 
+20473         0x40aaf000         0x40e8f000 -----    0    0   0   0 G----- gd 
+20473         0x40e8f000         0x40eaf000 rw-RW    3    0   1   0 C--D-c sw 
+20473         0x40eaf000         0x40efe000 rw-RW    1    0   1   0 C----c sw 
+20473         0x41000000         0x41200000 rw-RW   14    0   1   0 C----c sw 
+20473         0x41200000         0x41400000 rw-RW   33    0   1   0 C----c sw 
+20473         0x41400000         0x41a00000 rw-RW    3    0   1   0 C----c sw 
+20473         0x41a00000         0x41de0000 -----    0    0   0   0 G----- gd 
+20473         0x41de0000         0x41e00000 rw-RW    1    0   1   0 C--D-c sw 
+20473         0x41e00000         0x421e0000 -----    0    0   0   0 G----- gd 
+20473         0x421e0000         0x42200000 rw-RW    1    1   1   0 ---D-c sw 
+20473     0xfbfdbffff000     0xfbfdc0000000 rw---    1    1   2   0 CN---- sw 
+20473     0xfbfdc0000000     0xfe0000000000 rw---    1    0   1   0 C----- sw 
+20473     0xffffbfeff000     0xffffbff80000 rw-RW    1    1   2   0 CN---c sw 
+20473     0xffffbff80000     0xfffffff60000 -----    0    0   0   0 G----- gd 
+20473     0xfffffff60000     0xfffffff80000 rw-RW    3    0   1   0 C--D-c sw 
+20473     0xfffffffff000    0x1000000000000 r-x--    1    1  45   0 ------ ph 
