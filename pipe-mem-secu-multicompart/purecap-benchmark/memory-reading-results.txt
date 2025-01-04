@@ -1,3 +1,25 @@
+ /*
+ * Programmer: REGIS RODOLFO SCHUCH <regis.schuch@unijui.edu.br>
+ * Date: 30 Dec 2024
+ *
+ * 31 Dec 2024: Carlos Molina Jimenez (carlos.molina@cl.cam.ac.uk)
+ *              edited this file to include these comments
+ *
+ * 1) The pipe_trampoline previously launched by user regis, owner 
+ *    of the process, and with no root privileges.
+ * 
+ *    It run is a compartment created for purecap-benchmark.
+ *
+ * 2) The same user regis launches reader_pipe.py to
+ *    try to read memory region allocated to 
+ *    pipe_trampoline
+ * 
+ * platform: Morello Board running cheriBSD 24.05
+ * regis: user, owner of the process, and with no root privileges
+ */
+
+
+
 regis@tom:~/performanceTests/security $ pgrep -f pipe_trampoline
 25998
 25999

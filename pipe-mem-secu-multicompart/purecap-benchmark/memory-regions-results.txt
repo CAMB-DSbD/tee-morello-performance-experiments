@@ -1,3 +1,33 @@
+/*
+ * Programmer: REGIS RODOLFO SCHUCH <regis.schuch@unijui.edu.br>
+ * Date: 30 Dec 2024
+ *
+ * 31 Dec 2024: Carlos Molina Jimenez (carlos.molina@cl.cam.ac.uk)
+ *              edited this file to include these comments
+ *
+ * 1) user regis@GCA uses ssh to login to a remote Morello
+ *    board as regis@erik.unusualperson.com
+ *
+ *
+ * 2) user regis@tom executes $ procstat -v 25998
+ *    to inspect the memory mappings and permissions of the 
+ *    process identified by PID 25998. 
+
+ * 3) The exe_pipe_trampoline had been previously launched by 
+ *    user regis, owner of the process, and with no root privileges.
+ * 
+ * 
+ * 4) exe_pipe_trampoline is running in a compartment created 
+ *    for purecap-benchmark.
+
+ *
+ * 
+ * 
+ * platform: Morello Board running cheriBSD 24.05
+ *
+ */
+
+
 regis@GCA:~$ ssh -i ~/.ssh/id_rsa_regis regis@erik.unusualperson.com
 Last login: Mon Dec 30 13:30:26 2024 from 177.70.72.18
 FreeBSD 15.0-CURRENT (GENERIC-MORELLO-PURECAP) #0 releng/24.05-b2ad856aac65: Fri Jul 19 21:17:24 UTC 2024
@@ -24,6 +54,8 @@ Find out more about about CHERI at https://cheri-cpu.org/
 WARNING: INVARIANTS kernel option defined, expect reduced performance
 WARNING: WITNESS kernel option defined, expect reduced performance
 WARNING: capability revocation enabled by default, this may affect performance
+
+
 regis@tom:~ $ procstat -v 25998
   PID              START                END PRT    RES PRES REF SHD FLAG   TP PATH
 25998           0x100000           0x101000 r--R-    1    4   6   2 CN---- vn /home/regis/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark/exe_pipe_trampoline

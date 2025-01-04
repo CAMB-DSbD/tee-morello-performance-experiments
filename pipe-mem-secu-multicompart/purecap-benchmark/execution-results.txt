@@ -1,3 +1,17 @@
+/*
+ * Execution of the exe_pipe_trampoline program in a
+ * compartment created for purecap-benchmark.
+ *
+ * Programmer: REGIS RODOLFO SCHUCH <regis.schuch@unijui.edu.br>
+ * Date: 30 Dec 2024
+ *
+ * 31 Dec 2024: Carlos Molina Jimenez (carlos.molina@cl.cam.ac.uk)
+ *              edited this file to include these comments
+ * 
+ * platform: Morello Board running cheriBSD 24.05
+ * regis: user, owner of the process, and with no root privileges
+ */
+
 regis@tom:~/performanceTests/trampoline/pipe-mem-secu-multicompart/purecap-benchmark $ proccontrol -m cheric18n -s enable ./exe_pipe_trampoline
 I'm the PARENT process!
 I'm the CHILD process!
