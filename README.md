@@ -941,7 +941,7 @@ In this experiment, we use an application written in C [tee-compartmentalisation
    $ python3 memory_reader.py
    ```
 
-   The [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) script cycles through the memory regions of interest reading the data between the start and end addresses of each region directly.
+   The [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/mem-reader-python-scripts/memory_reader.py) script cycles through the memory regions of interest reading the data between the start and end addresses of each region directly.
 
 Figure 12 shows the steps executed by the `memory_reader.py` script:
 
@@ -1045,7 +1045,7 @@ We observed some unexpected behaviours and crashes of the cheriBSD that demanded
   $ mount -t procfs proc /proc
   ```
 
-  Once `proc` is mounted, the `memory_reader.py` script [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) script can be executed again.  
+  Once `proc` is mounted, the `memory_reader.py` script [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/mem-reader-python-scripts/memory_reader.py) script can be executed again.  
 
   We believe that this behaviour is related to the persistence of cheriBSD configurations after rebooting from crashes. It might be useful to examine how resources are locked and released by cheriBSD after crashes.
 
@@ -1138,7 +1138,7 @@ We have performed the following steps to examine memory:
    We started the `pipe_trampoline` to initiate the parent and the child process. The parent writes a string to one end of the pipe, and the child process reads it from the other end.
 
 2. **Memory reading:**  
-   We executed the `memory_reader.py` script available from [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/security-single-compartment-performance/memory_reader.py) to attempt direct memory reads:
+   We executed the `memory_reader.py` script available from [memory_reader.py](https://github.com/CAMB-DSbD/tee-morello-performance-experiments/blob/main/mem-reader-python-scripts/memory_reader.py) to attempt direct memory reads:
 
    ```bash
    $ python3 memory_reader.py
