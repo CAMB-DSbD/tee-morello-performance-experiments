@@ -1,3 +1,18 @@
+"""
+title           : memory_reader.py
+                : 
+author          : REGIS RODOLFO SCHUCH <regis.schuch@unijui.edu.br> 
+date            :
+version         :  
+description     : This program 
+                : 1) Expects the name of a process in execution.
+                : 2) Finds the PID of the process and subprocesses
+                : 3) ???Finds the memory regions (start and end add)
+                : associated to the process and subprocesses.
+                : 4) ???
+
+""
+
 import os
 import subprocess
 
