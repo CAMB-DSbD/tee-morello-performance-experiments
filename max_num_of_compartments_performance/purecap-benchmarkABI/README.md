@@ -1,6 +1,6 @@
 # Results plotting with Python 
 
-I produced the max_num_of_purecap-benchmarkABI_compart.png plot
+I produced the max_num_compart_purecap-benchmarkABI.png plot
 with from  max_num_compart-experiment-purecap-benchmarkABI-results.csv 
 using memuse_elaptime_daxisplot.py.
 
