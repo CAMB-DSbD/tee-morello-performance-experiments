@@ -287,7 +287,7 @@ As a second example take the 5th row. It shows that after 10808.39 ms, `cheri-ca
 
 The blue line in the plot of Fig. 3 illustrates how memory is consumed 
 as the number of compartments increases. 
-The gree line indicates how many seconds takes to create 
+The orange line indicates how many seconds takes to create 
 a given  number of compartments. For example, it takes 10 000 
 seconds to created 4 000 compartments,
 (about 2 hrs and 46 min) seconds to created 4 000 compartments,
